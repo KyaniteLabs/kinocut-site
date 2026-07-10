@@ -21,6 +21,34 @@ the visual reference for every choice here. Local tokens: `css/tokens.css`.
 > system same day. Lesson recorded: interview step 0 is *find the existing system*,
 > and the reference image in the repo README outranks any palette invented in-session.
 
+## Interview record (answered by judgment, per Simon's direction 2026-07-10)
+
+Simon directed: answer the forcing questions with best judgment from everything known
+about him, rather than deferring them back. The reasoning, per question:
+
+1. **Reference:** the mcp-video tableau (editing as stonecraft on a workbench) + the
+   Bloomberg-terminal instinct — he builds kiosks and dashboards, reads at speed,
+   states "density first, max meaning per token."
+2. **Poles:** cool · serious · **dense** · technical-refined. Cool field, *designated*
+   warm objects (amber, paper) — matching a voice that is precise with warmth in the
+   human moments. Dense was the decisive judgment call: airy marketing whitespace is
+   not his taste.
+3. **Aesthetic phrase:** "an editor's instrument bench on black stone — cyan
+   schematics, amber signals, paper proof."
+4. **Type:** brand faces; mono does more work than usual (terminal-native operator).
+5. **Color/mode:** cyan anchor on void; amber=trust, magenta=pending-human,
+   blue=structural-only; dark-only (his TUI default is amber-night; his rooms are dark).
+6. **Density/shape:** sections 48px rhythm (was 64), 4-8px corners, hairlines, flat.
+7. **Structure:** **engineering-sheet rhythm** — left annotation rail; each section
+   indexed by a cyan timecode (00:01…) because the page IS a timeline (the playhead
+   already says so; the numbering encodes real order, per the structure-is-information
+   rule). Replaced the metronomic template bands.
+8. **Signature:** the Video Receipt — the product thesis made physical. Unchanged.
+9. **Imagery:** tableau once (hero) + og; etched blueprint gridlines as void texture
+   (the tableau's engraved marks, abstracted, sub-contrast at 0.035 alpha); Lucide-only
+   if ever; never stock.
+10. **Motion:** restrained, scroll-linked position only — he would resent decoration.
+
 ## Decisions
 
 | Dimension | Commitment |

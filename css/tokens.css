@@ -54,6 +54,8 @@
   --amber-ink: #33290f;    /* stamp fill under amber */
   --mint: #52d3aa;         /* pass marks (design-system success); ~9:1 */
   --line-color: rgba(221, 234, 241, 0.14);
+  --etch-line: rgba(221, 234, 241, 0.035); /* engraved sheet gridlines, sub-contrast */
+  --etch-cell: 96px;
   --paper-100: #f2efe8;    /* receipt paper (site-local: the physical artifact) */
   --paper-ink: #1c1e22;    /* 14.5:1 on paper */
 

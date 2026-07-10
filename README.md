@@ -5,9 +5,9 @@ Product site for Kinocut (formerly mcp-video). Static, self-contained, bilingual
 ## Deploy checklist (at rename cutover, issue #53 / #86)
 - [x] Verify tool count on the page vs `test_public_surface.py` (135 at the 1.7.0 cutover)
 - [x] Point footer GitHub link at the renamed repo
-- [x] Update the MCP Registry link to `io.github.KyaniteLabs/kinocut`
+- [x] Link the active MCP Registry record for `io.github.KyaniteLabs/kinocut`
 - [x] Add real `llms.txt` (linked in footer)
-- [ ] Point kinocut.dev DNS at the host; serve this directory
+- [x] Point kinocut.dev DNS at GitHub Pages and serve this directory
 
 ## Structure
 - `index.html` — single page, EN/ES via `data-lang` (toggle, `?lang=es`, or `/es.html`)

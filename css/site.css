@@ -256,45 +256,40 @@ a:hover {
 .install .prompt { color: var(--text-2); user-select: none; }
 .install .cmd { color: var(--text); font-weight: 600; }
 
-/* ---------- receipt (signature #1) ---------- */
+/* ---------- receipt (signature #1): an engraved manifest on stone ---------- */
 .receipt {
   width: var(--receipt-w);
   max-width: 100%;
-  background: var(--paper-100);
-  color: var(--paper-ink);
+  background: var(--panel-strong);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: var(--text-2);
   font-family: var(--font-mono);
   font-size: var(--size-micro);
   line-height: 1.7;
-  padding: var(--space-6) var(--space-6) var(--space-16);
+  padding: var(--space-6);
   margin: 0;
-  position: relative;
-}
-/* torn till-roll edges */
-.receipt::before,
-.receipt::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: var(--space-2);
-  background:
-    linear-gradient(-45deg, var(--paper-100) calc(var(--space-2) / 2), transparent 0) 0 0 / var(--space-2) var(--space-2) repeat-x,
-    linear-gradient(45deg, var(--paper-100) calc(var(--space-2) / 2), transparent 0) 0 0 / var(--space-2) var(--space-2) repeat-x;
-}
-.receipt::before {
-  top: calc(-1 * var(--space-2));
-  transform: scaleY(-1);
-}
-.receipt::after {
-  bottom: calc(-1 * var(--space-2));
+  border: var(--rule);
+  border-top: 2px solid var(--amber-2);
+  border-radius: var(--radius-1);
 }
 .receipt h3 {
-  font-size: var(--size-small);
+  font-size: var(--size-micro);
+  font-weight: 600;
   letter-spacing: var(--tracking-wide);
-  text-align: center;
-  border-bottom: 1px dashed var(--paper-ink);
+  color: var(--cyan);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+  border-bottom: var(--rule);
   padding-bottom: var(--space-2);
   margin: 0 0 var(--space-3);
+}
+.receipt h3 .doc-id {
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
 }
 .receipt dl {
   margin: 0;
@@ -303,17 +298,52 @@ a:hover {
   gap: 0 var(--space-3);
 }
 .receipt dt {
-  font-weight: 600;
+  font-weight: 400;
+  color: var(--muted);
   white-space: nowrap;
 }
 .receipt dd {
   margin: 0;
   text-align: right;
   overflow-wrap: anywhere;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
 }
 .receipt .rule {
-  border-top: 1px dashed var(--paper-ink);
+  border-top: var(--rule);
   margin-block: var(--space-3);
+}
+.receipt .foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+.receipt .stamp {
+  font-weight: 600;
+  font-size: var(--size-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--amber);
+  border: 1px solid var(--amber-2);
+  border-radius: 2px;
+  padding: var(--space-1) var(--space-3);
+  white-space: nowrap;
+}
+/* the output digest as an engraved barcode strip — decorative, aria-hidden */
+.receipt .barcode {
+  flex: 1;
+  height: var(--space-4);
+  background:
+    repeating-linear-gradient(90deg,
+      var(--etch-bar) 0 2px, transparent 2px 5px,
+      var(--etch-bar) 5px 6px, transparent 6px 11px,
+      var(--etch-bar) 11px 14px, transparent 14px 17px,
+      var(--etch-bar) 17px 18px, transparent 18px 24px);
+}
+.receipt .pending {
+  color: var(--magenta);
+  font-weight: 600;
 }
 .visually-hidden {
   position: absolute;
@@ -322,25 +352,6 @@ a:hover {
   overflow: hidden;
   clip-path: inset(50%);
   white-space: nowrap;
-}
-
-.receipt .stamp {
-  position: absolute;
-  right: var(--space-4);
-  bottom: var(--space-4);
-  transform: rotate(-8deg);
-  font-weight: 600;
-  font-size: var(--size-small);
-  letter-spacing: var(--tracking-wide);
-  color: var(--amber);
-  background: var(--amber-ink);
-  border: 2px solid var(--amber);
-  border-radius: var(--radius-1);
-  padding: var(--space-1) var(--space-3);
-}
-.receipt .pending {
-  color: var(--paper-ink);
-  font-weight: 600;
 }
 
 /* ---------- thesis band ---------- */

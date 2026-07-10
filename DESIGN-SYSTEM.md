@@ -43,7 +43,7 @@ about him, rather than deferring them back. The reasoning, per question:
    indexed by a cyan timecode (00:01…) because the page IS a timeline (the playhead
    already says so; the numbering encodes real order, per the structure-is-information
    rule). Replaced the metronomic template bands.
-8. **Signature:** the Video Receipt — the product thesis made physical. Unchanged.
+8. **Signature:** the Video Receipt as an engraved manifest panel — the product thesis as an instrument readout. (v1 paper/till-receipt treatment rejected by Simon as "arts and crafts"; v2 cool-paper certificate also rejected — no paper at all; cohesion with the stone/instrument world won.)
 9. **Imagery:** tableau once (hero) + og; etched blueprint gridlines as void texture
    (the tableau's engraved marks, abstracted, sub-contrast at 0.035 alpha); Lucide-only
    if ever; never stock.
@@ -56,12 +56,12 @@ about him, rather than deferring them back. The reasoning, per question:
 | Aesthetic phrase | **Edit-suite over kyanite stone** — the brand's void/basalt field, precision cyan, one warm paper artifact |
 | Personality poles | cool · serious · dense · refined |
 | Signature move | **The Video Receipt** as a physical till-receipt (hero). The playhead timecode ruler is *ambient* — ≤3px, text-only, never competes. |
-| Mode | **Dark-only**, deliberate (edit rooms; the brand system is dark-native). The receipt's paper is the light relief. |
+| Mode | **Dark-only**, deliberate (edit rooms; the brand system is dark-native). Light relief comes from type contrast and the amber/cyan signals, not from any light surface. |
 | Color roles | Cyan = links/accents/hot lines. **Amber = trust/verified moments only.** **Magenta = pending-human/edit markers only.** Blue `#087dcc` = structural shapes/borders only — measured 4.5:1 as text, never copy. Mint `#52d3aa` (design-system success) = pass marks. |
 | Type | Display: Space Grotesk 700. Body: Plus Jakarta Sans 400/700. Mono: JetBrains Mono 400/600. All self-hosted, brand faces. |
 | Density & shape | Dense-leaning; 4/8px corners; flat; hairline rules (`--line-color`, the brand's line token). |
 | Structure & rhythm | Asymmetric hero (text left, receipt right over the tableau); titled bands with hairline rules; **ledger rows, never card grids**; syncopation via the centered thesis band and the paper artifact breaking the dark field. |
-| Imagery stance | (1) Baseline: type, the receipt, terminals, glyph marks. (2) **The brand tableau** is the one photographic asset — hero backdrop (void-faded under text) + og:image. (3) Technical diagrams permitted: one style, cyan/amber on basalt. (4) Icons when needed: **Lucide 1.5px** only. Never stock, never AI-gradient slop, never emoji-as-icons. |
+| Imagery stance | (1) Baseline: type, the manifest panel, terminals, glyph marks. (2) **The brand tableau** is the one photographic asset — hero backdrop (void-faded under text) + og:image. (3) Technical diagrams permitted: one style, cyan/amber on basalt. (4) Icons when needed: **Lucide 1.5px** only. Never stock, never AI-gradient slop, never emoji-as-icons. |
 | Motion | Restrained: skip-link slide, hover transitions, scroll-linked playhead position. `prefers-reduced-motion` collapses all. No reveals. |
 | Language | Bilingual EN/ES as peers; native copy both sides. Toggle + `/es.html`. |
 
@@ -76,6 +76,6 @@ about him, rather than deferring them back. The reasoning, per question:
 
 ## Signature discipline
 
-One signature: the receipt gets the boldness budget (paper, torn edges, amber stamp).
+One signature: the receipt manifest gets the boldness budget (panel over art, amber edge + chip, barcode).
 The playhead stays ambient. The tableau backdrop must always fade to `--void` under
 text — measured contrast outranks art visibility.

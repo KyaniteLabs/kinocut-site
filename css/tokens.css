@@ -56,8 +56,9 @@
   --line-color: rgba(221, 234, 241, 0.14);
   --etch-line: rgba(221, 234, 241, 0.035); /* engraved sheet gridlines, sub-contrast */
   --etch-cell: 96px;
-  --paper-100: #f2efe8;    /* receipt paper (site-local: the physical artifact) */
-  --paper-ink: #1c1e22;    /* 14.5:1 on paper */
+  --panel: rgba(8, 18, 28, 0.68);        /* kyanite-system panel */
+  --panel-strong: rgba(10, 23, 35, 0.86); /* kyanite-system panel-strong */
+  --etch-bar: rgba(221, 234, 241, 0.38);  /* engraved barcode bars */
 
   /* type — brand faces */
   --font-display: "Space Grotesk", system-ui, sans-serif;

@@ -1,0 +1,462 @@
+/* Kinocut — kinocut.dev */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink-950);
+  color: var(--text-100);
+  font-family: var(--font-body);
+  font-size: var(--size-body);
+  line-height: var(--leading-body);
+}
+
+/* language switching: html[data-lang] shows one copy set.
+   Scoped to body descendants — a bare [lang] selector would match <html>
+   itself once its lang flips, hiding the whole page. */
+body [lang="es"] { display: none; }
+html[data-lang="es"] body [lang="es"] { display: revert; }
+html[data-lang="es"] body [lang="en"] { display: none; }
+
+/* ---------- a11y scaffolding ---------- */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: calc(-1 * var(--space-24));
+  z-index: 20;
+  padding: var(--space-2) var(--space-4);
+  background: var(--kyanite-500);
+  color: var(--text-100);
+  border-radius: var(--radius-1);
+  transition: top var(--dur-1) var(--ease-out);
+}
+.skip-link:focus {
+  top: var(--space-4);
+}
+
+:focus-visible {
+  outline: 2px solid var(--kyanite-300);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    transition-duration: 1ms !important;
+  }
+}
+
+/* ---------- playhead ruler (signature #2) ---------- */
+.playhead {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  height: var(--playhead-h);
+  background: var(--ink-700);
+}
+.playhead__fill {
+  width: 0%;
+  height: 100%;
+  background: var(--kyanite-300);
+}
+.playhead__tc {
+  position: fixed;
+  top: var(--space-2);
+  right: var(--space-4);
+  z-index: 10;
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  color: var(--text-300);
+  letter-spacing: var(--tracking-wide);
+}
+
+/* ---------- shared layout ---------- */
+.wrap {
+  max-width: var(--page-max);
+  margin-inline: auto;
+  padding-inline: var(--space-6);
+}
+
+section {
+  padding-block: var(--space-16);
+  border-top: var(--rule);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-300);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  line-height: var(--leading-tight);
+  margin: var(--space-2) 0 var(--space-6);
+}
+
+p {
+  max-width: var(--measure);
+}
+
+a {
+  color: var(--kyanite-300);
+}
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+/* ---------- header / hero ---------- */
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: var(--space-4);
+}
+
+.lang-toggle {
+  display: flex;
+  gap: var(--space-1);
+}
+.lang-toggle button {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  letter-spacing: var(--tracking-wide);
+  padding: var(--space-1) var(--space-3);
+  background: none;
+  border: var(--rule);
+  border-radius: var(--radius-1);
+  color: var(--text-300);
+  cursor: pointer;
+}
+.lang-toggle button[aria-pressed="true"] {
+  background: var(--kyanite-700);
+  color: var(--text-100);
+  border-color: var(--kyanite-500);
+}
+
+.hero {
+  border-top: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-12);
+  align-items: center;
+  padding-block: var(--space-12) var(--space-24);
+}
+/* grid children default to min-width:auto — an unbreakable <pre> line would
+   otherwise force the column (and the whole page) wider than the viewport */
+.hero > *,
+.ledger__row > *,
+.roadmap li > * {
+  min-width: 0;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--size-hero);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
+  margin: var(--space-3) 0;
+  color: var(--text-100);
+}
+.hero h1 .cut {
+  color: var(--kyanite-300);
+}
+
+.hero .tagline {
+  font-size: var(--size-lede);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.hero .lede {
+  color: var(--text-300);
+  margin-bottom: var(--space-8);
+}
+
+.install {
+  background: var(--ink-800);
+  border: var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-4) var(--space-6);
+  max-width: var(--measure);
+}
+.install pre {
+  margin: 0;
+  overflow-x: auto;
+  font-size: var(--size-small);
+  line-height: 2;
+}
+.install .prompt { color: var(--text-300); user-select: none; }
+.install .cmd { color: var(--text-100); font-weight: 600; }
+
+/* ---------- receipt (signature #1) ---------- */
+.receipt {
+  width: var(--receipt-w);
+  max-width: 100%;
+  background: var(--paper-100);
+  color: var(--paper-ink);
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  line-height: 1.7;
+  padding: var(--space-6) var(--space-6) var(--space-16);
+  margin: 0;
+  position: relative;
+}
+/* torn till-roll edges */
+.receipt::before,
+.receipt::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--space-2);
+  background:
+    linear-gradient(-45deg, var(--paper-100) calc(var(--space-2) / 2), transparent 0) 0 0 / var(--space-2) var(--space-2) repeat-x,
+    linear-gradient(45deg, var(--paper-100) calc(var(--space-2) / 2), transparent 0) 0 0 / var(--space-2) var(--space-2) repeat-x;
+}
+.receipt::before {
+  top: calc(-1 * var(--space-2));
+  transform: scaleY(-1);
+}
+.receipt::after {
+  bottom: calc(-1 * var(--space-2));
+}
+.receipt h3 {
+  font-size: var(--size-small);
+  letter-spacing: var(--tracking-wide);
+  text-align: center;
+  border-bottom: 1px dashed var(--paper-ink);
+  padding-bottom: var(--space-2);
+  margin: 0 0 var(--space-3);
+}
+.receipt dl {
+  margin: 0;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0 var(--space-3);
+}
+.receipt dt {
+  font-weight: 600;
+  white-space: nowrap;
+}
+.receipt dd {
+  margin: 0;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+.receipt .rule {
+  border-top: 1px dashed var(--paper-ink);
+  margin-block: var(--space-3);
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.receipt .stamp {
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  transform: rotate(-8deg);
+  font-weight: 600;
+  font-size: var(--size-small);
+  letter-spacing: var(--tracking-wide);
+  color: var(--tungsten-400);
+  background: var(--tungsten-900);
+  border: 2px solid var(--tungsten-400);
+  border-radius: var(--radius-1);
+  padding: var(--space-1) var(--space-3);
+}
+.receipt .pending {
+  color: var(--paper-ink);
+  font-weight: 600;
+}
+
+/* ---------- thesis band ---------- */
+.thesis {
+  text-align: center;
+  padding-block: var(--space-16);
+}
+.thesis p {
+  font-family: var(--font-display);
+  font-size: var(--size-h2);
+  line-height: 1.25;
+  max-width: 26ch;
+  margin-inline: auto;
+}
+.thesis .kyanite { color: var(--kyanite-300); }
+
+/* ---------- trust ledger (not cards) ---------- */
+.ledger {
+  border: var(--rule);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+}
+.ledger__row {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-top: var(--rule);
+  background: var(--ink-900);
+}
+.ledger__row:first-child { border-top: none; }
+.ledger__gate {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  font-weight: 600;
+  color: var(--ok-400);
+}
+.ledger__gate .n {
+  display: block;
+  color: var(--text-300);
+  font-weight: 400;
+  font-size: var(--size-micro);
+}
+.ledger__row h3 {
+  margin: 0 0 var(--space-2);
+  font-size: var(--size-body);
+  font-weight: 700;
+}
+.ledger__row p {
+  margin: 0;
+  color: var(--text-300);
+}
+
+/* ---------- terminal session ---------- */
+.session pre {
+  background: var(--ink-800);
+  border: var(--rule);
+  border-radius: var(--radius-2);
+  padding: var(--space-6);
+  overflow-x: auto;
+  font-size: var(--size-small);
+  line-height: 1.9;
+  margin: 0;
+}
+.session .user { color: var(--kyanite-300); }
+.session .ok { color: var(--ok-400); }
+.session .dim { color: var(--text-300); }
+.session .amber { color: var(--tungsten-400); }
+
+/* ---------- verbs strip ---------- */
+.verbs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+.verbs li {
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  padding: var(--space-1) var(--space-3);
+  border: var(--rule);
+  border-radius: var(--radius-1);
+  color: var(--text-300);
+  background: var(--ink-900);
+}
+.verbs li.more {
+  border-style: dashed;
+}
+
+/* ---------- local-first ---------- */
+.local .claims {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-6);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.local .claims strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--size-small);
+  font-weight: 600;
+  color: var(--text-100);
+  margin-bottom: var(--space-1);
+}
+.local .claims li {
+  color: var(--text-300);
+  border-left: 2px solid var(--kyanite-500);
+  padding-left: var(--space-4);
+}
+
+/* ---------- roadmap ---------- */
+.roadmap ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+.roadmap li {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: baseline;
+}
+.roadmap .take {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  letter-spacing: var(--tracking-wide);
+  color: var(--tungsten-400);
+  text-transform: uppercase;
+}
+.roadmap p { margin: 0; color: var(--text-300); }
+.roadmap strong { color: var(--text-100); }
+
+/* ---------- footer ---------- */
+footer {
+  border-top: var(--rule);
+  padding-block: var(--space-8) var(--space-16);
+  color: var(--text-300);
+  font-size: var(--size-small);
+}
+footer nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  padding: 0;
+  margin: 0 0 var(--space-4);
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 56rem) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-block: var(--space-8) var(--space-16);
+  }
+  .receipt { justify-self: start; }
+  .ledger__row {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+  .roadmap li {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+}

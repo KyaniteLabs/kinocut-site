@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kinocut — the trusted execution layer for agentic video</title>
+  <meta name="description" content="Kinocut (formerly mcp-video) gives AI agents a guardrailed video-editing surface: preflight checks before the render, receipts after it, quality gates in between. Local, free, Apache-2.0.">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <meta property="og:title" content="Kinocut — the trusted execution layer for agentic video">
+  <meta property="og:description" content="Guardrails before the render. Receipts after it. Local, free, Apache-2.0.">
+</head>
+<body>
+  <a class="skip-link" href="#main">
+    <span lang="en">Skip to content</span><span lang="es">Saltar al contenido</span>
+  </a>
+
+  <div class="playhead" aria-hidden="true"><div class="playhead__fill" id="playheadFill"></div></div>
+  <div class="playhead__tc" id="playheadTc" aria-hidden="true">00:00:00;00</div>
+
+  <header class="wrap top">
+    <span class="eyebrow">
+      <span lang="en">formerly mcp-video · a KyaniteLabs project</span>
+      <span lang="es">antes mcp-video · un proyecto de KyaniteLabs</span>
+    </span>
+    <div class="lang-toggle" role="group" aria-label="Language / Idioma">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="wrap hero">
+      <div>
+        <h1>KINO<span class="cut">CUT</span></h1>
+        <p class="tagline">
+          <span lang="en">The trusted execution layer for agentic video.</span>
+          <span lang="es">La capa de ejecución confiable para video agéntico.</span>
+        </p>
+        <p class="lede">
+          <span lang="en">Your agents can already edit video. Kinocut is what makes the result safe
+          to ship: guardrails before the render, a receipt after it, quality gates in between.
+          Runs on your machine. Free, Apache-2.0.</span>
+          <span lang="es">Tus agentes ya saben editar video. Kinocut es lo que hace que el resultado
+          se pueda publicar con confianza: barreras antes del render, un recibo después, y controles
+          de calidad en el medio. Corre en tu máquina. Gratis, Apache-2.0.</span>
+        </p>
+        <div class="install">
+          <pre><code><span class="prompt">$ </span><span class="cmd">pip install kinocut</span>
+<span class="prompt">$ </span><span class="cmd">claude mcp add kinocut -- uvx --from kinocut kinocut</span>
+<span class="prompt">$ </span><span class="cmd">kino doctor</span></code></pre>
+        </div>
+      </div>
+
+      <!-- SIGNATURE: the Video Receipt as a physical artifact -->
+      <figure class="receipt">
+        <h3>VIDEO RECEIPT</h3>
+        <dl>
+          <dt>intent</dt><dd>
+            <span lang="en">podcast → 3 vertical clips</span>
+            <span lang="es">podcast → 3 clips verticales</span>
+          </dd>
+          <dt>tools run</dt><dd>7</dd>
+          <dt>guardrails</dt><dd>2 warned · 0 failed</dd>
+          <dt>quality</dt><dd>score 84 · pass</dd>
+          <dt>a/v sync</dt><dd>ok</dd>
+          <dt>loudness</dt><dd>-14.1 LUFS</dd>
+          <dt>captions</dt><dd>word-timed</dd>
+        </dl>
+        <div class="rule" role="presentation"></div>
+        <dl>
+          <dt>sources</dt><dd>sha256 · 9b41…c2</dd>
+          <dt>output</dt><dd>sha256 · 55d0…8f</dd>
+          <dt class="pending">human review</dt><dd class="pending">
+            <span lang="en">hook + thumbnail</span>
+            <span lang="es">gancho + miniatura</span>
+          </dd>
+        </dl>
+        <span class="stamp">
+          <span lang="en">CHECKS PASSED</span>
+          <span lang="es">VERIFICADO</span>
+        </span>
+        <figcaption class="visually-hidden">
+          <span lang="en">Every Kinocut workflow ends with a receipt like this one.</span>
+          <span lang="es">Cada flujo de Kinocut termina con un recibo como este.</span>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- THESIS -->
+    <section class="thesis wrap">
+      <p>
+        <span lang="en">An edit you can’t <span class="kyanite">inspect</span> is an edit you can’t <span class="kyanite">trust</span>.</span>
+        <span lang="es">Una edición que no puedes <span class="kyanite">inspeccionar</span> no es una edición en la que puedas <span class="kyanite">confiar</span>.</span>
+      </p>
+    </section>
+
+    <!-- TRUST LEDGER -->
+    <section class="wrap">
+      <span class="eyebrow">
+        <span lang="en">what ships today</span>
+        <span lang="es">lo que ya existe hoy</span>
+      </span>
+      <h2>
+        <span lang="en">Three gates between an agent and a bad render</span>
+        <span lang="es">Tres compuertas entre un agente y un mal render</span>
+      </h2>
+      <div class="ledger">
+        <div class="ledger__row">
+          <span class="ledger__gate">✓ PREFLIGHT<span class="n">
+            <span lang="en">before the render</span><span lang="es">antes del render</span>
+          </span></span>
+          <div>
+            <h3>
+              <span lang="en">Guardrails on every risky parameter</span>
+              <span lang="es">Barreras en cada parámetro riesgoso</span>
+            </h3>
+            <p>
+              <span lang="en">Out-of-range filters, mismatched merges, broken audio maps, overflowing
+              text — caught and explained before FFmpeg renders a single frame. 124 structured tools,
+              every parameter validated server-side.</span>
+              <span lang="es">Filtros fuera de rango, uniones incompatibles, audio mal mapeado, texto
+              desbordado — detectados y explicados antes de que FFmpeg genere un solo cuadro. 124
+              herramientas estructuradas, cada parámetro validado en el servidor.</span>
+            </p>
+          </div>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__gate">✓ RECEIPT<span class="n">
+            <span lang="en">after the render</span><span lang="es">después del render</span>
+          </span></span>
+          <div>
+            <h3>
+              <span lang="en">Every workflow leaves a paper trail</span>
+              <span lang="es">Cada flujo deja constancia</span>
+            </h3>
+            <p>
+              <span lang="en">What was asked, which tools ran, what changed, which guardrails fired,
+              and what still needs human eyes — one JSON receipt per workflow, checkable by the next
+              agent or the next person.</span>
+              <span lang="es">Qué se pidió, qué herramientas corrieron, qué cambió, qué barreras se
+              activaron y qué falta revisar por una persona — un recibo JSON por flujo, verificable
+              por el próximo agente o la próxima persona.</span>
+            </p>
+          </div>
+        </div>
+        <div class="ledger__row">
+          <span class="ledger__gate">✓ QUALITY<span class="n">
+            <span lang="en">before it ships</span><span lang="es">antes de publicar</span>
+          </span></span>
+          <div>
+            <h3>
+              <span lang="en">Scored output, human checkpoints</span>
+              <span lang="es">Salida evaluada, puntos de control humanos</span>
+            </h3>
+            <p>
+              <span lang="en">VMAF, loudness, black-frame and A/V-sync checks score the result; release
+              checkpoints hold anything below the bar. Humans stay exactly where they matter — hooks,
+              thumbnails, final review.</span>
+              <span lang="es">VMAF, sonoridad, cuadros negros y sincronía A/V evalúan el resultado; los
+              puntos de control retienen lo que no llega a la barra. Las personas quedan justo donde
+              importan — ganchos, miniaturas, revisión final.</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SESSION -->
+    <section class="wrap session">
+      <span class="eyebrow">
+        <span lang="en">a real session</span>
+        <span lang="es">una sesión real</span>
+      </span>
+      <h2>
+        <span lang="en">Watch an agent work</span>
+        <span lang="es">Mira a un agente trabajar</span>
+      </h2>
+      <pre><code><span class="user">›</span> <span lang="en">turn ep-42.mp4 into three vertical clips with captions</span><span lang="es">convierte ep-42.mp4 en tres clips verticales con subtítulos</span>
+
+<span class="dim">kino</span> repurpose ep-42.mp4 --platform shorts --count 3
+<span class="ok">✓</span> preflight        <span class="dim">0 failures · 2 warnings clamped</span>
+<span class="ok">✓</span> transcribe       <span class="dim">41:32 · whisper · local</span>
+<span class="ok">✓</span> select moments   <span class="dim">3 segments · keyword + energy</span>
+<span class="ok">✓</span> reframe 9:16     <span class="dim">speaker-tracked</span>
+<span class="ok">✓</span> captions         <span class="dim">word-timed · burned</span>
+<span class="ok">✓</span> quality gate     <span class="dim">score 84 · pass</span>
+<span class="amber">◉</span> receipt          <span class="dim">out/receipt.json · <span lang="en">2 items for human review</span><span lang="es">2 puntos para revisión humana</span></span></code></pre>
+    </section>
+
+    <!-- VERBS -->
+    <section class="wrap verbs">
+      <span class="eyebrow">
+        <span lang="en">the surface</span>
+        <span lang="es">la superficie</span>
+      </span>
+      <h2>
+        <span lang="en">Verbs agents actually pick right</span>
+        <span lang="es">Verbos que los agentes eligen bien</span>
+      </h2>
+      <p>
+        <span lang="en">A small set of intent-level verbs up front — 124 structured tools underneath
+        for when you need the depth: effects, transitions, audio synthesis, analysis, Hyperframes
+        HTML-native rendering.</span>
+        <span lang="es">Un conjunto pequeño de verbos de intención al frente — 124 herramientas
+        estructuradas debajo para cuando necesitas profundidad: efectos, transiciones, síntesis de
+        audio, análisis, y render HTML-nativo con Hyperframes.</span>
+      </p>
+      <ul>
+        <li>repurpose</li>
+        <li>trim</li>
+        <li>merge</li>
+        <li>subtitle</li>
+        <li>reframe</li>
+        <li>remove_silence</li>
+        <li>normalize</li>
+        <li>storyboard</li>
+        <li>glitch</li>
+        <li class="more">+ 124 tools</li>
+      </ul>
+    </section>
+
+    <!-- LOCAL-FIRST -->
+    <section class="wrap local">
+      <span class="eyebrow">
+        <span lang="en">local-first</span>
+        <span lang="es">local primero</span>
+      </span>
+      <h2>
+        <span lang="en">Runs where your footage lives</span>
+        <span lang="es">Corre donde vive tu material</span>
+      </h2>
+      <ul class="claims">
+        <li>
+          <strong>
+            <span lang="en">no upload</span><span lang="es">sin subir nada</span>
+          </strong>
+          <span lang="en">Your media never leaves your machine. FFmpeg and Whisper run locally.</span>
+          <span lang="es">Tu material nunca sale de tu máquina. FFmpeg y Whisper corren localmente.</span>
+        </li>
+        <li>
+          <strong>
+            <span lang="en">no credit meter</span><span lang="es">sin medidor de créditos</span>
+          </strong>
+          <span lang="en">A 3-hour podcast costs the same as a 30-second clip: nothing.</span>
+          <span lang="es">Un podcast de 3 horas cuesta lo mismo que un clip de 30 segundos: nada.</span>
+        </li>
+        <li>
+          <strong>
+            <span lang="en">no watermark</span><span lang="es">sin marca de agua</span>
+          </strong>
+          <span lang="en">Apache-2.0. Client work is your work.</span>
+          <span lang="es">Apache-2.0. El trabajo para clientes es tuyo.</span>
+        </li>
+        <li>
+          <strong>
+            <span lang="en">no phoning home</span><span lang="es">sin telemetría</span>
+          </strong>
+          <span lang="en">Zero analytics, zero accounts, zero keys required for the core.</span>
+          <span lang="es">Cero analíticas, cero cuentas, cero llaves para el núcleo.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="wrap roadmap">
+      <span class="eyebrow">
+        <span lang="en">roadmap · in the open</span>
+        <span lang="es">hoja de ruta · a la vista</span>
+      </span>
+      <h2>
+        <span lang="en">Where this is going</span>
+        <span lang="es">Hacia dónde va</span>
+      </h2>
+      <ol>
+        <li>
+          <span class="take">
+            <span lang="en">next</span><span lang="es">siguiente</span>
+          </span>
+          <p><strong>
+            <span lang="en">The editing kernel.</span><span lang="es">El kernel de edición.</span></strong>
+            <span lang="en">Durable projects, resumable renders, receipts that chain revision to revision — edits agents can pick back up tomorrow.</span>
+            <span lang="es">Proyectos durables, renders reanudables, recibos que encadenan revisión con revisión — ediciones que un agente puede retomar mañana.</span>
+          </p>
+        </li>
+        <li>
+          <span class="take">
+            <span lang="en">then</span><span lang="es">después</span>
+          </span>
+          <p><strong>
+            <span lang="en">The watching guardrail.</span><span lang="es">La barrera que observa.</span></strong>
+            <span lang="en">Renders that review themselves — metrics, vision and pacing checks that propose fixes and wait for a human yes.</span>
+            <span lang="es">Renders que se revisan a sí mismos — métricas, visión y ritmo que proponen arreglos y esperan un sí humano.</span>
+          </p>
+        </li>
+        <li>
+          <span class="take">
+            <span lang="en">and</span><span lang="es">y</span>
+          </span>
+          <p><strong>
+            <span lang="en">Provenance built in.</span><span lang="es">Procedencia integrada.</span></strong>
+            <span lang="en">C2PA content credentials on exports — agent-made video that declares itself, before regulators make everyone else catch up.</span>
+            <span lang="es">Credenciales de contenido C2PA en las exportaciones — video hecho por agentes que se declara como tal, antes de que los reguladores obliguen al resto.</span>
+          </p>
+        </li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <nav aria-label="Project links">
+        <ul>
+          <li><a href="https://github.com/KyaniteLabs/mcp-video">GitHub</a></li>
+          <li><a href="https://pypi.org/project/kinocut/">PyPI</a></li>
+          <li><a href="https://registry.modelcontextprotocol.io/servers/io.github.KyaniteLabs/mcp-video">MCP Registry</a></li>
+          <li><a href="https://github.com/KyaniteLabs/mcp-video/blob/master/docs/TOOLS.md">
+            <span lang="en">Tool reference</span><span lang="es">Referencia de herramientas</span></a></li>
+          <li><a href="llms.txt">llms.txt</a></li>
+        </ul>
+      </nav>
+      <p>
+        <span lang="en">Kinocut is a KyaniteLabs project · Apache-2.0 · formerly mcp-video</span>
+        <span lang="es">Kinocut es un proyecto de KyaniteLabs · Apache-2.0 · antes mcp-video</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/site.js"></script>
+</body>
+</html>

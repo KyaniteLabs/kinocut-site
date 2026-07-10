@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"grep -n '\\\"--screenshot' ~/.claude/PAI/TOOLS/RemoteVerify.ts && sed -n \\\"$(grep -n '\\\"--screenshot' ~/.claude/PAI/TOOLS/RemoteVerify.ts | head -1 | cut -d: -f1) - 8, +8p\\\" ~/.claude/PAI/TO...",
+  "error": "Exit code 1\nsed: illegal option -- 8\nusage: sed script [-EHalnru] [-i extension] [file ...]\n\tsed [-EHalnu] [-i extension] [-e script] ... [-f script_file] ... [file ...]",
+  "timestamp": "2026-07-10T13:17:09.412Z",
+  "retry_count": 1
+}

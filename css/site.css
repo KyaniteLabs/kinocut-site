@@ -33,7 +33,7 @@ html[data-lang="es"] body [lang="en"] { display: none; }
   top: calc(-1 * var(--space-24));
   z-index: 20;
   padding: var(--space-2) var(--space-4);
-  background: var(--kyanite-500);
+  background: var(--kyanite-700); /* 8.1:1 with text-100; kyanite-500 measured 3.7:1 */
   color: var(--text-100);
   border-radius: var(--radius-1);
   transition: top var(--dur-1) var(--ease-out);
@@ -143,11 +143,31 @@ code, pre, .mono {
   border-radius: var(--radius-1);
   color: var(--text-300);
   cursor: pointer;
+  transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
+}
+.lang-toggle button:hover {
+  color: var(--text-100);
+  border-color: var(--kyanite-300);
+}
+.lang-toggle button:active {
+  background: var(--ink-800);
+}
+a:hover {
+  color: var(--text-100);
 }
 .lang-toggle button[aria-pressed="true"] {
   background: var(--kyanite-700);
   color: var(--text-100);
   border-color: var(--kyanite-500);
+}
+
+/* brand tableau (repo hero art) as backdrop: visible on the artifact side,
+   fading to solid ink under the text so measured contrast holds */
+.hero-band {
+  background:
+    linear-gradient(100deg, var(--ink-950) 0%, var(--ink-950) 34%, rgba(11, 15, 21, 0.62) 62%, rgba(11, 15, 21, 0.38) 100%),
+    linear-gradient(180deg, rgba(11, 15, 21, 0.55) 0%, rgba(11, 15, 21, 0.2) 45%, var(--ink-950) 98%),
+    url("../img/hero.webp") right center / cover no-repeat;
 }
 
 .hero {
@@ -446,11 +466,23 @@ footer nav ul {
 
 /* ---------- responsive ---------- */
 @media (max-width: 56rem) {
+  /* stacked hero: text spans the full width, so the tableau dims to a whisper */
+  .hero-band {
+    background:
+      linear-gradient(180deg, rgba(11, 15, 21, 0.9) 0%, rgba(11, 15, 21, 0.86) 60%, var(--ink-950) 98%),
+      url("../img/hero.webp") right center / cover no-repeat;
+  }
   .hero {
     grid-template-columns: 1fr;
     padding-block: var(--space-8) var(--space-16);
   }
-  .receipt { justify-self: start; }
+  /* width:100% (not a definite px width) so the figure can never floor the
+     fr column's intrinsic minimum; the token becomes the cap instead */
+  .receipt {
+    justify-self: start;
+    width: 100%;
+    max-width: var(--receipt-w);
+  }
   .ledger__row {
     grid-template-columns: 1fr;
     gap: var(--space-2);

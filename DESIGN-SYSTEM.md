@@ -30,11 +30,11 @@ about him, rather than deferring them back. The reasoning, per question:
    Bloomberg-terminal instinct — he builds kiosks and dashboards, reads at speed,
    states "density first, max meaning per token."
 2. **Poles:** cool · serious · **dense** · technical-refined. Cool field, *designated*
-   warm objects (amber, paper) — matching a voice that is precise with warmth in the
+   warm objects (amber signals) — matching a voice that is precise with warmth in the
    human moments. Dense was the decisive judgment call: airy marketing whitespace is
    not his taste.
 3. **Aesthetic phrase:** "an editor's instrument bench on black stone — cyan
-   schematics, amber signals, paper proof."
+   schematics, amber signals, engraved proof."
 4. **Type:** brand faces; mono does more work than usual (terminal-native operator).
 5. **Color/mode:** cyan anchor on void; amber=trust, magenta=pending-human,
    blue=structural-only; dark-only (his TUI default is amber-night; his rooms are dark).
@@ -53,14 +53,14 @@ about him, rather than deferring them back. The reasoning, per question:
 
 | Dimension | Commitment |
 |---|---|
-| Aesthetic phrase | **Edit-suite over kyanite stone** — the brand's void/basalt field, precision cyan, one warm paper artifact |
+| Aesthetic phrase | **Edit-suite over kyanite stone** — the brand's void/basalt field, precision cyan, the manifest panel as the one bold object |
 | Personality poles | cool · serious · dense · refined |
-| Signature move | **The Video Receipt** as a physical till-receipt (hero). The playhead timecode ruler is *ambient* — ≤3px, text-only, never competes. |
+| Signature move | **The Video Receipt** as an engraved manifest panel (hero) — translucent basalt over the tableau, amber edge, digest barcode. The playhead timecode ruler is *ambient* — ≤3px, text-only, never competes. |
 | Mode | **Dark-only**, deliberate (edit rooms; the brand system is dark-native). Light relief comes from type contrast and the amber/cyan signals, not from any light surface. |
 | Color roles | Cyan = links/accents/hot lines. **Amber = trust/verified moments only.** **Magenta = pending-human/edit markers only.** Blue `#087dcc` = structural shapes/borders only — measured 4.5:1 as text, never copy. Mint `#52d3aa` (design-system success) = pass marks. |
 | Type | Display: Space Grotesk 700. Body: Plus Jakarta Sans 400/700. Mono: JetBrains Mono 400/600. All self-hosted, brand faces. |
 | Density & shape | Dense-leaning; 4/8px corners; flat; hairline rules (`--line-color`, the brand's line token). |
-| Structure & rhythm | Asymmetric hero (text left, receipt right over the tableau); titled bands with hairline rules; **ledger rows, never card grids**; syncopation via the centered thesis band and the paper artifact breaking the dark field. |
+| Structure & rhythm | Asymmetric hero (text left, receipt right over the tableau); titled bands with hairline rules; **ledger rows, never card grids**; syncopation via the centered thesis band and the manifest panel floating over the tableau. |
 | Imagery stance | (1) Baseline: type, the manifest panel, terminals, glyph marks. (2) **The brand tableau** is the one photographic asset — hero backdrop (void-faded under text) + og:image. (3) Technical diagrams permitted: one style, cyan/amber on basalt. (4) Icons when needed: **Lucide 1.5px** only. Never stock, never AI-gradient slop, never emoji-as-icons. |
 | Motion | Restrained: skip-link slide, hover transitions, scroll-linked playhead position. `prefers-reduced-motion` collapses all. No reveals. |
 | Language | Bilingual EN/ES as peers; native copy both sides. Toggle + `/es.html`. |

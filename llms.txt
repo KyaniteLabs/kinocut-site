@@ -1,0 +1,23 @@
+# Kinocut
+
+> The trusted execution layer for agentic video.
+
+Kinocut is an open-source MCP server, Python library, and CLI that gives AI agents 135 structured video tools with preflight guardrails, quality checks, resumable workflows, and provenance receipts. It runs locally on FFmpeg and preserves human review before publication.
+
+## Install
+
+- Python: `pip install kinocut`
+- MCP: `claude mcp add kinocut -- uvx --from kinocut kinocut`
+- Check: `kino doctor`
+
+## Canonical links
+
+- Project: https://kinocut.dev/
+- Source: https://github.com/KyaniteLabs/kinocut
+- Python package: https://pypi.org/project/kinocut/
+- MCP Registry: https://registry.modelcontextprotocol.io/servers/io.github.KyaniteLabs/kinocut
+- Tool reference: https://github.com/KyaniteLabs/kinocut/blob/master/docs/TOOLS.md
+
+## Compatibility
+
+Kinocut was previously named mcp-video. The `mcp-video` CLI, `mcp_video` Python imports, existing environment variables, resource URIs, and local data paths remain supported during the compatibility window.

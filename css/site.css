@@ -12,8 +12,8 @@ html {
 
 body {
   margin: 0;
-  background: var(--ink-950);
-  color: var(--text-100);
+  background: var(--void);
+  color: var(--text);
   font-family: var(--font-body);
   font-size: var(--size-body);
   line-height: var(--leading-body);
@@ -33,8 +33,8 @@ html[data-lang="es"] body [lang="en"] { display: none; }
   top: calc(-1 * var(--space-24));
   z-index: 20;
   padding: var(--space-2) var(--space-4);
-  background: var(--kyanite-700); /* 8.1:1 with text-100; kyanite-500 measured 3.7:1 */
-  color: var(--text-100);
+  background: var(--basalt-3); /* 8.1:1 with text-100; kyanite-500 measured 3.7:1 */
+  color: var(--text);
   border-radius: var(--radius-1);
   transition: top var(--dur-1) var(--ease-out);
 }
@@ -43,7 +43,7 @@ html[data-lang="es"] body [lang="en"] { display: none; }
 }
 
 :focus-visible {
-  outline: 2px solid var(--kyanite-300);
+  outline: 2px solid var(--cyan);
   outline-offset: 3px;
 }
 
@@ -63,12 +63,12 @@ html[data-lang="es"] body [lang="en"] { display: none; }
   inset: 0 0 auto 0;
   z-index: 10;
   height: var(--playhead-h);
-  background: var(--ink-700);
+  background: var(--line-color);
 }
 .playhead__fill {
   width: 0%;
   height: 100%;
-  background: var(--kyanite-300);
+  background: var(--cyan);
 }
 .playhead__tc {
   position: fixed;
@@ -77,7 +77,7 @@ html[data-lang="es"] body [lang="en"] { display: none; }
   z-index: 10;
   font-family: var(--font-mono);
   font-size: var(--size-micro);
-  color: var(--text-300);
+  color: var(--text-2);
   letter-spacing: var(--tracking-wide);
 }
 
@@ -99,7 +99,7 @@ section {
   font-weight: 600;
   letter-spacing: var(--tracking-wide);
   text-transform: uppercase;
-  color: var(--text-300);
+  color: var(--muted);
 }
 
 h2 {
@@ -114,7 +114,7 @@ p {
 }
 
 a {
-  color: var(--kyanite-300);
+  color: var(--cyan);
 }
 
 code, pre, .mono {
@@ -141,32 +141,32 @@ code, pre, .mono {
   background: none;
   border: var(--rule);
   border-radius: var(--radius-1);
-  color: var(--text-300);
+  color: var(--text-2);
   cursor: pointer;
   transition: color var(--dur-1) var(--ease-out), border-color var(--dur-1) var(--ease-out);
 }
 .lang-toggle button:hover {
-  color: var(--text-100);
-  border-color: var(--kyanite-300);
+  color: var(--text);
+  border-color: var(--cyan);
 }
 .lang-toggle button:active {
-  background: var(--ink-800);
+  background: var(--basalt);
 }
 a:hover {
-  color: var(--text-100);
+  color: var(--text);
 }
 .lang-toggle button[aria-pressed="true"] {
-  background: var(--kyanite-700);
-  color: var(--text-100);
-  border-color: var(--kyanite-500);
+  background: var(--basalt-3);
+  color: var(--text);
+  border-color: var(--blue);
 }
 
 /* brand tableau (repo hero art) as backdrop: visible on the artifact side,
    fading to solid ink under the text so measured contrast holds */
 .hero-band {
   background:
-    linear-gradient(100deg, var(--ink-950) 0%, var(--ink-950) 34%, rgba(11, 15, 21, 0.62) 62%, rgba(11, 15, 21, 0.38) 100%),
-    linear-gradient(180deg, rgba(11, 15, 21, 0.55) 0%, rgba(11, 15, 21, 0.2) 45%, var(--ink-950) 98%),
+    linear-gradient(100deg, var(--void) 0%, var(--void) 34%, rgba(5, 7, 11, 0.62) 62%, rgba(5, 7, 11, 0.38) 100%),
+    linear-gradient(180deg, rgba(5, 7, 11, 0.55) 0%, rgba(5, 7, 11, 0.2) 45%, var(--void) 98%),
     url("../img/hero.webp") right center / cover no-repeat;
 }
 
@@ -192,10 +192,10 @@ a:hover {
   line-height: var(--leading-tight);
   letter-spacing: -0.02em;
   margin: var(--space-3) 0;
-  color: var(--text-100);
+  color: var(--text);
 }
 .hero h1 .cut {
-  color: var(--kyanite-300);
+  color: var(--cyan);
 }
 
 .hero .tagline {
@@ -205,12 +205,12 @@ a:hover {
 }
 
 .hero .lede {
-  color: var(--text-300);
+  color: var(--text-2);
   margin-bottom: var(--space-8);
 }
 
 .install {
-  background: var(--ink-800);
+  background: var(--basalt);
   border: var(--rule);
   border-radius: var(--radius-2);
   padding: var(--space-4) var(--space-6);
@@ -222,8 +222,8 @@ a:hover {
   font-size: var(--size-small);
   line-height: 2;
 }
-.install .prompt { color: var(--text-300); user-select: none; }
-.install .cmd { color: var(--text-100); font-weight: 600; }
+.install .prompt { color: var(--text-2); user-select: none; }
+.install .cmd { color: var(--text); font-weight: 600; }
 
 /* ---------- receipt (signature #1) ---------- */
 .receipt {
@@ -301,9 +301,9 @@ a:hover {
   font-weight: 600;
   font-size: var(--size-small);
   letter-spacing: var(--tracking-wide);
-  color: var(--tungsten-400);
-  background: var(--tungsten-900);
-  border: 2px solid var(--tungsten-400);
+  color: var(--amber);
+  background: var(--amber-ink);
+  border: 2px solid var(--amber);
   border-radius: var(--radius-1);
   padding: var(--space-1) var(--space-3);
 }
@@ -324,7 +324,7 @@ a:hover {
   max-width: 26ch;
   margin-inline: auto;
 }
-.thesis .kyanite { color: var(--kyanite-300); }
+.thesis .kyanite { color: var(--cyan); }
 
 /* ---------- trust ledger (not cards) ---------- */
 .ledger {
@@ -338,18 +338,18 @@ a:hover {
   gap: var(--space-6);
   padding: var(--space-6);
   border-top: var(--rule);
-  background: var(--ink-900);
+  background: var(--midnight);
 }
 .ledger__row:first-child { border-top: none; }
 .ledger__gate {
   font-family: var(--font-mono);
   font-size: var(--size-small);
   font-weight: 600;
-  color: var(--ok-400);
+  color: var(--mint);
 }
 .ledger__gate .n {
   display: block;
-  color: var(--text-300);
+  color: var(--text-2);
   font-weight: 400;
   font-size: var(--size-micro);
 }
@@ -360,12 +360,12 @@ a:hover {
 }
 .ledger__row p {
   margin: 0;
-  color: var(--text-300);
+  color: var(--text-2);
 }
 
 /* ---------- terminal session ---------- */
 .session pre {
-  background: var(--ink-800);
+  background: var(--basalt);
   border: var(--rule);
   border-radius: var(--radius-2);
   padding: var(--space-6);
@@ -374,10 +374,11 @@ a:hover {
   line-height: 1.9;
   margin: 0;
 }
-.session .user { color: var(--kyanite-300); }
-.session .ok { color: var(--ok-400); }
-.session .dim { color: var(--text-300); }
-.session .amber { color: var(--tungsten-400); }
+.session .user { color: var(--cyan); }
+.session .ok { color: var(--mint); }
+.session .dim { color: var(--text-2); }
+.session .amber { color: var(--amber); }
+.session .pending-mark { color: var(--magenta); }
 
 /* ---------- verbs strip ---------- */
 .verbs ul {
@@ -394,8 +395,8 @@ a:hover {
   padding: var(--space-1) var(--space-3);
   border: var(--rule);
   border-radius: var(--radius-1);
-  color: var(--text-300);
-  background: var(--ink-900);
+  color: var(--text-2);
+  background: var(--midnight);
 }
 .verbs li.more {
   border-style: dashed;
@@ -415,12 +416,12 @@ a:hover {
   font-family: var(--font-mono);
   font-size: var(--size-small);
   font-weight: 600;
-  color: var(--text-100);
+  color: var(--text);
   margin-bottom: var(--space-1);
 }
 .local .claims li {
-  color: var(--text-300);
-  border-left: 2px solid var(--kyanite-500);
+  color: var(--text-2);
+  border-left: 2px solid var(--blue);
   padding-left: var(--space-4);
 }
 
@@ -442,17 +443,17 @@ a:hover {
   font-family: var(--font-mono);
   font-size: var(--size-micro);
   letter-spacing: var(--tracking-wide);
-  color: var(--tungsten-400);
+  color: var(--amber);
   text-transform: uppercase;
 }
-.roadmap p { margin: 0; color: var(--text-300); }
-.roadmap strong { color: var(--text-100); }
+.roadmap p { margin: 0; color: var(--text-2); }
+.roadmap strong { color: var(--text); }
 
 /* ---------- footer ---------- */
 footer {
   border-top: var(--rule);
   padding-block: var(--space-8) var(--space-16);
-  color: var(--text-300);
+  color: var(--text-2);
   font-size: var(--size-small);
 }
 footer nav ul {
@@ -469,7 +470,7 @@ footer nav ul {
   /* stacked hero: text spans the full width, so the tableau dims to a whisper */
   .hero-band {
     background:
-      linear-gradient(180deg, rgba(11, 15, 21, 0.9) 0%, rgba(11, 15, 21, 0.86) 60%, var(--ink-950) 98%),
+      linear-gradient(180deg, rgba(5, 7, 11, 0.9) 0%, rgba(5, 7, 11, 0.86) 60%, var(--void) 98%),
       url("../img/hero.webp") right center / cover no-repeat;
   }
   .hero {

@@ -1,60 +1,67 @@
-/* Kinocut design tokens — single source of truth.
-   Palette: "edit suite" — blue-black room, kyanite blade accent,
-   tungsten amber reserved for receipt/verified moments only. */
+/* Kinocut design tokens.
+   CANONICAL SOURCE: the KyaniteLabs design system —
+   kyanite-labs/kyanite-landing/static/css/kyanite-system.css (void/basalt darks,
+   cyan/blue/magenta/amber accents, Space Grotesk / Plus Jakarta Sans / JetBrains Mono)
+   — the same system the repo hero tableau was generated to.
+   Rebuilt 2026-07-10 after the first palette shipped off-brand. */
 
 @font-face {
-  font-family: "Bricolage Grotesque";
-  src: url("../fonts/BricolageGrotesque-800.woff2") format("woff2");
-  font-weight: 800;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  src: url("../fonts/AtkinsonHyperlegible-400.woff2") format("woff2");
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Atkinson Hyperlegible";
-  src: url("../fonts/AtkinsonHyperlegible-700.woff2") format("woff2");
+  font-family: "Space Grotesk";
+  src: url("../fonts/SpaceGrotesk-700.woff2") format("woff2");
   font-weight: 700;
   font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("../fonts/IBMPlexMono-400.woff2") format("woff2");
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/PlusJakartaSans-400.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
 @font-face {
-  font-family: "IBM Plex Mono";
-  src: url("../fonts/IBMPlexMono-600.woff2") format("woff2");
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/PlusJakartaSans-700.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-400.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("../fonts/JetBrainsMono-600.woff2") format("woff2");
   font-weight: 600;
   font-display: swap;
 }
 
 :root {
-  /* color */
-  --ink-950: #0b0f15;      /* page base, deepest */
-  --ink-900: #10151d;      /* primary surface */
-  --ink-800: #171e29;      /* raised surface */
-  --ink-700: #232c3a;      /* borders, rules */
-  --text-100: #e9edf3;     /* primary text — 15.6:1 on ink-900 */
-  --text-300: #aab6c6;     /* secondary text — 7.6:1 on ink-900 */
-  --kyanite-300: #8db6ea;  /* links, accents on dark — 7.2:1 */
-  --kyanite-500: #4a7bb5;  /* structural accent, large shapes */
-  --kyanite-700: #27476e;  /* quiet accent fills */
-  --tungsten-400: #e8a84c; /* VERIFIED moments only — 8.6:1 on ink-900 */
-  --tungsten-900: #3a2c14; /* stamp fill */
-  --ok-400: #7fc98f;       /* pass marks — 9.0:1 on ink-900 */
-  --paper-100: #f2efe8;    /* receipt paper */
-  --paper-ink: #1c1e22;    /* text on receipt paper — 14.9:1 */
+  /* color — primitives from kyanite-system.css */
+  --void: #05070b;         /* page base */
+  --midnight: #080d14;     /* primary surface */
+  --basalt: #0b131d;       /* raised surface */
+  --basalt-2: #0e1b29;
+  --basalt-3: #122335;     /* quiet accent fills */
+  --text: #f3f8ff;         /* 18.3:1 on midnight */
+  --text-2: #c3d4e2;       /* 12.8:1 on midnight */
+  --muted: #8297aa;        /* 6.5:1 on midnight */
+  --cyan: #5edce8;         /* THE accent — links, hot lines; 12.0:1 */
+  --blue: #087dcc;         /* STRUCTURAL ONLY (4.5:1 as text fails) — shapes, borders */
+  --magenta: #e85682;      /* rare marker: pending-human moments; 5.6:1 */
+  --amber: #e9c960;        /* trust/verified moments; 12.1:1 */
+  --amber-2: #d89f38;      /* amber support; 8.3:1 */
+  --amber-ink: #33290f;    /* stamp fill under amber */
+  --mint: #52d3aa;         /* pass marks (design-system success); ~9:1 */
+  --line-color: rgba(221, 234, 241, 0.14);
+  --paper-100: #f2efe8;    /* receipt paper (site-local: the physical artifact) */
+  --paper-ink: #1c1e22;    /* 14.5:1 on paper */
 
-  /* type */
-  --font-display: "Bricolage Grotesque", "Arial Black", sans-serif;
-  --font-body: "Atkinson Hyperlegible", "Segoe UI", sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
-  --size-hero: clamp(2.75rem, 12vw, 8.5rem); /* floor sized so KINOCUT fits a 320px viewport (WCAG reflow) */
+  /* type — brand faces */
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --size-hero: clamp(2.75rem, 12vw, 8rem); /* floor sized so KINOCUT fits a 320px viewport */
   --size-h2: clamp(1.6rem, 3.4vw, 2.4rem);
   --size-lede: clamp(1.05rem, 1.6vw, 1.3rem);
   --size-body: 1rem;
@@ -76,11 +83,11 @@
   --space-24: 6rem;
 
   /* layout */
-  --measure: 62ch;
+  --measure: 66ch;         /* kyanite-system --measure */
   --page-max: 72rem;
   --radius-1: 4px;
   --radius-2: 8px;
-  --rule: 1px solid var(--ink-700);
+  --rule: 1px solid var(--line-color);
 
   /* motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);

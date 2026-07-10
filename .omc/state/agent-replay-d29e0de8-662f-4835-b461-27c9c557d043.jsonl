@@ -1,2 +1,3 @@
 {"t":0,"agent":"system","event":"skill_invoked","skill_name":"tastecheck-pass"}
 {"t":0,"agent":"system","event":"skill_invoked","skill_name":"design-system-interview"}
+{"t":0,"agent":"af8f3ae","agent_type":"unknown","event":"agent_stop","success":true,"duration_ms":0}

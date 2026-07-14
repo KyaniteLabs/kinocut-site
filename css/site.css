@@ -294,6 +294,7 @@ code, pre, .mono {
   overflow: hidden;
 }
 .lang-toggle button {
+  min-height: 24px;
   font-family: var(--font-mono);
   font-size: var(--size-micro);
   letter-spacing: var(--tracking-instrument);
@@ -823,6 +824,9 @@ code, pre, .mono {
   min-height: 3.25rem;
 }
 #hub .claims a {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
   text-decoration: none;
   color: var(--text);
   font-family: var(--font-mono);
@@ -891,6 +895,9 @@ code, pre, .mono {
 }
 .faq details:first-child { border-top: none; }
 .faq summary {
+  display: flex;
+  align-items: center;
+  min-height: 24px;
   cursor: pointer;
   font-family: var(--font-mono);
   font-weight: 600;
@@ -942,6 +949,14 @@ footer nav ul {
   margin: 0 0 var(--space-4);
 }
 footer a { color: var(--text-2); text-decoration: none; }
+footer nav a,
+footer p a,
+.install-note a {
+  display: inline-flex;
+  align-items: center;
+  min-width: 24px;
+  min-height: 24px;
+}
 footer a:hover { color: var(--cyan); }
 
 /* ---------- responsive ---------- */

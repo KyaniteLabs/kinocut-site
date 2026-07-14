@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video Receipt — Kinocut</title>
+  <meta name="description" content="What a Kinocut Video Receipt contains and why agents and humans need it.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/receipt.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Video Receipt — Kinocut">
+  <meta property="og:description" content="What a Kinocut Video Receipt contains and why agents and humans need it.">
+  <meta property="og:url" content="https://kinocut.dev/receipt.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Video Receipt</h1>
+<p>A Video Receipt is the trust artifact for an agentic media workflow. It records what the user asked for, what media was inspected, which tools ran, what changed, which guardrails fired, and what still needs human review.</p>
+<p>Use it when a workflow creates or edits media that may be published, handed to a client, or used as proof.</p>
+<h2>Required Fields</h2>
+<pre><code>
+{
+
+  &quot;user_intent&quot;: &quot;Turn a source clip into a captioned vertical short.&quot;,
+
+  &quot;source_media&quot;: {
+
+    &quot;path&quot;: &quot;output/source.mp4&quot;,
+
+    &quot;duration_seconds&quot;: 6.0,
+
+    &quot;width&quot;: 1280,
+
+    &quot;height&quot;: 720
+
+  },
+
+  &quot;tool_calls&quot;: [
+
+    {
+
+      &quot;stage&quot;: &quot;01-trim&quot;,
+
+      &quot;tool&quot;: &quot;Client.trim&quot;,
+
+      &quot;output&quot;: &quot;output/01_trimmed.mp4&quot;
+
+    }
+
+  ],
+
+  &quot;edits_applied&quot;: [
+
+    &quot;trimmed source clip&quot;,
+
+    &quot;resized to 9:16&quot;,
+
+    &quot;added hook text&quot;,
+
+    &quot;normalized audio&quot;,
+
+    &quot;exported final MP4&quot;
+
+  ],
+
+  &quot;guardrails_triggered&quot;: [],
+
+  &quot;quality&quot;: {
+
+    &quot;all_passed&quot;: true,
+
+    &quot;overall_score&quot;: 70.3,
+
+    &quot;recommendations&quot;: []
+
+  },
+
+  &quot;review_artifacts&quot;: {
+
+    &quot;final_video&quot;: &quot;output/final_clip.mp4&quot;,
+
+    &quot;thumbnail&quot;: &quot;output/checkpoint/thumbnail.jpg&quot;,
+
+    &quot;storyboard&quot;: [
+
+      &quot;output/checkpoint/storyboard/frame_01.jpg&quot;,
+
+      &quot;output/checkpoint/storyboard/frame_02.jpg&quot;
+
+    ]
+
+  },
+
+  &quot;human_review&quot;: {
+
+    &quot;required&quot;: true,
+
+    &quot;status&quot;: &quot;pending&quot;,
+
+    &quot;instructions&quot;: &quot;Open the final video, thumbnail, and storyboard before publishing.&quot;
+
+  },
+
+  &quot;known_limitations&quot;: [
+
+    &quot;Automated quality checks do not replace visual/audio review.&quot;
+
+  ],
+
+  &quot;next_edit_suggestion&quot;: &quot;Adjust hook text and rerun release checkpoint after human review.&quot;
+
+}
+
+</code></pre>
+<h2>Trust Rules</h2>
+<ul>
+<li>Do not treat a rendered video as publishable until a receipt exists.</li>
+<li>Do not hide quality warnings. Warnings are part of the proof.</li>
+<li>Do not overwrite source media.</li>
+<li>Do not mark human review complete automatically.</li>
+<li>Keep generated videos, thumbnails, and storyboards out of git unless they are intentionally curated release/demo assets.</li>
+</ul>
+<h2>Local Verification</h2>
+<p>Use the confidence benchmark to check that a workflow produced the expected receipt and review artifacts:</p>
+<pre><code>
+uv run --no-project --with kinocut python workflows/benchmarks/run_confidence_benchmark.py
+
+</code></pre>
+<p>The benchmark is intentionally narrow: it proves the receipt-backed baseline can run and that the final video, quality report, release checkpoint, thumbnail, storyboard frames, and human-review state are present.</p>
+<p>---</p>
+<h1>Workflow-engine + compositor receipt kinds</h1>
+<p>Beyond the release-checkpoint Video Receipt above, the workflow engine and the compositor</p>
+<p>emit machine-readable provenance artifacts. Every one carries a <code>receipt_kind</code></p>
+<p>discriminator so an inspecting agent can tell them apart, and <code>video_workflow_inspect</code></p>
+<p>reads all of them (see <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/WORKFLOWS.md">WORKFLOWS.md</a>).</p>
+<div class="table-wrap"><table>
+<thead><tr><th>`receipt_kind`</th><th>Emitted by</th><th>Shape</th></tr></thead><tbody>
+<tr><td>`workflow`</td><td>`video_workflow_render`</td><td>Multi-step render: per-step status + hashes, resume cursor, cleanup manifest.</td></tr>
+<tr><td>`workflow_plan`</td><td>`video_workflow_plan`</td><td>Dry-run plan: op graph + source probes/hashes, no rendered media.</td></tr>
+<tr><td>`workflow_batch`</td><td>`video_workflow_render(all_variants=True)`</td><td>Summary wrapping one `workflow` receipt per variant.</td></tr>
+<tr><td>`layer_plan`</td><td>`video_composite_layers`</td><td>Single-render compositor plan/receipt (v2).</td></tr>
+</tbody></table></div>
+<h2>`schema_version` policy</h2>
+<p><code>schema_version</code> is a <strong>write-only</strong> field — no consumer branches on it, so it increments</p>
+<p>on <strong>additive expansion</strong> and a bumped version stays <strong>backward-readable</strong> (existing</p>
+<p>readers of known fields keep working). The <code>layer_plan</code> receipt is now <code>schema_version: 2</code></p>
+<p>(rotation/pivot/blend fields added additively over v1); the workflow receipts are</p>
+<p><code>schema_version: 1</code>.</p>
+<h2>`receipt_kind` discriminator + legacy inference</h2>
+<p>A pre-bump <code>layer_plan</code> receipt in the wild is <code>schema_version: 1</code> with <strong>no</strong></p>
+<p><code>receipt_kind</code> field. <code>video_workflow_inspect</code> tolerates this: when <code>receipt_kind</code> is</p>
+<p>absent it <strong>infers</strong> the kind from the <code>tool</code> field (<code>video_composite_layers</code> →</p>
+<p><code>layer_plan</code>, <code>video_workflow_render</code> → <code>workflow</code>, <code>video_workflow_plan</code> →</p>
+<p><code>workflow_plan</code>), defaulting to <code>layer_plan</code> when neither is present, and flags the</p>
+<p>inference under <code>human_review</code>. The kind is never hardcoded to a <code>schema_version</code>, so a</p>
+<p>future bump is handled gracefully.</p>
+<h2>`workflow` receipt (`receipt_kind: &quot;workflow&quot;`, `schema_version: 1`)</h2>
+<p>Emitted by <code>video_workflow_render</code>. Hashes are integrity checks on persisted files, never</p>
+<p>byte-determinism claims. Paths are workspace-relative. (Hashes abbreviated below.)</p>
+<pre><code>
+{
+
+  &quot;schema_version&quot;: 1,
+
+  &quot;receipt_kind&quot;: &quot;workflow&quot;,
+
+  &quot;tool&quot;: &quot;video_workflow_render&quot;,
+
+  &quot;versions&quot;: { &quot;mcp_video&quot;: &quot;1.6.0&quot;, &quot;ffmpeg&quot;: &quot;8.1&quot; },
+
+  &quot;spec_hash&quot;: &quot;sha256:be2f3a9b...&quot;,
+
+  &quot;workflow&quot;: { &quot;name&quot;: &quot;captioned-vertical-short&quot;, &quot;variant&quot;: null },
+
+  &quot;sources&quot;: [
+
+    { &quot;id&quot;: &quot;hero&quot;, &quot;resolved&quot;: &quot;input/hero.mp4&quot;, &quot;source_hash&quot;: &quot;sha256:3b976d49...&quot;,
+
+      &quot;probe&quot;: { &quot;duration&quot;: 8.0, &quot;resolution&quot;: &quot;320x240&quot;, &quot;codec&quot;: &quot;h264&quot; } }
+
+  ],
+
+  &quot;steps&quot;: [
+
+    { &quot;id&quot;: &quot;probe-hero&quot;, &quot;op&quot;: &quot;probe&quot;, &quot;status&quot;: &quot;completed&quot;,
+
+      &quot;inputs&quot;: { &quot;src&quot;: &quot;@sources.hero&quot; }, &quot;input_hashes&quot;: { &quot;src&quot;: &quot;sha256:3b976d49...&quot; },
+
+      &quot;output&quot;: null, &quot;output_hash&quot;: null,
+
+      &quot;started_at&quot;: &quot;2026-07-09T09:02:15.965980+00:00&quot;, &quot;ended_at&quot;: &quot;2026-07-09T09:02:15.966141+00:00&quot; },
+
+    { &quot;id&quot;: &quot;trim-hero&quot;, &quot;op&quot;: &quot;trim&quot;, &quot;status&quot;: &quot;completed&quot;,
+
+      &quot;inputs&quot;: { &quot;src&quot;: &quot;@sources.hero&quot; }, &quot;input_hashes&quot;: { &quot;src&quot;: &quot;sha256:3b976d49...&quot; },
+
+      &quot;output&quot;: &quot;work/be2f3a9b-2effedb3/mcp_video_hero_trim.mp4&quot;, &quot;output_hash&quot;: &quot;sha256:00727499...&quot;,
+
+      &quot;started_at&quot;: &quot;...&quot;, &quot;ended_at&quot;: &quot;...&quot; },
+
+    { &quot;id&quot;: &quot;caption&quot;, &quot;op&quot;: &quot;add_text&quot;, &quot;status&quot;: &quot;completed&quot;,
+
+      &quot;inputs&quot;: { &quot;src&quot;: &quot;@work/hero_vertical.mp4&quot; }, &quot;input_hashes&quot;: { &quot;src&quot;: &quot;sha256:5a596ffe...&quot; },
+
+      &quot;output&quot;: &quot;output/final.mp4&quot;, &quot;output_hash&quot;: &quot;sha256:8633ad2a...&quot;,
+
+      &quot;started_at&quot;: &quot;...&quot;, &quot;ended_at&quot;: &quot;...&quot; }
+
+  ],
+
+  &quot;outputs&quot;: [ { &quot;id&quot;: &quot;master&quot;, &quot;path&quot;: &quot;output/final.mp4&quot;, &quot;output_hash&quot;: &quot;sha256:8633ad2a...&quot; } ],
+
+  &quot;work_dir&quot;: &quot;work/be2f3a9b-2effedb3&quot;,
+
+  &quot;cleanup_manifest&quot;: {
+
+    &quot;intermediates&quot;: [&quot;work/be2f3a9b-2effedb3/mcp_video_hero_trim.mp4&quot;, &quot;work/be2f3a9b-2effedb3/mcp_video_hero_vertical.mp4&quot;],
+
+    &quot;cleaned&quot;: true, &quot;policy&quot;: &quot;clean-on-success&quot;
+
+  },
+
+  &quot;resume_cursor&quot;: { &quot;last_completed_step&quot;: &quot;caption&quot;, &quot;next_step&quot;: null },
+
+  &quot;feature_flags&quot;: { &quot;variants&quot;: true, &quot;resume_used&quot;: false, &quot;resumed_from&quot;: null, &quot;ops&quot;: [&quot;probe&quot;, &quot;trim&quot;, &quot;resize&quot;, &quot;add_text&quot;] },
+
+  &quot;warnings&quot;: [],
+
+  &quot;status&quot;: &quot;completed&quot;,
+
+  &quot;render_determinism_scope&quot;: &quot;spec/input/output hashes are deterministic; rendered bytes may vary across FFmpeg builds&quot;
+
+}
+
+</code></pre>
+<ul>
+<li>Per-step and overall <code>status</code>: <code>pending | running | completed | failed | skipped</code>.</li>
+<li>On failure, the failed step records a sanitized <code>error</code> (<code>code</code>, <code>type</code>, workspace-</li>
+</ul>
+<p>relative <code>message</code>, <code>suggested_action</code>), later steps are <code>pending</code>, <code>resume_cursor.next_step</code></p>
+<p>points at the failed step, intermediates are kept (<code>cleaned: false</code>), and overall <code>status</code></p>
+<p>is <code>failed</code>.</p>
+<ul>
+<li>On resume, a reused step keeps <code>status: &quot;completed&quot;</code> and adds <code>&quot;skipped&quot;: true</code>;</li>
+</ul>
+<p><code>feature_flags.resume_used</code> becomes <code>true</code> and <code>resumed_from</code> names the resume point.</p>
+<ul>
+<li><code>output_hash</code> is <code>null</code> until the step&#x27;s output exists (mirrors <code>probe</code>, which produces</li>
+</ul>
+<p>none).</p>
+<h2>`workflow_plan` artifact (`receipt_kind: &quot;workflow_plan&quot;`)</h2>
+<p>Emitted by <code>video_workflow_plan</code>. Same field vocabulary as the render receipt but renders</p>
+<p>zero media: every step <code>status</code> is <code>pending</code>, <code>output_hash</code> is <code>null</code>, sources are probed</p>
+<p>and hashed where they exist, and a <code>warnings</code> list flags non-structural runtime concerns</p>
+<p>(e.g. <code>source_missing</code>). Includes <code>versions</code> and <code>spec_hash</code>.</p>
+<h2>`workflow_batch` summary (`receipt_kind: &quot;workflow_batch&quot;`)</h2>
+<p>Emitted by <code>video_workflow_render(all_variants=True)</code>. Wraps one <code>workflow</code> receipt per</p>
+<p>variant with no cross-variant leakage:</p>
+<pre><code>
+{
+
+  &quot;schema_version&quot;: 1,
+
+  &quot;receipt_kind&quot;: &quot;workflow_batch&quot;,
+
+  &quot;tool&quot;: &quot;video_workflow_render&quot;,
+
+  &quot;versions&quot;: { &quot;mcp_video&quot;: &quot;1.6.0&quot;, &quot;ffmpeg&quot;: &quot;8.1&quot; },
+
+  &quot;spec_hash&quot;: &quot;sha256:be2f3a9b...&quot;,
+
+  &quot;workflow&quot;: { &quot;name&quot;: &quot;captioned-vertical-short&quot;, &quot;variant&quot;: null },
+
+  &quot;count&quot;: 1,
+
+  &quot;variants&quot;: [ { &quot;receipt_kind&quot;: &quot;workflow&quot;, &quot;workflow&quot;: { &quot;name&quot;: &quot;...&quot;, &quot;variant&quot;: &quot;square&quot; }, &quot;status&quot;: &quot;completed&quot; } ],
+
+  &quot;status&quot;: &quot;completed&quot;
+
+}
+
+</code></pre>
+<h2>`layer_plan` receipt v2 (`receipt_kind: &quot;layer_plan&quot;`, `schema_version: 2`)</h2>
+<p>Emitted by <code>video_composite_layers</code> (dry-run plan or render receipt). v2 adds</p>
+<p><code>transform.rotation</code> + <code>transform.pivot</code> (null when rotation is unused), a <code>features.rotation</code></p>
+<p>flag, and <code>features.blend_modes</code> may now contain the five full-canvas blend modes —</p>
+<p><code>features.blend_modes</code> lists the modes <strong>used in the spec</strong> (including <code>normal</code>), not the</p>
+<p>catalog. Audio is dropped (<code>audio_policy: &quot;dropped_video_only&quot;</code>, `features.audio:</p>
+<p>&quot;dropped&quot;`).</p>
+<pre><code>
+{
+
+  &quot;schema_version&quot;: 2,
+
+  &quot;receipt_kind&quot;: &quot;layer_plan&quot;,
+
+  &quot;tool&quot;: &quot;video_composite_layers&quot;,
+
+  &quot;spec_hash&quot;: &quot;sha256:24ad4ddd...&quot;,
+
+  &quot;canvas&quot;: { &quot;width&quot;: 640, &quot;height&quot;: 360, &quot;fps&quot;: 12.0, &quot;duration&quot;: 2.0, &quot;background&quot;: &quot;#000000&quot; },
+
+  &quot;layers&quot;: [
+
+    { &quot;id&quot;: &quot;bg&quot;, &quot;type&quot;: &quot;video&quot;, &quot;resolved_src&quot;: &quot;bg.mp4&quot;, &quot;source_hash&quot;: &quot;sha256:34ae6b4c...&quot;,
+
+      &quot;opacity&quot;: 1.0, &quot;position&quot;: { &quot;x&quot;: 0.0, &quot;y&quot;: 0.0 }, &quot;blend&quot;: &quot;normal&quot;,
+
+      &quot;transform&quot;: { &quot;width&quot;: null, &quot;height&quot;: null, &quot;scale&quot;: null, &quot;rotation&quot;: null, &quot;pivot&quot;: null },
+
+      &quot;timing&quot;: { &quot;start&quot;: null, &quot;duration&quot;: null }, &quot;mask&quot;: null, &quot;mask_hash&quot;: null,
+
+      &quot;color&quot;: null, &quot;input_index&quot;: 1, &quot;mask_input_index&quot;: null },
+
+    { &quot;id&quot;: &quot;tint&quot;, &quot;type&quot;: &quot;image&quot;, &quot;resolved_src&quot;: &quot;tint.png&quot;, &quot;source_hash&quot;: &quot;sha256:345a53b7...&quot;,
+
+      &quot;opacity&quot;: 1.0, &quot;position&quot;: { &quot;x&quot;: 0.0, &quot;y&quot;: 0.0 }, &quot;blend&quot;: &quot;multiply&quot;,
+
+      &quot;transform&quot;: { &quot;width&quot;: null, &quot;height&quot;: null, &quot;scale&quot;: null, &quot;rotation&quot;: null, &quot;pivot&quot;: null },
+
+      &quot;timing&quot;: { &quot;start&quot;: null, &quot;duration&quot;: null }, &quot;mask&quot;: null, &quot;mask_hash&quot;: null,
+
+      &quot;color&quot;: null, &quot;input_index&quot;: 2, &quot;mask_input_index&quot;: null },
+
+    { &quot;id&quot;: &quot;logo&quot;, &quot;type&quot;: &quot;image&quot;, &quot;resolved_src&quot;: &quot;logo.png&quot;, &quot;source_hash&quot;: &quot;sha256:8090fd20...&quot;,
+
+      &quot;opacity&quot;: 0.9, &quot;position&quot;: { &quot;x&quot;: 320.0, &quot;y&quot;: 180.0 }, &quot;blend&quot;: &quot;normal&quot;,
+
+      &quot;transform&quot;: { &quot;width&quot;: null, &quot;height&quot;: null, &quot;scale&quot;: null, &quot;rotation&quot;: 15.0, &quot;pivot&quot;: &quot;center&quot; },
+
+      &quot;timing&quot;: { &quot;start&quot;: null, &quot;duration&quot;: null }, &quot;mask&quot;: null, &quot;mask_hash&quot;: null,
+
+      &quot;color&quot;: null, &quot;input_index&quot;: 3, &quot;mask_input_index&quot;: null }
+
+  ],
+
+  &quot;filtergraph_hash&quot;: &quot;sha256:25eb30b9...&quot;,
+
+  &quot;output_path&quot;: &quot;output/composite.mp4&quot;,
+
+  &quot;output_hash&quot;: null,
+
+  &quot;audio_policy&quot;: &quot;dropped_video_only&quot;,
+
+  &quot;features&quot;: {
+
+    &quot;layer_types&quot;: [&quot;image&quot;, &quot;video&quot;], &quot;transforms&quot;: false, &quot;rotation&quot;: true,
+
+    &quot;timing_windows&quot;: false, &quot;masks&quot;: false, &quot;blend_modes&quot;: [&quot;multiply&quot;, &quot;normal&quot;], &quot;audio&quot;: &quot;dropped&quot;
+
+  },
+
+  &quot;render_determinism_scope&quot;: &quot;input/spec/filtergraph/output hashes are deterministic; rendered bytes may still vary across FFmpeg builds&quot;
+
+}
+
+</code></pre>
+<blockquote><p><code>output_path</code>, <code>resolved_src</code>, and <code>mask</code> are recorded **relative to the spec</p></blockquote>
+<blockquote><p>directory** whenever the file lives inside it (the common workspace case), and stay</p></blockquote>
+<blockquote><p>absolute only for a path the spec explicitly points outside that directory. Internal</p></blockquote>
+<blockquote><p>rendering always uses the resolved absolute location; only the receipt is relativized.</p></blockquote>
+<blockquote><p>Keep committed example receipts relative and free of home paths, usernames, or tokens.</p></blockquote>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

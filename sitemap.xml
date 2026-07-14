@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://kinocut.dev/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://kinocut.dev/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://kinocut.dev/?lang=es"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://kinocut.dev/"/>
-  </url>
-  <url>
-    <loc>https://kinocut.dev/llms.txt</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kinocut.dev/es.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://kinocut.dev/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://kinocut.dev/changelog.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/compare.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/contribute.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/directories.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/enterprise.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/es-content.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/failures.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/faq.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/hall.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/install.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/integrations.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/llms.txt</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/prompts.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/receipt.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/recommend.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/rename.html</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/security.txt</loc><changefreq>weekly</changefreq></url>
+  <url><loc>https://kinocut.dev/tutorial.html</loc><changefreq>weekly</changefreq></url>
 </urlset>

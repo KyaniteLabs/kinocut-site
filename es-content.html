@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kinocut en español — Kinocut</title>
+  <meta name="description" content="Instalación y FAQ de Kinocut en español. Servidor MCP de edición de video local.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/es-content.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Kinocut en español — Kinocut">
+  <meta property="og:description" content="Instalación y FAQ de Kinocut en español. Servidor MCP de edición de video local.">
+  <meta property="og:url" content="https://kinocut.dev/es-content.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+
+<h1>Kinocut en español</h1>
+<p><strong>Kinocut</strong> (antes <strong>mcp-video</strong>) es un servidor MCP, biblioteca Python y CLI <code>kino</code> para edición de video local con barreras, Video Receipts y controles de calidad. Gratis, Apache-2.0.</p>
+<h2>Instalación</h2>
+<pre><code>brew install ffmpeg   # o: sudo apt install ffmpeg
+pip install kinocut
+kino doctor
+claude mcp add kinocut -- uvx --from kinocut kino</code></pre>
+<p>Ruta dorada (clone): <code>python scripts/golden_path.py</code> — ver <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/GOLDEN_PATH.md">GOLDEN_PATH.md</a>.</p>
+<h2>Preguntas frecuentes</h2>
+<ul>
+<li><strong>¿Es gratis y local?</strong> Sí. Núcleo Apache-2.0; el material no se sube a una nube de Kinocut.</li>
+<li><strong>¿Qué agentes?</strong> Claude Code, Cursor y clientes MCP con stdio local.</li>
+<li><strong>¿Cuántas herramientas?</strong> 135 en la 1.7.0 publicada; la punta de desarrollo puede ser mayor (no es 1.8 publicado).</li>
+<li><strong>¿Antes mcp-video?</strong> Sí; compatibilidad durante la ventana documentada.</li>
+</ul>
+<p><a href="/?lang=es">Volver al inicio (ES)</a> · <a href="/install.html">Install (EN)</a> · <a href="/faq.html">FAQ (EN)</a></p>
+
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

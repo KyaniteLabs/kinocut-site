@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>mcp-video is now Kinocut — Kinocut</title>
+  <meta name="description" content="Rename facts, compatibility window, and directory listing instructions.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/rename.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="mcp-video is now Kinocut — Kinocut">
+  <meta property="og:description" content="Rename facts, compatibility window, and directory listing instructions.">
+  <meta property="og:url" content="https://kinocut.dev/rename.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>mcp-video → Kinocut</h1>
+<h2>What changed</h2>
+<p>On <strong>2026-07-10</strong>, the project’s public identity became <strong>Kinocut</strong>.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Surface</th><th>Before</th><th>After</th></tr></thead><tbody>
+<tr><td>Product name</td><td>mcp-video</td><td>Kinocut</td></tr>
+<tr><td>Python package</td><td>`mcp-video`</td><td>`kinocut` (canonical)</td></tr>
+<tr><td>Import</td><td>`mcp_video`</td><td>`kinocut` (canonical)</td></tr>
+<tr><td>CLI</td><td>`mcp-video`</td><td>`kino` / `kinocut` (+ compat `mcp-video`)</td></tr>
+<tr><td>Site</td><td>GitHub Pages marketing</td><td>https://kinocut.dev/</td></tr>
+<tr><td>MCP Registry</td><td>former identity</td><td>`io.github.KyaniteLabs/kinocut`</td></tr>
+<tr><td>Repo</td><td>mcp-video slug</td><td>`KyaniteLabs/kinocut` (GitHub redirect from old slug)</td></tr>
+</tbody></table></div>
+<h2>Compatibility (through at least 1.8.x)</h2>
+<ul>
+<li><code>pip install mcp-video</code> still works via a shim that installs Kinocut.</li>
+<li><code>mcp_video</code> imports, <code>MCP_VIDEO_*</code> env vars, <code>~/.mcp-video</code> data, <code>mcp-video://</code> resources, and legacy receipt keys remain supported during the window.</li>
+<li>New integrations should use <code>kinocut</code>, <code>from kinocut import Client</code>, and <code>kino</code>.</li>
+</ul>
+<h2>Why rename</h2>
+<p>The product is a <strong>guardrailed local execution layer for agentic video</strong>, not “MCP” as the brand. Kinocut names the job: cinema (<code>kino</code>) + cut, with trust/receipt semantics.</p>
+<h2>For directories and roundups</h2>
+<p>Please list:</p>
+<ul>
+<li><strong>Name:</strong> Kinocut (formerly mcp-video)</li>
+<li><strong>Install:</strong> <code>pip install kinocut</code></li>
+<li><strong>MCP:</strong> <code>uvx --from kinocut kino</code> / registry <code>io.github.KyaniteLabs/kinocut</code></li>
+<li><strong>Site:</strong> https://kinocut.dev/</li>
+<li><strong>Repo:</strong> https://github.com/KyaniteLabs/kinocut</li>
+</ul>
+<p>Version and tool counts: <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/public_claims.json"><code>public_claims.json</code></a> (do not invent tip counts as a release).</p>
+<h2>Related</h2>
+<ul>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/DIRECTORY_REBRAND_STATUS.md">DIRECTORY_REBRAND_STATUS.md</a></li>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/CHANGELOG.md">CHANGELOG.md</a> <code>1.7.0</code></li>
+</ul>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

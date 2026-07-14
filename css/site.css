@@ -491,6 +491,14 @@ a:hover {
 .roadmap p { margin: 0; color: var(--text-2); }
 .roadmap strong { color: var(--text); }
 
+.install-note {
+  margin: var(--space-3) 0 0;
+  font-size: var(--size-small);
+  color: var(--text-2);
+  max-width: 40rem;
+}
+.install-note a { color: var(--cyan, #00e5c0); }
+
 /* ---------- quick facts strip ---------- */
 .facts {
   padding-block: var(--space-6) var(--space-2);

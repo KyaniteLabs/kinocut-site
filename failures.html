@@ -6,7 +6,11 @@
   <title>Failure-as-feature — Kinocut</title>
   <meta name="description" content="Guardrail and quality-gate failures agents should treat as product behavior.">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#05070b">
+  <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://kinocut.dev/failures.html">
+  <link rel="alternate" hreflang="en" href="https://kinocut.dev/failures.html">
+  <link rel="alternate" hreflang="es" href="https://kinocut.dev/es-content.html">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/pages.css">
@@ -20,23 +24,42 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="doc-top wrap">
     <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
-    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+    <div class="doc-meta" aria-label="Status">
+      <span class="chip chip--trust">1.7.0 published</span>
+      <span class="chip">local-first</span>
+      <a class="chip chip--pending" href="/receipt.html">human review</a>
+    </div>
+    <nav class="doc-nav" aria-label="Primary">
+<a href="/">Home</a>
 <a href="/install.html">Install</a>
 <a href="/receipt.html">Receipt</a>
 <a href="/prompts.html">Prompts</a>
 <a href="/tutorial.html">Tutorial</a>
 <a href="/compare.html">Compare</a>
+<a href="/faq.html">FAQ</a>
+      <details class="doc-nav__more">
+        <summary>More paths</summary>
+        <div class="doc-nav__panel" role="group" aria-label="More paths">
 <a href="/recommend.html">Recommend</a>
 <a href="/directories.html">Directories</a>
 <a href="/integrations.html">Integrations</a>
 <a href="/enterprise.html">Enterprise</a>
-<a href="/faq.html">FAQ</a>
-<a href="/failures.html">Failures</a>
+<a href="/failures.html" aria-current="page">Failures</a>
 <a href="/changelog.html">Changelog</a>
 <a href="/rename.html">Rename</a>
-<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+<a href="/contribute.html">Contribute</a>
+<a href="/hall.html">Hall of receipts</a>
+<a href="/es-content.html">Español</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a>
+        </div>
+      </details>
+    </nav>
   </header>
   <main id="main" class="wrap doc-main">
+    <p class="doc-lang">Language <a href="/failures.html" aria-current="true">EN</a> <a href="/es-content.html">ES</a></p>
+    <div class="doc-rail" aria-hidden="true"><span class="doc-rail__gate">QUALITY</span><span></span></div>
+
+<div class="doc-callout doc-callout--pending"><strong>Pending human / fail-closed.</strong> Structured failures are product behavior, not noise.</div>
 <h1>Failure-as-feature examples</h1>
 <p>Kinocut is designed to <strong>stop bad renders early</strong>. These examples show failures you should treat as product behavior, not bugs.</p>
 <h2>1. Preflight: risky filter parameter</h2>
@@ -108,7 +131,8 @@ result = c.quality_check(&quot;final.mp4&quot;)
 </ul>
   </main>
   <footer class="wrap doc-foot">
-    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+    <p><a href="/">kinocut.dev</a> · <a href="/install.html">Install</a> · <a href="/receipt.html">Receipt</a> · <a href="/security.txt">security.txt</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · Apache-2.0 · formerly mcp-video</p>
   </footer>
+
 </body>
 </html>

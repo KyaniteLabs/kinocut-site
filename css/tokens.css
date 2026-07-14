@@ -1,9 +1,9 @@
-/* Kinocut design tokens.
-   CANONICAL SOURCE: the KyaniteLabs design system —
-   kyanite-labs/kyanite-landing/static/css/kyanite-system.css (void/basalt darks,
-   cyan/blue/magenta/amber accents, Space Grotesk / Plus Jakarta Sans / JetBrains Mono)
-   — the same system the repo hero tableau was generated to.
-   Rebuilt 2026-07-10 after the first palette shipped off-brand. */
+/* Kinocut product design tokens — kinocut.dev
+   Authority: docs/DESIGN-SYSTEM-INTERVIEW-KINOCUT.md (approved).
+   Direction: "Agent edit bay on basalt — cyan schematics, amber verified,
+   magenta still needs a human."
+   Palette primitives may share the lab family, but this is a product surface:
+   NLE inspector / finishing-bay chrome, not the KyaniteLabs org homepage. */
 
 @font-face {
   font-family: "Space Grotesk";
@@ -37,67 +37,76 @@
 }
 
 :root {
-  /* color — primitives from kyanite-system.css */
-  --void: #05070b;         /* page base */
-  --midnight: #080d14;     /* primary surface */
-  --basalt: #0b131d;       /* raised surface */
-  --basalt-2: #0e1b29;
-  --basalt-3: #122335;     /* quiet accent fills */
-  --text: #f3f8ff;         /* 18.3:1 on midnight */
-  --text-2: #c3d4e2;       /* 12.8:1 on midnight */
-  --muted: #8297aa;        /* 6.5:1 on midnight */
-  --cyan: #5edce8;         /* THE accent — links, hot lines; 12.0:1 */
-  --blue: #087dcc;         /* STRUCTURAL ONLY (4.5:1 as text fails) — shapes, borders */
-  --magenta: #e85682;      /* rare marker: pending-human moments; 5.6:1 */
-  --amber: #e9c960;        /* trust/verified moments; 12.1:1 */
-  --amber-2: #d89f38;      /* amber support; 8.3:1 */
-  --amber-ink: #33290f;    /* stamp fill under amber */
-  --mint: #52d3aa;         /* pass marks (design-system success); ~9:1 */
-  --line-color: rgba(221, 234, 241, 0.14);
-  --etch-line: rgba(221, 234, 241, 0.035); /* engraved sheet gridlines, sub-contrast */
-  --etch-cell: 96px;
-  --panel: rgba(8, 18, 28, 0.68);        /* kyanite-system panel */
-  --panel-strong: rgba(10, 23, 35, 0.86); /* kyanite-system panel-strong */
-  --etch-bar: rgba(221, 234, 241, 0.38);  /* engraved barcode bars */
+  /* field — edit suite darks (void under basalt panels) */
+  --void: #030508;
+  --midnight: #070b10;
+  --basalt: #0a1018;
+  --basalt-2: #0d1620;
+  --basalt-3: #121c28;
+  --text: #eef4f8;
+  --text-2: #b6c5d1;
+  --muted: #7a8d9c;
 
-  /* type — brand faces */
+  /* roles (interview-locked) */
+  --cyan: #4fd6e4;          /* system live / active rails */
+  --blue: #0a6fad;          /* structural only */
+  --magenta: #e85682;       /* human gate pending */
+  --amber: #e9c960;         /* verified / pass */
+  --amber-2: #c9922e;
+  --amber-ink: #2a220c;
+  --mint: #4ecf9f;          /* quality pass marks */
+
+  --line-color: rgba(200, 220, 230, 0.12);
+  --line-hot: rgba(79, 214, 228, 0.35);
+  --etch-line: rgba(200, 220, 230, 0.028);
+  --etch-cell: 48px;        /* denser sheet than marketing 96px */
+  --panel: #0a1018;
+  --panel-strong: #0c1420;
+  --panel-lift: #101a26;
+  --scope-track: rgba(200, 220, 230, 0.08);
+  --scope-fill: var(--cyan);
+
+  /* type — mono elevated (CLI/receipt first-class) */
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
-  --size-hero: clamp(2.75rem, 12vw, 8rem); /* floor sized so KINOCUT fits a 320px viewport */
-  --size-h2: clamp(1.6rem, 3.4vw, 2.4rem);
-  --size-lede: clamp(1.05rem, 1.6vw, 1.3rem);
-  --size-body: 1rem;
-  --size-small: 0.875rem;
-  --size-micro: 0.75rem;   /* 12px — floor is 10px, never below */
+  --size-hero: clamp(2.4rem, 9vw, 5.5rem); /* denser wordmark than lifestyle hero */
+  --size-h2: clamp(1.35rem, 2.6vw, 1.85rem);
+  --size-lede: clamp(1rem, 1.3vw, 1.15rem);
+  --size-body: 0.9375rem;
+  --size-small: 0.8125rem;
+  --size-micro: 0.6875rem;  /* 11px instrument labels */
   --leading-tight: 1.05;
-  --leading-body: 1.6;
-  --tracking-wide: 0.14em;
+  --leading-body: 1.55;
+  --tracking-wide: 0.12em;
+  --tracking-instrument: 0.08em;
 
-  /* space (4px base scale) */
+  /* dense space scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
   --space-4: 1rem;
+  --space-5: 1.25rem;
   --space-6: 1.5rem;
   --space-8: 2rem;
+  --space-10: 2.5rem;
   --space-12: 3rem;
   --space-16: 4rem;
   --space-24: 6rem;
 
-  /* layout */
-  --measure: 66ch;         /* kyanite-system --measure */
-  --page-max: 72rem;
-  --radius-1: 4px;
-  --radius-2: 8px;
+  --measure: 62ch;
+  --page-max: 74rem;
+  --radius-1: 3px;
+  --radius-2: 5px;
   --rule: 1px solid var(--line-color);
+  --rule-hot: 1px solid var(--line-hot);
 
-  /* motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --dur-1: 160ms;
-  --dur-2: 420ms;
+  --dur-1: 120ms;
+  --dur-2: 280ms;
 
-  /* signature */
-  --playhead-h: 3px;
-  --receipt-w: 21rem;
+  --playhead-h: 2px;
+  --receipt-w: 22.5rem;
+  --rail-w: 3.25rem;
+  --bay-top-h: 3rem;
 }

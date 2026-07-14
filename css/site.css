@@ -491,6 +491,44 @@ a:hover {
 .roadmap p { margin: 0; color: var(--text-2); }
 .roadmap strong { color: var(--text); }
 
+/* ---------- quick facts strip ---------- */
+.facts {
+  padding-block: var(--space-6) var(--space-2);
+}
+.facts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-4);
+  border-block: var(--rule);
+  padding-block: var(--space-5);
+}
+.facts__list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: var(--size-small);
+  color: var(--text-2);
+}
+.facts__list strong {
+  font-family: var(--font-mono);
+  font-size: var(--size-body);
+  color: var(--cyan, #00e5c0);
+  letter-spacing: 0.02em;
+}
+@media (max-width: 56rem) {
+  .facts__list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+.roadmap__lede {
+  max-width: 65ch;
+  color: var(--text-2);
+  margin: 0 0 var(--space-6);
+}
+
 /* ---------- FAQ / entity (SEO + AI GEO) ---------- */
 .faq__list {
   display: grid;

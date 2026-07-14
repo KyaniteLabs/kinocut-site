@@ -1,7 +1,8 @@
 # Kinocut
 
-> Guardrailed video editing MCP server, Python library, and CLI for AI agents.
-> Local-first. Apache-2.0. Formerly mcp-video. Product site: https://kinocut.dev/
+Guardrailed video editing MCP server, Python library, and CLI for AI agents.
+Local-first. Apache-2.0. Formerly mcp-video. Product site: https://kinocut.dev/
+Last-updated: 2026-07-14
 
 ## One-line definition
 

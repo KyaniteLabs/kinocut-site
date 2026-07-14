@@ -44,3 +44,17 @@ Ship homepage visual changes to GitHub master for live deploy; mirror to Forgejo
 Kinocut-only interview (product repo): `docs/DESIGN-SYSTEM-INTERVIEW-KINOCUT.md`  
 Site contract: `DESIGN-SYSTEM.md`  
 This is a **product edit-bay** surface, not the KyaniteLabs org homepage.
+
+### Version cutover (1.8+)
+
+When the product publishes a new version, bump site claims **only after** the package
+exists (or the release PR is the same human go-ahead). Use:
+
+```bash
+./scripts/bump-published-version.sh 1.8.0 142   # version, MCP tool count
+./scripts/verify-primary-surface.sh
+```
+
+Do not leave `chip--trust` on an old published version while the homepage hero claims
+the new one. Product checklist: kinocut repo `docs/RELEASE_1.8_CHECKLIST.md`.
+

@@ -3,16 +3,190 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Kinocut — the trusted execution layer for agentic video</title>
-  <meta name="description" content="Kinocut (formerly mcp-video) gives AI agents a guardrailed video-editing surface: preflight checks before the render, receipts after it, quality gates in between. Local, free, Apache-2.0.">
+  <title>Kinocut — guardrailed video editing MCP server for AI agents</title>
+  <meta name="description" content="Kinocut is a free, local-first MCP server, Python library, and CLI for AI-agent video editing. Preflight guardrails, Video Receipts, quality gates, FFmpeg, Hyperframes, and Apache-2.0. Formerly mcp-video.">
+  <meta name="keywords" content="Kinocut, video editing MCP server, AI agent video editing, FFmpeg MCP, Claude Code video tools, Cursor MCP video, guardrailed video editing, agentic media, Video Receipt, Hyperframes, local video automation, mcp-video">
+  <meta name="author" content="KyaniteLabs">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="ai-content" content="original">
+  <link rel="canonical" href="https://kinocut.dev/">
+  <link rel="alternate" hreflang="en" href="https://kinocut.dev/">
+  <link rel="alternate" hreflang="es" href="https://kinocut.dev/?lang=es">
+  <link rel="alternate" hreflang="x-default" href="https://kinocut.dev/">
+  <link rel="alternate" type="text/plain" title="llms.txt" href="https://kinocut.dev/llms.txt">
+  <link rel="sitemap" type="application/xml" href="https://kinocut.dev/sitemap.xml">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/site.css">
-  <meta property="og:title" content="Kinocut — the trusted execution layer for agentic video">
-  <meta property="og:description" content="Guardrails before the render. Receipts after it. Local, free, Apache-2.0.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Kinocut">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:url" content="https://kinocut.dev/">
+  <meta property="og:title" content="Kinocut — guardrailed video editing MCP server for AI agents">
+  <meta property="og:description" content="Local-first MCP server, Python client, and CLI. Guardrails before the render. Video Receipts after it. Free, Apache-2.0. Formerly mcp-video.">
   <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kinocut — trusted execution layer for agentic video">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kinocut — guardrailed video editing for AI agents">
+  <meta name="twitter:description" content="Local-first MCP video tools with preflight guardrails, receipts, and quality gates. Apache-2.0.">
+  <meta name="twitter:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:image:alt" content="Kinocut product preview">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23050B0B'/%3E%3Cpath d='M7 8h18v4H7zm0 6h12v4H7zm0 6h16v4H7z' fill='%2300E5C0'/%3E%3C/svg%3E">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://kinocut.dev/#website",
+        "url": "https://kinocut.dev/",
+        "name": "Kinocut",
+        "description": "Guardrailed video editing MCP server, Python library, and CLI for AI agents.",
+        "inLanguage": ["en", "es"],
+        "publisher": { "@id": "https://kinocut.dev/#org" }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://kinocut.dev/#org",
+        "name": "KyaniteLabs",
+        "url": "https://kyanitelabs.tech/",
+        "sameAs": [
+          "https://github.com/KyaniteLabs",
+          "https://git.kyanitelabs.tech/KyaniteLabs"
+        ]
+      },
+      {
+        "@type": ["SoftwareApplication", "SoftwareSourceCode"],
+        "@id": "https://kinocut.dev/#software",
+        "name": "Kinocut",
+        "alternateName": ["kino", "mcp-video", "kinocut MCP server"],
+        "description": "Open-source Model Context Protocol (MCP) server, Python client, and CLI that gives AI agents guardrailed local video editing via FFmpeg, Hyperframes, workflow receipts, and quality checkpoints.",
+        "url": "https://kinocut.dev/",
+        "applicationCategory": "MultimediaApplication",
+        "applicationSubCategory": "Video editing MCP server",
+        "operatingSystem": "macOS, Linux, Windows",
+        "softwareVersion": "1.7.0",
+        "datePublished": "2025-06-01",
+        "dateModified": "2026-07-10",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "programmingLanguage": ["Python", "TypeScript"],
+        "runtimePlatform": ["Python 3.11+", "FFmpeg", "Model Context Protocol", "Hyperframes"],
+        "codeRepository": "https://github.com/KyaniteLabs/kinocut",
+        "downloadUrl": "https://pypi.org/project/kinocut/",
+        "installUrl": "https://pypi.org/project/kinocut/",
+        "author": {
+          "@type": "Person",
+          "name": "Simon Gonzalez De Cruz",
+          "url": "https://github.com/simongonzalezdc"
+        },
+        "publisher": { "@id": "https://kinocut.dev/#org" },
+        "keywords": [
+          "video editing MCP server",
+          "AI agent video editing",
+          "FFmpeg MCP",
+          "Claude Code video tools",
+          "Cursor MCP video",
+          "guardrailed video editing",
+          "Video Receipt",
+          "Hyperframes",
+          "local AI video workflow"
+        ],
+        "featureList": [
+          "135 MCP tools in published 1.7.0",
+          "Preflight guardrails before FFmpeg render",
+          "Video Receipt provenance after render",
+          "Quality and release checkpoints",
+          "Agent workflow engine with resume",
+          "Video rescue pipeline",
+          "Local Hyperframes code-to-video tools",
+          "Shorts/Reels/TikTok repurposing packages",
+          "Python client and kino CLI",
+          "Apache-2.0, local-first, no required cloud keys"
+        ],
+        "sameAs": [
+          "https://github.com/KyaniteLabs/kinocut",
+          "https://git.kyanitelabs.tech/KyaniteLabs/kinocut",
+          "https://pypi.org/project/kinocut/",
+          "https://registry.modelcontextprotocol.io/servers/io.github.KyaniteLabs/kinocut",
+          "https://pypi.org/project/mcp-video/"
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://kinocut.dev/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is Kinocut?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kinocut is a free, open-source Model Context Protocol (MCP) server, Python library, and CLI that gives AI agents guardrailed local video editing. It wraps FFmpeg and Hyperframes with preflight validation, Video Receipts, and quality checkpoints. It was formerly named mcp-video."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I install Kinocut?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Install with pip install kinocut after installing FFmpeg. For Claude Code: claude mcp add kinocut -- uvx --from kinocut kino. Verify with kino doctor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is Kinocut free and local-first?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Kinocut is Apache-2.0, runs on your machine, requires no account or API key for the core surface, and does not upload your media to a Kinocut cloud."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which AI agents work with Kinocut?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Any MCP-compatible agent that can run a local stdio server, including Claude Code, Cursor, Windsurf, Cline, and similar clients. You can also use the Python client or kino CLI without an agent."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between Kinocut and raw FFmpeg?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Kinocut exposes typed MCP/CLI/Python operations with server-side parameter validation, preflight guardrails, structured errors, quality checks, and Video Receipt provenance so agents do not invent brittle FFmpeg flag strings."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Was Kinocut formerly called mcp-video?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Kinocut 1.7.0 is the rename of mcp-video. Compatibility entry points, imports, environment variables, and receipt keys remain supported through at least Kinocut 1.8.x."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Kinocut",
+            "item": "https://kinocut.dev/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip-link" href="#main">
@@ -40,20 +214,24 @@
       <div>
         <h1>KINO<span class="cut">CUT</span></h1>
         <p class="tagline">
-          <span lang="en">The trusted execution layer for agentic video.</span>
-          <span lang="es">La capa de ejecución confiable para video agéntico.</span>
+          <span lang="en">Guardrailed video editing MCP server for AI agents.</span>
+          <span lang="es">Servidor MCP de edición de video con barreras para agentes de IA.</span>
         </p>
         <p class="lede">
-          <span lang="en">Your agents can already edit video. Kinocut is what makes the result safe
-          to ship: guardrails before the render, a receipt after it, quality gates in between.
-          Runs on your machine. Free, Apache-2.0.</span>
-          <span lang="es">Tus agentes ya saben editar video. Kinocut es lo que hace que el resultado
-          se pueda publicar con confianza: barreras antes del render, un recibo después, y controles
-          de calidad en el medio. Corre en tu máquina. Gratis, Apache-2.0.</span>
+          <span lang="en"><strong>Kinocut</strong> (formerly <strong>mcp-video</strong>) is the trusted execution
+          layer for agentic video: a local-first <strong>Model Context Protocol (MCP) server</strong>,
+          Python library, and <code>kino</code> CLI. Agents get typed FFmpeg tools with preflight
+          guardrails before the render, a Video Receipt after it, and quality gates in between.
+          Free under Apache-2.0. No upload. No credit meter.</span>
+          <span lang="es"><strong>Kinocut</strong> (antes <strong>mcp-video</strong>) es la capa de ejecución
+          confiable para video agéntico: un <strong>servidor MCP</strong> local, biblioteca Python y CLI
+          <code>kino</code>. Los agentes obtienen herramientas FFmpeg tipadas con barreras antes del render,
+          un Video Receipt después, y controles de calidad en el medio. Gratis bajo Apache-2.0.
+          Sin subir material. Sin medidor de créditos.</span>
         </p>
         <div class="install">
           <pre><code><span class="prompt">$ </span><span class="cmd">pip install kinocut</span>
-<span class="prompt">$ </span><span class="cmd">claude mcp add kinocut -- uvx --from kinocut kinocut</span>
+<span class="prompt">$ </span><span class="cmd">claude mcp add kinocut -- uvx --from kinocut kino</span>
 <span class="prompt">$ </span><span class="cmd">kino doctor</span></code></pre>
         </div>
       </div>
@@ -127,11 +305,11 @@
             </h3>
             <p>
               <span lang="en">Out-of-range filters, mismatched merges, broken audio maps, overflowing
-              text — caught and explained before FFmpeg renders a single frame. 135 structured tools,
-              every parameter validated server-side.</span>
+              text — caught and explained before FFmpeg renders a single frame. 135 structured MCP tools
+              in published 1.7.0, every parameter validated server-side.</span>
               <span lang="es">Filtros fuera de rango, uniones incompatibles, audio mal mapeado, texto
               desbordado — detectados y explicados antes de que FFmpeg genere un solo cuadro. 135
-              herramientas estructuradas, cada parámetro validado en el servidor.</span>
+              herramientas MCP en la 1.7.0 publicada, cada parámetro validado en el servidor.</span>
             </p>
           </div>
         </div>
@@ -209,12 +387,13 @@
         <span lang="es">Verbos que los agentes eligen bien</span>
       </h2>
       <p>
-        <span lang="en">A small set of intent-level verbs up front — 135 structured tools underneath
-        for when you need the depth: effects, transitions, audio synthesis, analysis, Hyperframes
-        HTML-native rendering.</span>
-        <span lang="es">Un conjunto pequeño de verbos de intención al frente — 135 herramientas
-        estructuradas debajo para cuando necesitas profundidad: efectos, transiciones, síntesis de
-        audio, análisis, y render HTML-nativo con Hyperframes.</span>
+        <span lang="en">A small set of intent-level verbs up front — 135 structured MCP tools in
+        published 1.7.0 underneath for when you need the depth: effects, transitions, audio synthesis,
+        analysis, Hyperframes HTML-native rendering, workflow receipts, and video rescue.</span>
+        <span lang="es">Un conjunto pequeño de verbos de intención al frente — 135 herramientas MCP
+        en la 1.7.0 publicada debajo para cuando necesitas profundidad: efectos, transiciones,
+        síntesis de audio, análisis, render HTML-nativo con Hyperframes, recibos de flujo y rescate
+        de video.</span>
       </p>
       <ul>
         <li>repurpose</li>
@@ -272,6 +451,50 @@
       </ul>
     </section>
 
+    <!-- ENTITY / DEFINITION (SEO + AI GEO) -->
+    <section class="wrap entity" id="what-is-kinocut" aria-labelledby="what-is-heading">
+      <span class="eyebrow">
+        <span lang="en">definition</span>
+        <span lang="es">definición</span>
+      </span>
+      <h2 id="what-is-heading">
+        <span lang="en">What is Kinocut?</span>
+        <span lang="es">¿Qué es Kinocut?</span>
+      </h2>
+      <p>
+        <span lang="en"><strong>Kinocut</strong> is an open-source <strong>video editing MCP server</strong>
+        for AI agents, plus a matching Python client and <code>kino</code> CLI. It runs locally on
+        <strong>FFmpeg</strong>, exposes 135 structured tools in published <strong>1.7.0</strong>, and is
+        designed so agent-produced media can be inspected, scored, and human-reviewed before publish.
+        The official package is <code>kinocut</code> on PyPI; the MCP Registry id is
+        <code>io.github.KyaniteLabs/kinocut</code>; the product site is <strong>kinocut.dev</strong>.</span>
+        <span lang="es"><strong>Kinocut</strong> es un <strong>servidor MCP de edición de video</strong>
+        de código abierto para agentes de IA, más un cliente Python y la CLI <code>kino</code>. Corre
+        localmente sobre <strong>FFmpeg</strong>, expone 135 herramientas estructuradas en la
+        <strong>1.7.0</strong> publicada, y está pensado para que el video hecho por agentes se pueda
+        inspeccionar, evaluar y revisar por humanos antes de publicar. El paquete oficial es
+        <code>kinocut</code> en PyPI; el id del MCP Registry es <code>io.github.KyaniteLabs/kinocut</code>;
+        el sitio del producto es <strong>kinocut.dev</strong>.</span>
+      </p>
+      <ul class="claims">
+        <li>
+          <strong><span lang="en">for</span><span lang="es">para</span></strong>
+          <span lang="en">Claude Code, Cursor, and any MCP client; also scripts and CI via Python/CLI.</span>
+          <span lang="es">Claude Code, Cursor y cualquier cliente MCP; también scripts y CI vía Python/CLI.</span>
+        </li>
+        <li>
+          <strong><span lang="en">not</span><span lang="es">no es</span></strong>
+          <span lang="en">A hosted cloud editor, a credit-metered SaaS, or an untyped FFmpeg shell wrapper.</span>
+          <span lang="es">Un editor en la nube, un SaaS con créditos, ni un wrapper de FFmpeg sin tipos.</span>
+        </li>
+        <li>
+          <strong><span lang="en">also called</span><span lang="es">también</span></strong>
+          <span lang="en"><code>kino</code> (CLI), formerly <code>mcp-video</code> / <code>mcp_video</code>.</span>
+          <span lang="es"><code>kino</code> (CLI); antes <code>mcp-video</code> / <code>mcp_video</code>.</span>
+        </li>
+      </ul>
+    </section>
+
     <!-- ROADMAP -->
     <section class="wrap roadmap">
       <span class="eyebrow">
@@ -315,6 +538,62 @@
         </li>
       </ol>
     </section>
+
+    <!-- FAQ (visible + FAQPage schema) -->
+    <section class="wrap faq" id="faq" aria-labelledby="faq-heading">
+      <span class="eyebrow">
+        <span lang="en">FAQ</span>
+        <span lang="es">preguntas</span>
+      </span>
+      <h2 id="faq-heading">
+        <span lang="en">Questions people and agents ask</span>
+        <span lang="es">Preguntas de personas y agentes</span>
+      </h2>
+      <div class="faq__list">
+        <details open>
+          <summary><span lang="en">What is Kinocut?</span><span lang="es">¿Qué es Kinocut?</span></summary>
+          <p>
+            <span lang="en">Kinocut is a free, open-source Model Context Protocol (MCP) server, Python library, and CLI for AI-agent video editing. It wraps FFmpeg and Hyperframes with preflight guardrails, Video Receipts, and quality checkpoints. It was formerly named mcp-video.</span>
+            <span lang="es">Kinocut es un servidor MCP, biblioteca Python y CLI de código abierto para edición de video por agentes de IA. Envuelve FFmpeg e Hyperframes con barreras previas, Video Receipts y controles de calidad. Antes se llamaba mcp-video.</span>
+          </p>
+        </details>
+        <details>
+          <summary><span lang="en">How do I install Kinocut?</span><span lang="es">¿Cómo se instala?</span></summary>
+          <p>
+            <span lang="en">Install FFmpeg, then <code>pip install kinocut</code>. For Claude Code: <code>claude mcp add kinocut -- uvx --from kinocut kino</code>. Run <code>kino doctor</code> to verify.</span>
+            <span lang="es">Instala FFmpeg y luego <code>pip install kinocut</code>. En Claude Code: <code>claude mcp add kinocut -- uvx --from kinocut kino</code>. Verifica con <code>kino doctor</code>.</span>
+          </p>
+        </details>
+        <details>
+          <summary><span lang="en">Is Kinocut free and local-first?</span><span lang="es">¿Es gratis y local?</span></summary>
+          <p>
+            <span lang="en">Yes. Apache-2.0, runs on your machine, no Kinocut account or API key required for the core surface, and your media is not uploaded to a Kinocut cloud.</span>
+            <span lang="es">Sí. Apache-2.0, corre en tu máquina, sin cuenta ni API key de Kinocut para el núcleo, y tu material no se sube a una nube de Kinocut.</span>
+          </p>
+        </details>
+        <details>
+          <summary><span lang="en">Which AI agents work with Kinocut?</span><span lang="es">¿Qué agentes funcionan?</span></summary>
+          <p>
+            <span lang="en">Any MCP-compatible client that can run a local stdio server — Claude Code, Cursor, Windsurf, Cline, and similar. You can also use the Python client or <code>kino</code> CLI without an agent.</span>
+            <span lang="es">Cualquier cliente MCP con servidor stdio local — Claude Code, Cursor, Windsurf, Cline y similares. También puedes usar el cliente Python o la CLI <code>kino</code> sin un agente.</span>
+          </p>
+        </details>
+        <details>
+          <summary><span lang="en">Kinocut vs raw FFmpeg?</span><span lang="es">¿Kinocut vs FFmpeg puro?</span></summary>
+          <p>
+            <span lang="en">Kinocut exposes typed MCP, CLI, and Python operations with server-side validation, preflight guardrails, structured errors, quality checks, and Video Receipt provenance so agents do not invent brittle FFmpeg flag strings.</span>
+            <span lang="es">Kinocut expone operaciones tipadas (MCP, CLI, Python) con validación en servidor, barreras previas, errores estructurados, controles de calidad y procedencia Video Receipt para que los agentes no inventen flags frágiles de FFmpeg.</span>
+          </p>
+        </details>
+        <details>
+          <summary><span lang="en">Was it called mcp-video?</span><span lang="es">¿Se llamaba mcp-video?</span></summary>
+          <p>
+            <span lang="en">Yes. Kinocut 1.7.0 is the rename. Compatibility entry points, imports, environment variables, and receipt keys remain supported through at least Kinocut 1.8.x.</span>
+            <span lang="es">Sí. Kinocut 1.7.0 es el renombre. Los puntos de compatibilidad, imports, variables de entorno y claves de recibo se mantienen al menos hasta Kinocut 1.8.x.</span>
+          </p>
+        </details>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -322,16 +601,22 @@
       <nav aria-label="Project links">
         <ul>
           <li><a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></li>
+          <li><a href="https://git.kyanitelabs.tech/KyaniteLabs/kinocut">Forgejo</a></li>
           <li><a href="https://pypi.org/project/kinocut/">PyPI</a></li>
           <li><a href="https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest">MCP Registry</a></li>
           <li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/TOOLS.md">
             <span lang="en">Tool reference</span><span lang="es">Referencia de herramientas</span></a></li>
+          <li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/README.md">README</a></li>
           <li><a href="llms.txt">llms.txt</a></li>
+          <li><a href="sitemap.xml">sitemap</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#what-is-kinocut">
+            <span lang="en">What is Kinocut?</span><span lang="es">¿Qué es Kinocut?</span></a></li>
         </ul>
       </nav>
       <p>
-        <span lang="en">Kinocut is a KyaniteLabs project · Apache-2.0 · formerly mcp-video</span>
-        <span lang="es">Kinocut es un proyecto de KyaniteLabs · Apache-2.0 · antes mcp-video</span>
+        <span lang="en">Kinocut is a KyaniteLabs project · Apache-2.0 · formerly mcp-video · <a href="https://kinocut.dev/">kinocut.dev</a></span>
+        <span lang="es">Kinocut es un proyecto de KyaniteLabs · Apache-2.0 · antes mcp-video · <a href="https://kinocut.dev/">kinocut.dev</a></span>
       </p>
     </div>
   </footer>

@@ -98,3 +98,26 @@ pip install --upgrade mcp-video   # installs kinocut via 1.6.1 shim
 ## Keywords
 
 video editing MCP server, AI agent video editing, FFmpeg MCP, Claude Code video tools, Cursor MCP video, guardrailed video editing, agentic media pipeline, Video Receipt, Hyperframes, local AI video workflow, Shorts automation, Reels automation, TikTok automation, mcp-video, kino CLI
+
+
+## Site map (crawlable)
+
+- https://kinocut.dev/install.html
+- https://kinocut.dev/receipt.html
+- https://kinocut.dev/prompts.html
+- https://kinocut.dev/tutorial.html
+- https://kinocut.dev/compare.html
+- https://kinocut.dev/recommend.html
+- https://kinocut.dev/directories.html
+- https://kinocut.dev/integrations.html
+- https://kinocut.dev/enterprise.html
+- https://kinocut.dev/faq.html
+- https://kinocut.dev/failures.html
+- https://kinocut.dev/rename.html
+- https://kinocut.dev/changelog.html
+- https://kinocut.dev/es-content.html
+- https://kinocut.dev/security.txt
+- https://kinocut.dev/contribute.html
+- https://kinocut.dev/hall.html
+
+Primary job: turn a local interview/podcast into captioned vertical clips with a Video Receipt.

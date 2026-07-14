@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Integrations — Kinocut</title>
+  <meta name="description" content="Claude Code, Cursor, Python/CI, Hyperframes, FFmpeg, MCPB.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/integrations.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Integrations — Kinocut">
+  <meta property="og:description" content="Claude Code, Cursor, Python/CI, Hyperframes, FFmpeg, MCPB.">
+  <meta property="og:url" content="https://kinocut.dev/integrations.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Integrations</h1>
+<h2>Claude Code</h2>
+<pre><code>
+pip install kinocut
+
+claude mcp add kinocut -- uvx --from kinocut kino
+
+kino doctor
+
+</code></pre>
+<p>Then use prompts from <a href="/prompts.html">PROMPTS.md</a> or <code>$kinocut</code> skill.</p>
+<h2>Cursor</h2>
+<p>Add MCP server config:</p>
+<pre><code>
+{
+
+  &quot;mcpServers&quot;: {
+
+    &quot;kinocut&quot;: {
+
+      &quot;command&quot;: &quot;uvx&quot;,
+
+      &quot;args&quot;: [&quot;--from&quot;, &quot;kinocut&quot;, &quot;kino&quot;]
+
+    }
+
+  }
+
+}
+
+</code></pre>
+<p>Restart Cursor; confirm tools appear; run <code>search_tools</code> for <code>trim</code> / <code>receipt</code> / <code>workflow</code>.</p>
+<h2>Generic MCP client (stdio)</h2>
+<p>Command: <code>uvx</code></p>
+<p>Args: <code>--from kinocut kino</code></p>
+<p>Transport: stdio</p>
+<p>Registry id: <code>io.github.KyaniteLabs/kinocut</code>.</p>
+<h2>Python automation / CI</h2>
+<pre><code>
+pip install kinocut
+
+python -c &quot;from kinocut import Client; print(Client().info(&#x27;clip.mp4&#x27;))&quot;
+
+</code></pre>
+<p>CI tips:</p>
+<ul>
+<li>Install FFmpeg in the job image</li>
+<li>Run <code>kino doctor --json</code> and assert <code>required_ok</code></li>
+<li>Optional: <code>python scripts/golden_path.py</code> on a runner with FFmpeg</li>
+</ul>
+<h2>Hyperframes</h2>
+<p>Optional code-to-video path. Needs Node 22+ and Hyperframes CLI.</p>
+<p>Post-process renders with Kinocut FFmpeg tools. See tool reference Hyperframes section in <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/TOOLS.md">TOOLS.md</a>.</p>
+<h2>FFmpeg</h2>
+<p>Required system dependency — not bundled. Kinocut wraps FFmpeg with validation and guardrails; it does not replace installing FFmpeg.</p>
+<h2>MCPB / Desktop</h2>
+<p>Staged package in <code>mcpb/</code>. Not a fully self-contained native bundle yet. <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/MCPB.md">MCPB.md</a>.</p>
+<h2>Compatibility</h2>
+<p>Former <code>mcp-video</code> CLI/import/env still work during the compatibility window. <a href="/rename.html">RENAME.md</a>.</p>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

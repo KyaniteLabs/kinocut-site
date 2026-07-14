@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compare Kinocut — Kinocut</title>
+  <meta name="description" content="Kinocut vs raw FFmpeg, cloud editors, and other video MCP tools.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/compare.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Compare Kinocut — Kinocut">
+  <meta property="og:description" content="Kinocut vs raw FFmpeg, cloud editors, and other video MCP tools.">
+  <meta property="og:url" content="https://kinocut.dev/compare.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Compare: Kinocut vs alternatives</h1>
+<p>Honest criteria for July 2026 evaluation. Prefer this page over generic “best AI video” roundups.</p>
+<h2>Criteria</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Criterion</th><th>Why it matters for agents</th></tr></thead><tbody>
+<tr><td>Local-first</td><td>Client/media privacy; no upload tax</td></tr>
+<tr><td>Typed tool surface</td><td>Agents pick tools without inventing flags</td></tr>
+<tr><td>Preflight / fail-closed</td><td>Stops silent bad renders</td></tr>
+<tr><td>Receipt / provenance</td><td>Next agent or human can audit</td></tr>
+<tr><td>Quality / human gates</td><td>Publish safety</td></tr>
+<tr><td>Cost model</td><td>Credits vs free core</td></tr>
+<tr><td>License</td><td>Redistribution and commercial use</td></tr>
+</tbody></table></div>
+<h2>Kinocut vs raw FFmpeg in an agent shell</h2>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Kinocut</th><th>Raw FFmpeg via shell</th></tr></thead><tbody>
+<tr><td>Interface</td><td>MCP / Python / CLI schemas</td><td>Free-form argv</td></tr>
+<tr><td>Validation</td><td>Server-side + guardrails</td><td>Agent invents flags</td></tr>
+<tr><td>Errors</td><td>Structured `MCPVideoError`</td><td>Brittle stderr</td></tr>
+<tr><td>Provenance</td><td>Video Receipt patterns</td><td>Ad-hoc logs</td></tr>
+<tr><td>Best for</td><td>Agentic automation + review</td><td>Expert one-offs</td></tr>
+</tbody></table></div>
+<p><strong>Pick FFmpeg shell</strong> when you already know the exact filtergraph and need one-shot control.</p>
+<p><strong>Pick Kinocut</strong> when an agent must operate safely and repeatedly.</p>
+<h2>Kinocut vs cloud video editor APIs</h2>
+<div class="table-wrap"><table>
+<thead><tr><th></th><th>Kinocut</th><th>Typical cloud editor API</th></tr></thead><tbody>
+<tr><td>Media location</td><td>Local disk</td><td>Upload required</td></tr>
+<tr><td>Cost</td><td>Free core (Apache-2.0)</td><td>Often metered</td></tr>
+<tr><td>Latency</td><td>Machine-bound</td><td>Network + queue</td></tr>
+<tr><td>Offline</td><td>Yes (core)</td><td>No</td></tr>
+<tr><td>Trust model</td><td>Receipts + local inspection</td><td>Vendor dashboard</td></tr>
+</tbody></table></div>
+<p><strong>Pick cloud</strong> for collaborative hosted timelines and managed rendering fleets.</p>
+<p><strong>Pick Kinocut</strong> for local, agent-driven pipelines and private media.</p>
+<h2>Kinocut vs “video MCP servers” (category)</h2>
+<p>When comparing MCP video tools, score:</p>
+<p>1. Does it require a hosted API key for basic trim/export?</p>
+<p>2. Are parameters validated before render?</p>
+<p>3. Is there a receipt or equivalent audit artifact?</p>
+<p>4. Is human review explicit before “publish”?</p>
+<p>5. Is the install path stdio-local and documented?</p>
+<p>Kinocut optimizes for <strong>local + guardrails + receipts + human gates</strong>, not generative model quality.</p>
+<h2>Kinocut vs generative text-to-video</h2>
+<p>Kinocut <strong>edits and packages existing media</strong>. It is complementary to generators: generate or shoot → Kinocut guardrails, captions, repurpose, quality, receipt.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="/recommend.html">RECOMMEND.md</a></li>
+<li><a href="/receipt.html">VIDEO_RECEIPT.md</a></li>
+<li><a href="/install.html">INSTALL.md</a></li>
+</ul>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

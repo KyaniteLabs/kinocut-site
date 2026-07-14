@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FAQ — Kinocut</title>
+  <meta name="description" content="Frequently asked questions about Kinocut install, agents, and local-first video.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/faq.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="FAQ — Kinocut">
+  <meta property="og:description" content="Frequently asked questions about Kinocut install, agents, and local-first video.">
+  <meta property="og:url" content="https://kinocut.dev/faq.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Frequently Asked Questions</h1>
+<h2>What is Kinocut?</h2>
+<p>Kinocut is an open-source MCP server, Python library, and CLI that wraps FFmpeg, PUSHING CREATION-style planning, Hyperframes, and local repurposing workflows for AI-agent video editing and creation. It runs locally, requires no cloud services, and is free under the Apache-2.0 license.</p>
+<h2>What is MCP?</h2>
+<p>MCP (Model Context Protocol) is a standard protocol that lets AI agents like Claude Code and Cursor call external tools through a structured interface. Think of it as &quot;USB-C for AI tools&quot; — a universal connector between agents and capabilities.</p>
+<h2>Is Kinocut on the MCP Registry?</h2>
+<p>Yes. <a href="https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest">Kinocut 1.7.0 is active on the official MCP Registry</a> under the immutable identifier <code>io.github.KyaniteLabs/kinocut</code>. Release metadata is published from <code>server.json</code> after package publication.</p>
+<h2>Which AI agents work with Kinocut?</h2>
+<p>Any MCP-compatible agent: Claude Code, Cursor, Windsurf, Cline, and any client that supports the MCP protocol. The server runs as a stdio transport, which is the standard MCP transport mode.</p>
+<h2>Do I need FFmpeg installed?</h2>
+<p>Yes. FFmpeg must be installed and available on your <code>PATH</code>. On macOS: <code>brew install ffmpeg</code>. On Ubuntu: <code>sudo apt install ffmpeg</code>. The package does not bundle FFmpeg itself.</p>
+<h2>Does it work on Windows?</h2>
+<p>Yes. Kinocut works on macOS, Linux, and Windows as long as FFmpeg is installed and accessible.</p>
+<h2>What video formats are supported?</h2>
+<p>All formats that FFmpeg supports: MP4, WebM, MOV, AVI, MKV, GIF, and more. Input and output formats are auto-detected from file extensions.</p>
+<h2>Can I use it without an AI agent?</h2>
+<p>Yes. Kinocut has three interfaces: MCP server (for agents), Python client (for scripts), and CLI (for terminal use). You can use any of them independently.</p>
+<h2>How do I install it?</h2>
+<pre><code>
+pip install kinocut
+
+</code></pre>
+<p>For AI features like transcription and upscaling, install the extras:</p>
+<pre><code>
+pip install &quot;kinocut[ai]&quot;
+
+</code></pre>
+<h2>What are the AI-powered features?</h2>
+<p>Kinocut includes 7 AI features: silence removal, Whisper transcription, scene detection, stem separation (isolate vocals/drums), AI upscaling (2x/4x super-resolution), auto color grading, and spatial audio positioning.</p>
+<h2>What tool areas does it cover?</h2>
+<p>Kinocut covers Meta / Discovery, Cinematic Creation, Core Editing, AI-Powered media, Hyperframes, local repurposing, Audio Synthesis, Visual Effects, Transitions, Layout &amp; Motion Graphics, Analysis, and Image Analysis. Use <code>search_tools</code> when an agent needs to find the right operation without loading the whole registry.</p>
+<h2>What are the cinematic creation tools?</h2>
+<p>The cinematic creation tools add a PUSHING CREATION-compatible pre-production workflow: <code>video_project_create</code> scaffolds a project with <code>style.md</code>, <code>storyboard.md</code>, and <code>refs/</code>; <code>style_pack_read</code> parses STYLE_ and NEG_ blocks; <code>storyboard_read</code> parses shot rows; and <code>shot_prompt_render</code> expands a storyboard shot into generation-ready positive and negative prompts.</p>
+<h2>What do the Hyperframes and repurposing tools add?</h2>
+<p>Hyperframes tools cover project scaffolds, renders, snapshots, layout inspection, catalog blocks, website capture, local TTS, transcription import, background removal, diagnostics, and benchmarking. Repurposing tools create dry-run manifests or local platform packages for Shorts, Reels, TikTok, and YouTube-style variants, including thumbnails, storyboards, and optional release checkpoints.</p>
+<h2>Is it free?</h2>
+<p>Yes. Kinocut is open-source under the Apache-2.0 license. There are no API costs because everything runs locally using FFmpeg and optional local AI models.</p>
+<h2>How fast is it?</h2>
+<p>Very fast. Since it wraps FFmpeg directly, operations like trimming, merging, and format conversion run at near-native FFmpeg speed. AI features depend on your hardware (GPU recommended for upscaling and transcription).</p>
+<h2>Can I use it in production?</h2>
+<p>Yes. Kinocut has comprehensive error handling with structured error types, input validation, FFmpeg timeout protection, and CI coverage for package and repository readiness. It&#x27;s used in CI/CD pipelines for automated video quality checks.</p>
+<h2>How do I contribute?</h2>
+<p>See <a href="https://github.com/KyaniteLabs/kinocut/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> for the full guide. The short version: fork, branch, write tests, submit a PR. All PRs need passing CI.</p>
+<h2>Who is Kinocut for?</h2>
+<p>1. <strong>Agent users</strong> — Claude Code / Cursor operators who want structured video tools.</p>
+<p>2. <strong>Media operators</strong> — podcast/social teams automating cuts with human approval.</p>
+<p>3. <strong>Stack evaluators</strong> — platform engineers comparing local MCP video options.</p>
+<p>See <a href="/recommend.html">RECOMMEND.md</a> and <a href="/compare.html">COMPARE.md</a>.</p>
+<h2>Is there a paid enterprise tier?</h2>
+<p>Not as of the published open-source core. Apache-2.0; see <a href="/enterprise.html">ENTERPRISE.md</a> for commercial clarity.</p>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

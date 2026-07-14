@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Directory status — Kinocut</title>
+  <meta name="description" content="Live board of PyPI, MCP Registry, GitHub, and directory listings.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/directories.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Directory status — Kinocut">
+  <meta property="og:description" content="Live board of PyPI, MCP Registry, GitHub, and directory listings.">
+  <meta property="og:url" content="https://kinocut.dev/directories.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Directory status board</h1>
+<p>Public discovery surfaces for Kinocut. <strong>Update this file when a directory changes.</strong></p>
+<p>Detailed history: <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/DIRECTORY_REBRAND_STATUS.md">DIRECTORY_REBRAND_STATUS.md</a>.</p>
+<p>Canonical facts: <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/public_claims.json"><code>public_claims.json</code></a>.</p>
+<h2>Live board</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Surface</th><th>Role</th><th>Status (maintain)</th><th>Link</th></tr></thead><tbody>
+<tr><td>Product site</td><td>Marketing + GEO</td><td>Live</td><td>https://kinocut.dev/</td></tr>
+<tr><td>PyPI</td><td>Package</td><td>Live `kinocut`</td><td>https://pypi.org/project/kinocut/</td></tr>
+<tr><td>MCP Registry</td><td>Official MCP listing</td><td>Live id `io.github.KyaniteLabs/kinocut`</td><td>https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest</td></tr>
+<tr><td>GitHub</td><td>Public mirror</td><td>Live</td><td>https://github.com/KyaniteLabs/kinocut</td></tr>
+<tr><td>Forgejo</td><td>Canonical source</td><td>Live</td><td>https://git.kyanitelabs.tech/KyaniteLabs/kinocut</td></tr>
+<tr><td>Glama</td><td>Directory / score</td><td>Recrawl / stale metadata risk</td><td>Track in rebrand ledger</td></tr>
+<tr><td>Awesome MCP Servers</td><td>Curated list</td><td>Correction PR process</td><td>Track in rebrand ledger</td></tr>
+<tr><td>Docker MCP Catalog</td><td>Catalog</td><td>PR / review as applicable</td><td>Track in rebrand ledger</td></tr>
+<tr><td>Smithery</td><td>MCPB-style</td><td>Blocked on native runtime gates</td><td>See MCPB.md</td></tr>
+<tr><td>MCP.so / others</td><td>Aggregators</td><td>Submission / recrawl</td><td>Track in rebrand ledger</td></tr>
+</tbody></table></div>
+<h2>Release-time checklist</h2>
+<p>After every public package release:</p>
+<p>1. Confirm PyPI version == <code>public_claims.json</code> → <code>published_version</code></p>
+<p>2. Confirm Registry entry shows new version</p>
+<p>3. Update <code>published_*</code> counts in <code>public_claims.json</code> if the surface changed</p>
+<p>4. Run <code>pytest tests/test_public_claims.py</code></p>
+<p>5. Spot-check kinocut.dev version language</p>
+<p>6. File or close directory tickets (Glama, Awesome, etc.)</p>
+<h2>Agent instruction</h2>
+<p>When asked “is Kinocut listed on X?”, read this board and the rebrand ledger; do not invent “listed” without a live URL.</p>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

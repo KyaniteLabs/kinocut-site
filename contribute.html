@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contribute — Kinocut</title>
+  <meta name="description" content="First tasks for agents and humans improving docs and examples.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/contribute.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Contribute — Kinocut">
+  <meta property="og:description" content="First tasks for agents and humans improving docs and examples.">
+  <meta property="og:url" content="https://kinocut.dev/contribute.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>First agent tasks</h1>
+<p>For contributors and agents improving Kinocut docs/examples without large engine work.</p>
+<h2>Task 1 — Receipt-producing workflow example</h2>
+<p>Add an example under <code>examples/</code> or <code>workflows/</code> that:</p>
+<p>1. Uses only public Client/CLI APIs</p>
+<p>2. Writes a Video Receipt JSON</p>
+<p>3. Documents absolute-path usage and human-review pending</p>
+<p>4. Does not add flaky private media to git</p>
+<h2>Task 2 — Prompt pack entry</h2>
+<p>Add one prompt to <a href="/prompts.html">PROMPTS.md</a> that is deterministic-leaning, Kinocut-only, and ends with quality + human review.</p>
+<h2>Task 3 — Failure example</h2>
+<p>Document one fail-closed path in <a href="/failures.html">FAILURE_EXAMPLES.md</a> with expected error type.</p>
+<h2>Task 4 — Directory board update</h2>
+<p>After verifying a live directory page, update <a href="/directories.html">DIRECTORY_STATUS.md</a> with date.</p>
+<h2>Rules</h2>
+<ul>
+<li>No secrets or private media paths in commits</li>
+<li>Run <code>pytest tests/test_public_claims.py -q</code> if you touch claims/README/llms</li>
+<li>Design system changes are out of scope unless asked</li>
+</ul>
+<p>See <a href="https://github.com/KyaniteLabs/kinocut/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> and <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/GOLDEN_PATH.md">GOLDEN_PATH.md</a>.</p>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

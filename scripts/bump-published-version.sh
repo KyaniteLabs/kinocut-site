@@ -6,8 +6,8 @@ set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 NEW_VER="${1:?usage: $0 <version> [mcp_tool_count] [old_version] [old_mcp_count]}"
 NEW_MCP="${2:-}"
-OLD_VER="${3:-1.7.0}"
-OLD_MCP="${4:-135}"
+OLD_VER="${3:-1.8.0}"
+OLD_MCP="${4:-142}"
 
 cd "$ROOT"
 echo "Bumping site published version $OLD_VER → $NEW_VER"

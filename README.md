@@ -1,21 +1,35 @@
 # kinocut.dev
 
-Product site for Kinocut (formerly mcp-video). Static, self-contained, bilingual EN/ES.
+Product site for **Kinocut** (formerly mcp-video). Static, self-contained, bilingual EN/ES.
 
-## Deploy checklist (at rename cutover, issue #53 / #86)
-- [x] Verify tool count on the page vs `test_public_surface.py` (135 at the 1.7.0 cutover)
-- [x] Point footer GitHub link at the renamed repo
-- [x] Link the active MCP Registry record for `io.github.KyaniteLabs/kinocut`
-- [x] Add real `llms.txt` (linked in footer)
-- [x] Point kinocut.dev DNS at GitHub Pages and serve this directory
+## SEO / AI GEO surfaces
 
-## Structure
-- `index.html` — single page, EN/ES via `data-lang` (toggle, `?lang=es`, or `/es.html`)
-- `css/tokens.css` — all design tokens (single source of truth)
-- `css/site.css` — layout/components
-- `js/site.js` — language toggle + playhead timecode ruler
-- `fonts/` — self-hosted woff2 (Bricolage Grotesque, Atkinson Hyperlegible, IBM Plex Mono)
+| File | Role |
+| --- | --- |
+| `index.html` | Canonical page: meta, OG/Twitter, hreflang, JSON-LD (`SoftwareApplication` + `FAQPage`), FAQ, entity definition |
+| `llms.txt` | Machine-readable product brief for AI crawlers and answer engines |
+| `robots.txt` | Explicit allow for search + common AI bots; sitemap pointer |
+| `sitemap.xml` | Homepage + llms.txt + Spanish entry |
+| `es.html` | Spanish landing that sets lang and redirects to `/?lang=es` |
+| `CNAME` | `kinocut.dev` on GitHub Pages |
 
-Local preview: `python3 -m http.server 8613` here.
-Note: headless Chrome clamps windows to 500px min width — verify true mobile via
-devtools device mode or an iframe, not `--window-size=390`.
+## Deploy
+
+GitHub Pages serves `master` from `/` with custom domain `kinocut.dev`.
+
+```bash
+# after merge to master, Pages rebuilds automatically (legacy branch source)
+git push origin master
+```
+
+## Local check
+
+```bash
+python3 -m http.server 8765
+# open http://127.0.0.1:8765/
+```
+
+## Related
+
+- Product source: https://github.com/KyaniteLabs/kinocut
+- Registry: `io.github.KyaniteLabs/kinocut`

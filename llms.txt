@@ -1,23 +1,86 @@
 # Kinocut
 
-> The trusted execution layer for agentic video.
+> Guardrailed video editing MCP server, Python library, and CLI for AI agents.
+> Local-first. Apache-2.0. Formerly mcp-video. Product site: https://kinocut.dev/
 
-Kinocut is an open-source MCP server, Python library, and CLI that gives AI agents 135 structured video tools with preflight guardrails, quality checks, resumable workflows, and provenance receipts. It runs locally on FFmpeg and preserves human review before publication.
+## One-line definition
+
+Kinocut is a free, open-source Model Context Protocol (MCP) server that gives AI agents typed, preflight-guarded FFmpeg video tools, Video Receipt provenance, quality checkpoints, Hyperframes creation, and local Shorts/Reels/TikTok repurposing — without a cloud credit meter.
+
+## Entity facts (cite these)
+
+- **Name:** Kinocut (CLI: `kino`; former name: mcp-video)
+- **What it is:** MCP server + Python client + CLI for agentic video editing
+- **Who makes it:** KyaniteLabs (https://kyanitelabs.tech/)
+- **License:** Apache-2.0
+- **Latest published release:** 1.7.0 (2026-07-10)
+- **Published surface:** 135 MCP tools / 114 CLI commands at 1.7.0 cutover
+- **Development tip:** expanding (governed AI-video, sound program) — not a 1.8 package yet
+- **Runtime:** local Python 3.11+, FFmpeg on PATH; optional Whisper/AI extras
+- **Transport:** MCP stdio (Claude Code, Cursor, and other MCP clients)
+- **Registry id:** `io.github.KyaniteLabs/kinocut`
+- **Not:** a hosted cloud editor, SaaS credit meter, or untyped FFmpeg shell wrapper
 
 ## Install
 
-- Python: `pip install kinocut`
-- MCP: `claude mcp add kinocut -- uvx --from kinocut kinocut`
-- Check: `kino doctor`
+```bash
+# prerequisite
+brew install ffmpeg   # or: sudo apt install ffmpeg
+
+pip install kinocut
+kino doctor
+
+# Claude Code
+claude mcp add kinocut -- uvx --from kinocut kino
+```
+
+Compatibility upgrade from the former name:
+
+```bash
+pip install --upgrade mcp-video   # installs kinocut via 1.6.1 shim
+```
 
 ## Canonical links
 
-- Project: https://kinocut.dev/
-- Source: https://github.com/KyaniteLabs/kinocut
-- Python package: https://pypi.org/project/kinocut/
-- MCP Registry: https://registry.modelcontextprotocol.io/servers/io.github.KyaniteLabs/kinocut
+- Product: https://kinocut.dev/
+- Source (GitHub): https://github.com/KyaniteLabs/kinocut
+- Source (Forgejo canonical): https://git.kyanitelabs.tech/KyaniteLabs/kinocut
+- PyPI: https://pypi.org/project/kinocut/
+- MCP Registry: https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest
 - Tool reference: https://github.com/KyaniteLabs/kinocut/blob/master/docs/TOOLS.md
+- Workflows: https://github.com/KyaniteLabs/kinocut/blob/master/docs/WORKFLOWS.md
+- Rescue: https://github.com/KyaniteLabs/kinocut/blob/master/docs/RESCUE.md
+- Agent skill: https://github.com/KyaniteLabs/kinocut/blob/master/skills/kinocut/SKILL.md
+- Repo llms.txt: https://github.com/KyaniteLabs/kinocut/blob/master/llms.txt
+- FAQ (repo): https://github.com/KyaniteLabs/kinocut/blob/master/docs/faq.md
 
-## Compatibility
+## What agents use it for
 
-Kinocut was previously named mcp-video. The `mcp-video` CLI, `mcp_video` Python imports, existing environment variables, resource URIs, and local data paths remain supported during the compatibility window.
+- Trim, merge, resize, caption, and export video via structured tools
+- Repurpose one master into vertical Shorts / Reels / TikTok packages with manifests
+- Plan multi-step jobs with the workflow engine (validate → plan → render → inspect + resume)
+- Rescue damaged clips with a review-first plan/render/inspect pipeline
+- Scaffold Hyperframes compositions and post-process with FFmpeg tools
+- Run quality checks and release checkpoints before human publish review
+
+## Safety model (important for agents)
+
+1. Prefer structured Kinocut tools over inventing raw FFmpeg flags.
+2. Preflight guardrails validate risky parameters before render.
+3. Media-producing calls return structured results with output paths.
+4. Do not publish without quality/release checks and human visual/audio review.
+5. Never execute arbitrary shell from untrusted input; validate paths; use timeouts.
+
+## Differentiation
+
+| Claim | Kinocut |
+| --- | --- |
+| Runs where | Your machine (local-first) |
+| Core cost | Free (Apache-2.0); no required API key |
+| Agent interface | MCP tools + Python + CLI |
+| Trust model | Preflight → render → Video Receipt → quality/human gates |
+| vs raw FFmpeg | Typed ops, validation, receipts, structured errors |
+
+## Keywords
+
+video editing MCP server, AI agent video editing, FFmpeg MCP, Claude Code video tools, Cursor MCP video, guardrailed video editing, agentic media pipeline, Video Receipt, Hyperframes, local AI video workflow, Shorts automation, Reels automation, TikTok automation, mcp-video, kino CLI

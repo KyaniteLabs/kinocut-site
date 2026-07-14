@@ -10,19 +10,27 @@ imagery = one tableau + product chrome only, motion = transport-level only."
 
 ## Canonical source (read this first)
 
-**This site inherits the KyaniteLabs design system:**
-`~/workspaces/kyanite-labs/kyanite-landing/static/css/kyanite-system.css`
-(void/midnight/basalt darks · cyan `#5edce8` / blue `#087dcc` / magenta `#e85682` /
-amber `#e9c960` · Space Grotesk / Plus Jakarta Sans / JetBrains Mono · 66ch measure).
-The repo hero tableau (`img/hero.webp`, from the mcp-video README) was generated to
-this system — stone blacks, cyan hairlines, amber waveforms, magenta markers — and is
-the visual reference for every choice here. Local tokens: `css/tokens.css`.
+**Product authority (2026-07-14):** Kinocut-only interview
+`docs/DESIGN-SYSTEM-INTERVIEW-KINOCUT.md` in the kinocut product repo.
+This site is an **agent edit bay / NLE inspector** product surface — not the
+KyaniteLabs org homepage and not a generic labs portfolio.
 
-> **Decision record / correction (2026-07-10):** v1 of this site was designed without
-> consulting kyanite-system.css or the tableau — an invented "kyanite blue" palette and
-> off-brand faces (Bricolage/Atkinson/IBM Plex). Simon rejected it. Rebuilt to the real
-> system same day. Lesson recorded: interview step 0 is *find the existing system*,
-> and the reference image in the repo README outranks any palette invented in-session.
+**Local tokens:** `css/tokens.css` (product surface). Palette primitives may
+share the lab family (void/basalt, cyan/amber/magenta, Space Grotesk / Plus
+Jakarta / JetBrains Mono) but hierarchy, density, chrome, and signature are
+Kinocut-specific:
+
+| Layer | Kinocut rule |
+| --- | --- |
+| Chrome | Bay top bar · gate transport strip · left BAY rail |
+| Signature | Video Receipt as **instrument monitor** (not paper till) |
+| Density | Dense instrument (48px etch, compact type) |
+| Roles | cyan = system live · amber = verified · magenta = human hold |
+| Imagery | One tableau under hero + product chrome only |
+
+> **Correction log:** 2026-07-10 — first palette invented off-brand (rejected).
+> 2026-07-14 — doc-shell polish shipped without homepage redesign (looked the same;
+> Simon correctly rejected). Homepage rebuilt same day to edit-bay chrome.
 
 ## Interview record (answered by judgment, per Simon's direction 2026-07-10)
 

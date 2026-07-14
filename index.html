@@ -219,7 +219,7 @@
   }
   </script>
 </head>
-<body>
+<body class="bay">
   <a class="skip-link" href="#main">
     <span lang="en">Skip to content</span><span lang="es">Saltar al contenido</span>
   </a>
@@ -227,42 +227,80 @@
   <div class="playhead" aria-hidden="true"><div class="playhead__fill" id="playheadFill"></div></div>
   <div class="playhead__tc" id="playheadTc" aria-hidden="true">00:00:00;00</div>
 
-  <header class="wrap top">
-    <span class="eyebrow">
-      <span lang="en">formerly mcp-video · a KyaniteLabs project</span>
-      <span lang="es">antes mcp-video · un proyecto de KyaniteLabs</span>
-    </span>
+  <header class="bay-top" role="banner">
+    <a class="bay-brand" href="/">KINO<span class="cut">CUT</span>
+      <span class="bay-brand__sub">edit bay · 1.7.0</span>
+    </a>
+    <div class="bay-status" aria-label="System status">
+      <span><i class="led" aria-hidden="true"></i> preflight</span>
+      <span><i class="led led--amber" aria-hidden="true"></i> receipt</span>
+      <span><i class="led led--mag" aria-hidden="true"></i> human</span>
+    </div>
+    <nav class="bay-paths" aria-label="Operator paths">
+      <a href="/install.html">install</a>
+      <a href="/prompts.html">prompts</a>
+      <a href="/tutorial.html">tutorial</a>
+      <a href="/receipt.html">receipt</a>
+      <a href="/compare.html">compare</a>
+      <a href="/#hub">bins</a>
+    </nav>
     <div class="lang-toggle" role="group" aria-label="Language / Idioma">
       <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
       <button type="button" data-set-lang="es" aria-pressed="false">ES</button>
     </div>
   </header>
 
+  <div class="gate-strip" aria-label="Workflow gates">
+    <div class="gate-strip__item" data-state="pass">
+      <strong>01 preflight</strong>
+      <span lang="en">before render</span><span lang="es">antes del render</span>
+    </div>
+    <div class="gate-strip__item" data-state="live">
+      <strong>02 render</strong>
+      <span lang="en">typed FFmpeg tools</span><span lang="es">herramientas FFmpeg tipadas</span>
+    </div>
+    <div class="gate-strip__item" data-state="ok">
+      <strong>03 receipt</strong>
+      <span lang="en">proof after edit</span><span lang="es">prueba tras la edición</span>
+    </div>
+    <div class="gate-strip__item" data-state="hold">
+      <strong>04 human gate</strong>
+      <span lang="en">hooks · thumbs · ship</span><span lang="es">ganchos · thumbs · publicar</span>
+    </div>
+  </div>
+
   <main id="main">
-    <!-- HERO -->
+    <!-- HERO: inspector desk -->
     <div class="hero-band">
     <section class="wrap hero">
-      <div>
+      <div class="hero-copy">
+        <p class="hero-kicker">
+          <span lang="en">local MCP · agent edit suite</span>
+          <span lang="es">MCP local · suite de edición agéntica</span>
+        </p>
         <h1>KINO<span class="cut">CUT</span></h1>
         <p class="tagline">
-          <span lang="en">Guardrailed video editing MCP server for AI agents.</span>
-          <span lang="es">Servidor MCP de edición de video con barreras para agentes de IA.</span>
+          <span lang="en">Guardrailed video editing for AI agents — inspectable, scored, human-gated.</span>
+          <span lang="es">Edición de video con barreras para agentes de IA — inspeccionable, evaluada, con puerta humana.</span>
         </p>
         <p class="lede">
-          <span lang="en"><strong>Kinocut</strong> (formerly <strong>mcp-video</strong>) is the trusted execution
-          layer for agentic video: a local-first <strong>Model Context Protocol (MCP) server</strong>,
-          Python library, and <code>kino</code> CLI. Agents get typed FFmpeg tools with preflight
-          guardrails before the render, a Video Receipt after it, and quality gates in between.
-          Free under Apache-2.0. No upload. No credit meter.
+          <span lang="en"><strong>Kinocut</strong> (formerly <strong>mcp-video</strong>) is a local-first
+          <strong>Model Context Protocol (MCP) server</strong>, Python library, and <code>kino</code> CLI.
+          Agents get typed FFmpeg tools with preflight guardrails before the render, a Video Receipt after it,
+          and quality gates in between. Free under Apache-2.0. No upload. No credit meter.
           <strong>Primary job:</strong> turn a local interview into captioned vertical clips with a Video Receipt.</span>
-          <span lang="es"><strong>Kinocut</strong> (antes <strong>mcp-video</strong>) es la capa de ejecución
-          confiable para video agéntico: un <strong>servidor MCP</strong> local, biblioteca Python y CLI
-          <code>kino</code>. Los agentes obtienen herramientas FFmpeg tipadas con barreras antes del render,
+          <span lang="es"><strong>Kinocut</strong> (antes <strong>mcp-video</strong>) es un
+          <strong>servidor MCP</strong> local, biblioteca Python y CLI <code>kino</code>.
+          Los agentes obtienen herramientas FFmpeg tipadas con barreras antes del render,
           un Video Receipt después, y controles de calidad en el medio. Gratis bajo Apache-2.0.
           Sin subir material. Sin medidor de créditos.
           <strong>Trabajo principal:</strong> convertir una entrevista local en clips verticales con recibo.</span>
         </p>
         <div class="install">
+          <div class="install__chrome" aria-hidden="true">
+            <b>console · kino</b>
+            <span>stdio · local</span>
+          </div>
           <pre><code><span class="prompt">$ </span><span class="cmd">pip install kinocut</span>
 <span class="prompt">$ </span><span class="cmd">claude mcp add kinocut -- uvx --from kinocut kino</span>
 <span class="prompt">$ </span><span class="cmd">kino doctor</span>
@@ -277,42 +315,48 @@
         </p>
       </div>
 
-      <!-- SIGNATURE: the Video Receipt as a physical artifact -->
-      <figure class="receipt">
-        <h3>VIDEO RECEIPT <span class="doc-id">kc-2026-0710-041</span></h3>
-        <dl>
-          <dt>intent</dt><dd>
-            <span lang="en">podcast → 3 vertical clips</span>
-            <span lang="es">podcast → 3 clips verticales</span>
-          </dd>
-          <dt>tools run</dt><dd>7</dd>
-          <dt>guardrails</dt><dd>2 warned · 0 failed</dd>
-          <dt>quality</dt><dd>score 84 · pass</dd>
-          <dt>a/v sync</dt><dd>ok</dd>
-          <dt>loudness</dt><dd>-14.1 LUFS</dd>
-          <dt>captions</dt><dd>word-timed</dd>
-        </dl>
-        <div class="rule" role="presentation"></div>
-        <dl>
-          <dt>sources</dt><dd>sha256 · 9b41…c2</dd>
-          <dt>output</dt><dd>sha256 · 55d0…8f</dd>
-          <dt class="pending">human review</dt><dd class="pending">
-            <span lang="en">hook + thumbnail</span>
-            <span lang="es">gancho + miniatura</span>
-          </dd>
-        </dl>
-        <div class="foot">
-          <span class="barcode" aria-hidden="true"></span>
-          <span class="stamp">
-            <span lang="en">CHECKS PASSED</span>
-            <span lang="es">VERIFICADO</span>
-          </span>
+      <!-- SIGNATURE: Video Receipt as instrument readout (not paper till) -->
+      <div class="receipt-monitor">
+        <div class="receipt-monitor__title" aria-hidden="true">
+          <span>inspector · video receipt</span>
+          <span>ch · proof</span>
         </div>
-        <figcaption class="visually-hidden">
-          <span lang="en">Every Kinocut workflow ends with a receipt like this one.</span>
-          <span lang="es">Cada flujo de Kinocut termina con un recibo como este.</span>
-        </figcaption>
-      </figure>
+        <figure class="receipt">
+          <h3>VIDEO RECEIPT <span class="doc-id">kc-2026-0710-041</span></h3>
+          <dl>
+            <dt>intent</dt><dd>
+              <span lang="en">podcast → 3 vertical clips</span>
+              <span lang="es">podcast → 3 clips verticales</span>
+            </dd>
+            <dt>tools run</dt><dd>7</dd>
+            <dt>guardrails</dt><dd>2 warned · 0 failed</dd>
+            <dt>quality</dt><dd>score 84 · pass</dd>
+            <dt>a/v sync</dt><dd>ok</dd>
+            <dt>loudness</dt><dd>-14.1 LUFS</dd>
+            <dt>captions</dt><dd>word-timed</dd>
+          </dl>
+          <div class="rule" role="presentation"></div>
+          <dl>
+            <dt>sources</dt><dd>sha256 · 9b41…c2</dd>
+            <dt>output</dt><dd>sha256 · 55d0…8f</dd>
+            <dt class="pending">human review</dt><dd class="pending">
+              <span lang="en">hook + thumbnail</span>
+              <span lang="es">gancho + miniatura</span>
+            </dd>
+          </dl>
+          <div class="foot">
+            <span class="barcode" aria-hidden="true"></span>
+            <span class="stamp">
+              <span lang="en">CHECKS PASSED</span>
+              <span lang="es">VERIFICADO</span>
+            </span>
+          </div>
+          <figcaption class="visually-hidden">
+            <span lang="en">Every Kinocut workflow ends with a receipt like this one.</span>
+            <span lang="es">Cada flujo de Kinocut termina con un recibo como este.</span>
+          </figcaption>
+        </figure>
+      </div>
     </section>
     </div>
 

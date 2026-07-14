@@ -9,6 +9,8 @@
   <meta name="author" content="KyaniteLabs">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="ai-content" content="original">
+  <meta name="theme-color" content="#050B0B">
+  <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://kinocut.dev/">
   <link rel="alternate" hreflang="en" href="https://kinocut.dev/">
   <link rel="alternate" hreflang="es" href="https://kinocut.dev/?lang=es">
@@ -183,6 +185,35 @@
             "item": "https://kinocut.dev/"
           }
         ]
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://kinocut.dev/#install-howto",
+        "name": "Install Kinocut for AI-agent video editing",
+        "description": "Install FFmpeg and Kinocut, then add the MCP server to Claude Code or run the kino CLI.",
+        "totalTime": "PT5M",
+        "tool": [
+          { "@type": "HowToTool", "name": "FFmpeg" },
+          { "@type": "HowToTool", "name": "Python 3.11+" },
+          { "@type": "HowToTool", "name": "pip or uvx" }
+        ],
+        "step": [
+          {
+            "@type": "HowToStep",
+            "name": "Install FFmpeg",
+            "text": "Install FFmpeg and ensure it is on PATH. On macOS: brew install ffmpeg. On Ubuntu/Debian: sudo apt install ffmpeg."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Install Kinocut",
+            "text": "Run pip install kinocut, then kino doctor to verify FFmpeg and optional extras."
+          },
+          {
+            "@type": "HowToStep",
+            "name": "Connect an MCP client",
+            "text": "For Claude Code run: claude mcp add kinocut -- uvx --from kinocut kino. Cursor and other MCP clients can use the same uvx --from kinocut kino command over stdio."
+          }
+        ]
       }
     ]
   }
@@ -274,6 +305,17 @@
       </figure>
     </section>
     </div>
+
+    <!-- QUICK FACTS (SEO / GEO scannable) -->
+    <section class="wrap facts" aria-label="Kinocut quick facts">
+      <ul class="facts__list">
+        <li><strong>1.7.0</strong><span lang="en">latest release</span><span lang="es">última versión</span></li>
+        <li><strong>135</strong><span lang="en">MCP tools published</span><span lang="es">herramientas MCP publicadas</span></li>
+        <li><strong>Apache-2.0</strong><span lang="en">free &amp; open source</span><span lang="es">gratis y open source</span></li>
+        <li><strong>local</strong><span lang="en">no upload · no credits</span><span lang="es">sin subida · sin créditos</span></li>
+        <li><strong>MCP</strong><span lang="en">Claude Code · Cursor · CLI</span><span lang="es">Claude Code · Cursor · CLI</span></li>
+      </ul>
+    </section>
 
     <!-- THESIS -->
     <section class="thesis wrap">
@@ -496,7 +538,7 @@
     </section>
 
     <!-- ROADMAP -->
-    <section class="wrap roadmap">
+    <section class="wrap roadmap" id="roadmap">
       <span class="eyebrow">
         <span lang="en">roadmap · in the open</span>
         <span lang="es">hoja de ruta · a la vista</span>
@@ -505,7 +547,26 @@
         <span lang="en">Where this is going</span>
         <span lang="es">Hacia dónde va</span>
       </h2>
+      <p class="roadmap__lede">
+        <span lang="en">Published today is <strong>1.7.0</strong>. The next public cut is building toward
+        <strong>1.8</strong> on the open source tree — not released until verification and a human go-ahead.</span>
+        <span lang="es">Hoy está publicada la <strong>1.7.0</strong>. El próximo corte público avanza hacia
+        <strong>1.8</strong> en el árbol open source — sin publicar hasta verificación y autorización humana.</span>
+      </p>
       <ol>
+        <li>
+          <span class="take">
+            <span lang="en">now</span><span lang="es">ahora</span>
+          </span>
+          <p><strong>
+            <span lang="en">Governed AI-video + Sonic World.</span>
+            <span lang="es">AI-video gobernado + Sonic World.</span></strong>
+            <span lang="en">Content-addressed ingest, verdicts, salvage, and the <code>kinocut_sound</code>
+            full-episode audio program (host joins and dual-class benchmark still gated).</span>
+            <span lang="es">Ingest con identidad, veredictos, salvage y el programa de audio
+            <code>kinocut_sound</code> (joins de host y benchmark dual-class aún con puerta).</span>
+          </p>
+        </li>
         <li>
           <span class="take">
             <span lang="en">next</span><span lang="es">siguiente</span>
@@ -532,8 +593,8 @@
           </span>
           <p><strong>
             <span lang="en">Provenance built in.</span><span lang="es">Procedencia integrada.</span></strong>
-            <span lang="en">C2PA content credentials on exports — agent-made video that declares itself, before regulators make everyone else catch up.</span>
-            <span lang="es">Credenciales de contenido C2PA en las exportaciones — video hecho por agentes que se declara como tal, antes de que los reguladores obliguen al resto.</span>
+            <span lang="en">Optional C2PA content credentials on exports already land on the development tip; kernel-backed provenance and review loops follow the product plan.</span>
+            <span lang="es">Las credenciales C2PA opcionales en exportaciones ya están en la punta de desarrollo; la procedencia y el bucle de revisión del kernel siguen el plan de producto.</span>
           </p>
         </li>
       </ol>

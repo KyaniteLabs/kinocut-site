@@ -1,9 +1,12 @@
 # Kinocut — Design System (kinocut.dev)
 
-**Committed direction in one line:** "The KyaniteLabs system in an edit suite — void/basalt
-stone darks, electric cyan precision lines, amber trust moments, magenta edit markers,
-Space Grotesk over Plus Jakarta Sans; the signature is the Video Receipt; the brand
-tableau (repo hero art) is the visual anchor."
+**Status:** **approved** (Simon, 2026-07-14) — Kinocut-specific interview in
+`kinocut` repo `docs/DESIGN-SYSTEM-INTERVIEW-KINOCUT.md`. Implementation may proceed.
+
+**Committed direction in one line:** "Agent edit bay on basalt — dense cool instrument
+hierarchy, cyan system / amber verified / magenta human-pending, Space Grotesk + Plus
+Jakarta + elevated mono, flat hairline ledger structure, signature = Video Receipt panel,
+imagery = one tableau + product chrome only, motion = transport-level only."
 
 ## Canonical source (read this first)
 

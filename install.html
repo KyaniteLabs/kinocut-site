@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install Kinocut — Kinocut</title>
+  <meta name="description" content="Install matrix for pip, MCP hosts, extras, doctor, and golden path.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/install.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Install Kinocut — Kinocut">
+  <meta property="og:description" content="Install matrix for pip, MCP hosts, extras, doctor, and golden path.">
+  <meta property="og:url" content="https://kinocut.dev/install.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Install matrix</h1>
+<p><strong>Published package:</strong> see <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/public_claims.json"><code>public_claims.json</code></a> (<code>published_version</code>).</p>
+<p><strong>Prerequisite:</strong> <a href="https://ffmpeg.org/">FFmpeg</a> on <code>PATH</code>.</p>
+<h2>OS package managers</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>OS</th><th>FFmpeg</th></tr></thead><tbody>
+<tr><td>macOS</td><td>`brew install ffmpeg`</td></tr>
+<tr><td>Ubuntu/Debian</td><td>`sudo apt install ffmpeg`</td></tr>
+<tr><td>Windows</td><td>Install a build with `ffmpeg` on PATH (e.g. winget/chocolatey/scoop or official builds)</td></tr>
+</tbody></table></div>
+<h2>Kinocut package</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Goal</th><th>Command</th></tr></thead><tbody>
+<tr><td>Stable publish</td><td>`pip install kinocut`</td></tr>
+<tr><td>Upgrade</td><td>`pip install -U kinocut`</td></tr>
+<tr><td>From former name</td><td>`pip install -U mcp-video` (shim → current Kinocut)</td></tr>
+<tr><td>Editable clone</td><td>`pip install -e .` from repo root</td></tr>
+<tr><td>No global install</td><td>`uvx --from kinocut kino doctor`</td></tr>
+</tbody></table></div>
+<h2>Verify (doctor-first)</h2>
+<pre><code>
+kino doctor
+
+# or
+
+kino doctor --json
+
+</code></pre>
+<p><strong>Pass:</strong> <code>summary.required_ok == true</code> (or text status without missing required items).</p>
+<p>Optional AI extras can be missing for core editing.</p>
+<p>Then prove plumbing:</p>
+<pre><code>
+python scripts/golden_path.py   # from a clone
+
+</code></pre>
+<h2>MCP hosts</h2>
+<h3>Claude Code</h3>
+<pre><code>
+claude mcp add kinocut -- uvx --from kinocut kino
+
+</code></pre>
+<h3>Cursor / generic stdio JSON</h3>
+<pre><code>
+{
+
+  &quot;mcpServers&quot;: {
+
+    &quot;kinocut&quot;: {
+
+      &quot;command&quot;: &quot;uvx&quot;,
+
+      &quot;args&quot;: [&quot;--from&quot;, &quot;kinocut&quot;, &quot;kino&quot;]
+
+    }
+
+  }
+
+}
+
+</code></pre>
+<p>Same shape works for other MCP clients that launch a local stdio server.</p>
+<h3>Claude Desktop MCPB (staged)</h3>
+<p>Local package under <code>mcpb/</code> — launches an existing Python env with Kinocut; still needs FFmpeg.</p>
+<p>Native self-contained bundles are <strong>not</strong> published yet. See <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/MCPB.md">MCPB.md</a>.</p>
+<h2>Optional extras</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>You want</th><th>Install</th><th>Notes</th></tr></thead><tbody>
+<tr><td>Whisper transcription</td><td>`pip install &quot;kinocut[transcribe]&quot;`</td><td>Large (torch)</td></tr>
+<tr><td>Image analysis</td><td>`pip install &quot;kinocut[image]&quot;`</td><td>~50 MB</td></tr>
+<tr><td>Stem separation</td><td>`pip install &quot;kinocut[stems]&quot;`</td><td>Large</td></tr>
+<tr><td>AI upscale</td><td>`pip install &quot;kinocut[upscale]&quot;`</td><td>Large; Python ≤3.12 often</td></tr>
+<tr><td>Procedural audio</td><td>`pip install &quot;kinocut[audio]&quot;`</td><td>numpy</td></tr>
+<tr><td>Everything AI</td><td>`pip install &quot;kinocut[ai]&quot;`</td><td>Several GB</td></tr>
+</tbody></table></div>
+<p>Core golden path <strong>does not</strong> require extras.</p>
+<h2>Hyperframes (optional)</h2>
+<p>Node.js 22+ and a resolvable Hyperframes CLI (<code>hyperframes</code> on PATH or <code>MCP_VIDEO_HYPERFRAMES_COMMAND</code>). Not required for FFmpeg tools or golden path.</p>
+<h2>Python client</h2>
+<pre><code>
+from kinocut import Client
+
+Client().info(&quot;clip.mp4&quot;)
+
+</code></pre>
+<h2>Failure recovery</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Symptom</th><th>Fix</th></tr></thead><tbody>
+<tr><td>`ffmpeg: command not found`</td><td>Install FFmpeg; restart shell</td></tr>
+<tr><td>`kino: command not found`</td><td>`pip install kinocut` or use `python -m kinocut`</td></tr>
+<tr><td>Import errors / old Python</td><td>Use Python 3.11+</td></tr>
+<tr><td>Doctor missing optional AI</td><td>Expected unless you installed extras</td></tr>
+<tr><td>Hyperframes hang/init</td><td>See Hyperframes doctor; skip for core path</td></tr>
+<tr><td>Golden path fails mid-workflow</td><td>Re-run; check disk space; open workflow stderr</td></tr>
+</tbody></table></div>
+<h2>Related</h2>
+<ul>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/GOLDEN_PATH.md">GOLDEN_PATH.md</a></li>
+<li><a href="/faq.html">faq.md</a></li>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/CLI_REFERENCE.md">CLI_REFERENCE.md</a></li>
+</ul>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

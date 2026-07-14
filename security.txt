@@ -1,0 +1,5 @@
+Contact: https://github.com/KyaniteLabs/kinocut/blob/master/SECURITY.md
+Preferred-Languages: en, es
+Canonical: https://kinocut.dev/security.txt
+Policy: https://github.com/KyaniteLabs/kinocut/blob/master/SECURITY.md
+Expires: 2027-07-14T00:00:00.000Z

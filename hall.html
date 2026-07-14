@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hall of receipts — Kinocut</title>
+  <meta name="description" content="Curated Video Receipt stories and how to add anonymized entries.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/hall.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Hall of receipts — Kinocut">
+  <meta property="og:description" content="Curated Video Receipt stories and how to add anonymized entries.">
+  <meta property="og:url" content="https://kinocut.dev/hall.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Hall of receipts</h1>
+<p>Curated, shareable receipt stories. Prefer anonymized paths and synthetic media.</p>
+<h2>Entry template</h2>
+<pre><code>
+### Title
+
+- **Date:**
+
+- **Intent:**
+
+- **Tools (count / names):**
+
+- **Guardrails:**
+
+- **Quality:**
+
+- **Human review remaining:**
+
+- **Artifact:** link to sample JSON or proof note
+
+- **Lesson:**
+
+</code></pre>
+<h2>Seed entries</h2>
+<h3>Confidence baseline plumbing</h3>
+<ul>
+<li><strong>Date:</strong> regenerate anytime</li>
+<li><strong>Intent:</strong> Prove Kinocut produces a checked vertical clip from synthetic media</li>
+<li><strong>How:</strong> <code>python scripts/golden_path.py</code></li>
+<li><strong>Artifact:</strong> <code>demo/golden-pack/sample_video_receipt.json</code></li>
+<li><strong>Lesson:</strong> Receipts matter even when media is synthetic; human_review stays pending</li>
+</ul>
+<h3>Workflow engine dry-run → render</h3>
+<ul>
+<li><strong>Intent:</strong> Multi-step job with hashes and resume cursor</li>
+<li><strong>How:</strong> <code>examples/workflows/captioned-vertical-short/</code></li>
+<li><strong>Lesson:</strong> Plan before render; inspect receipt after</li>
+</ul>
+<h3>Rescue package (when used)</h3>
+<ul>
+<li><strong>Intent:</strong> Content-preserving repair with immutable source</li>
+<li><strong>Docs:</strong> <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/RESCUE.md">RESCUE.md</a></li>
+<li><strong>Lesson:</strong> Approval gates are the product</li>
+</ul>
+<h2>Adding an entry</h2>
+<p>1. Redact home directories and usernames</p>
+<p>2. Prefer relative paths in JSON</p>
+<p>3. Link proofs under <code>docs/proofs/</code> when formal</p>
+<p>4. Never commit large private media</p>
+<h2>Related</h2>
+<ul>
+<li><a href="/receipt.html">VIDEO_RECEIPT.md</a></li>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/demo/golden-pack/README.md">demo/golden-pack</a></li>
+</ul>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Failure-as-feature — Kinocut</title>
+  <meta name="description" content="Guardrail and quality-gate failures agents should treat as product behavior.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/failures.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Failure-as-feature — Kinocut">
+  <meta property="og:description" content="Guardrail and quality-gate failures agents should treat as product behavior.">
+  <meta property="og:url" content="https://kinocut.dev/failures.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Failure-as-feature examples</h1>
+<p>Kinocut is designed to <strong>stop bad renders early</strong>. These examples show failures you should treat as product behavior, not bugs.</p>
+<h2>1. Preflight: risky filter parameter</h2>
+<p><strong>Intent:</strong> blur far beyond a sane range.</p>
+<p><strong>Expected:</strong> validation / guardrail error before FFmpeg produces unusable output.</p>
+<pre><code>
+from kinocut import Client
+
+from kinocut.errors import MCPVideoError
+
+
+
+c = Client()
+
+try:
+
+    c.filter(&quot;in.mp4&quot;, filter_type=&quot;blur&quot;, intensity=9999)  # out of range
+
+except MCPVideoError as e:
+
+    print(e.error_type, e)  # structured, actionable
+
+</code></pre>
+<p><strong>Teach agents:</strong> parse structured errors; do not retry with the same illegal value.</p>
+<h2>2. Merge incompatibility</h2>
+<p><strong>Intent:</strong> concat clips with mismatched streams without auto-normalize path.</p>
+<p><strong>Expected:</strong> merge-compatibility guardrail warns or fails closed with guidance.</p>
+<pre><code>
+# Prefer explicit convert/resize to a common profile, then merge —
+
+# or use merge paths that document auto-normalize behavior.
+
+</code></pre>
+<p><strong>Teach agents:</strong> probe both sources (<code>info</code>) before merge; normalize resolution/fps/sample rate first.</p>
+<h2>3. Workflow unsafe path</h2>
+<p><strong>Intent:</strong> workflow step points at a path outside the workspace.</p>
+<p><strong>Expected:</strong> <code>unsafe_workflow_source</code> (or equivalent) — no write outside confinement.</p>
+<pre><code>
+kino workflow-validate --spec bad-job.json
+
+# fails closed on escaping @refs / absolute out-of-workspace paths
+
+</code></pre>
+<h2>4. Quality gate hold</h2>
+<p><strong>Intent:</strong> export a clip that fails automated quality.</p>
+<p><strong>Expected:</strong> <code>quality_check</code> / <code>release_checkpoint</code> reports <code>all_passed: false</code> or score below <code>min_score</code>; receipt still records the attempt.</p>
+<pre><code>
+result = c.quality_check(&quot;final.mp4&quot;)
+
+# result[&quot;all_passed&quot;] may be False — do not publish; open recommendations
+
+</code></pre>
+<p><strong>Teach agents:</strong> low score is a <strong>stop for human review</strong>, not a silent continue.</p>
+<h2>5. Rescue without approval</h2>
+<p><strong>Intent:</strong> render rescue repairs without approved safe IDs.</p>
+<p><strong>Expected:</strong> fail closed — source stays immutable until plan + approval.</p>
+<p>See <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/RESCUE.md">RESCUE.md</a>.</p>
+<h2>6. Governed AI-video without human evidence (dev tip)</h2>
+<p><strong>Intent:</strong> approve a verdict with analyzer-only output.</p>
+<p><strong>Expected:</strong> approval rejected — exact human decision evidence required.</p>
+<p>See <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/AI_VIDEO_REVIEW_AND_SALVAGE.md">AI_VIDEO_REVIEW_AND_SALVAGE.md</a>.</p>
+<h2>Receipt after failure</h2>
+<p>Even failed or partial runs should leave inspectable state when a receipt/plan was requested (workflow resume cursor, rescue package, quality JSON). Prefer tools that return structured <code>success: false</code> over swallowing stderr.</p>
+<h2>Related</h2>
+<ul>
+<li><a href="/receipt.html">VIDEO_RECEIPT.md</a></li>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/GOLDEN_PATH.md">GOLDEN_PATH.md</a></li>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/WORKFLOWS.md">WORKFLOWS.md</a></li>
+</ul>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

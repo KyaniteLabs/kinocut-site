@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Podcast to Shorts tutorial — Kinocut</title>
+  <meta name="description" content="Canonical tutorial: local podcast to vertical shorts with a receipt.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://kinocut.dev/tutorial.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Podcast to Shorts tutorial — Kinocut">
+  <meta property="og:description" content="Canonical tutorial: local podcast to vertical shorts with a receipt.">
+  <meta property="og:url" content="https://kinocut.dev/tutorial.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
+    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/faq.html">FAQ</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+  </header>
+  <main id="main" class="wrap doc-main">
+<h1>Tutorial: podcast → vertical shorts with a receipt</h1>
+<p><strong>Canonical first tutorial for Kinocut.</strong> Local-only. No uploads. Human review required before publish.</p>
+<h2>You will produce</h2>
+<ul>
+<li>One or more vertical clips from a local podcast/interview file</li>
+<li>Optional captions if Whisper extra is installed</li>
+<li><code>quality</code> / checkpoint artifacts</li>
+<li>A Video Receipt summary (intent, tools, pending human review)</li>
+</ul>
+<h2>Prerequisites</h2>
+<pre><code>
+brew install ffmpeg   # or apt
+
+pip install kinocut
+
+kino doctor
+
+# optional captions:
+
+# pip install &quot;kinocut[transcribe]&quot;
+
+</code></pre>
+<p>Connect MCP (optional):</p>
+<pre><code>
+claude mcp add kinocut -- uvx --from kinocut kino
+
+</code></pre>
+<h2>Path A — Agent (recommended)</h2>
+<p>Paste into Claude Code / Cursor with Kinocut MCP enabled:</p>
+<pre><code>
+Local file: ABS_PATH/episode.mp4
+
+Using Kinocut only:
+
+1) Probe duration and streams
+
+2) Trim a strong ~45–60s segment (or start=00:05:00 if unsure)
+
+3) If transcription is available, create an SRT and burn captions; else skip and note why
+
+4) Resize to 9:16
+
+5) Normalize audio (~ -14 LUFS)
+
+6) quality_check + release_checkpoint
+
+7) Summarize a Video Receipt: intent, tool_calls, quality, human_review pending
+
+Do not upload or claim publish-ready.
+
+</code></pre>
+<p>More prompts: <a href="/prompts.html">PROMPTS.md</a>.</p>
+<h2>Path B — Python client</h2>
+<pre><code>
+from kinocut import Client
+
+
+
+c = Client()
+
+src = &quot;/ABS/PATH/episode.mp4&quot;
+
+clip = c.trim(src, start=&quot;00:05:00&quot;, duration=&quot;00:00:45&quot;)
+
+# optional: c.ai_transcribe(...); c.subtitles(...)
+
+vert = c.resize(clip.output_path, aspect_ratio=&quot;9:16&quot;)
+
+norm = c.normalize_audio(vert.output_path, target_lufs=-14.0)
+
+final = c.convert(norm.output_path, format=&quot;mp4&quot;, quality=&quot;high&quot;)
+
+print(c.quality_check(final.output_path))
+
+print(c.release_checkpoint(final.output_path, min_score=50))
+
+</code></pre>
+<h2>Path C — Golden plumbing proof (no private media)</h2>
+<pre><code>
+python scripts/golden_path.py
+
+</code></pre>
+<h2>Path D — Workflow engine</h2>
+<p>Use a job spec (<code>probe</code> → <code>trim</code> → <code>resize</code> → <code>add_text</code>) with <code>workflow-validate</code> / <code>plan</code> / <code>render</code> / <code>inspect</code>.</p>
+<p>See <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/WORKFLOWS.md">WORKFLOWS.md</a> and <code>examples/workflows/captioned-vertical-short/</code>.</p>
+<h2>Human review checklist</h2>
+<ul>
+<li>[ ] Hook is clear in first 2 seconds</li>
+<li>[ ] Captions accurate (if any)</li>
+<li>[ ] Loudness comfortable</li>
+<li>[ ] No bad crop on faces</li>
+<li>[ ] Receipt matches what you intended</li>
+</ul>
+<h2>Related</h2>
+<ul>
+<li><a href="/receipt.html">VIDEO_RECEIPT.md</a></li>
+<li><a href="/install.html">INSTALL.md</a></li>
+<li><a href="https://github.com/KyaniteLabs/kinocut/blob/master/demo/golden-pack/README.md">demo/golden-pack</a></li>
+</ul>
+  </main>
+  <footer class="wrap doc-foot">
+    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+  </footer>
+</body>
+</html>

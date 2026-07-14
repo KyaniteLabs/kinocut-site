@@ -6,7 +6,11 @@
   <title>Install Kinocut — Kinocut</title>
   <meta name="description" content="Install matrix for pip, MCP hosts, extras, doctor, and golden path.">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#05070b">
+  <meta name="color-scheme" content="dark">
   <link rel="canonical" href="https://kinocut.dev/install.html">
+  <link rel="alternate" hreflang="en" href="https://kinocut.dev/install.html">
+  <link rel="alternate" hreflang="es" href="https://kinocut.dev/es-content.html">
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/pages.css">
@@ -20,41 +24,60 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="doc-top wrap">
     <a class="doc-brand" href="/">KINO<span class="cut">CUT</span></a>
-    <nav class="doc-nav" aria-label="Site"><a href="/">Home</a>
-<a href="/install.html">Install</a>
+    <div class="doc-meta" aria-label="Status">
+      <span class="chip chip--trust">1.7.0 published</span>
+      <span class="chip">local-first</span>
+      <a class="chip chip--pending" href="/receipt.html">human review</a>
+    </div>
+    <nav class="doc-nav" aria-label="Primary">
+<a href="/">Home</a>
+<a href="/install.html" aria-current="page">Install</a>
 <a href="/receipt.html">Receipt</a>
 <a href="/prompts.html">Prompts</a>
 <a href="/tutorial.html">Tutorial</a>
 <a href="/compare.html">Compare</a>
+<a href="/faq.html">FAQ</a>
+      <details class="doc-nav__more">
+        <summary>More paths</summary>
+        <div class="doc-nav__panel" role="group" aria-label="More paths">
 <a href="/recommend.html">Recommend</a>
 <a href="/directories.html">Directories</a>
 <a href="/integrations.html">Integrations</a>
 <a href="/enterprise.html">Enterprise</a>
-<a href="/faq.html">FAQ</a>
 <a href="/failures.html">Failures</a>
 <a href="/changelog.html">Changelog</a>
 <a href="/rename.html">Rename</a>
-<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a></nav>
+<a href="/contribute.html">Contribute</a>
+<a href="/hall.html">Hall of receipts</a>
+<a href="/es-content.html">Español</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a>
+        </div>
+      </details>
+    </nav>
   </header>
   <main id="main" class="wrap doc-main">
+    <p class="doc-lang">Language <a href="/install.html" aria-current="true">EN</a> <a href="/es-content.html">ES</a></p>
+    <div class="doc-rail" aria-hidden="true"><span class="doc-rail__gate">PREFLIGHT</span><span></span></div>
+
+<div class="doc-callout doc-callout--trust"><strong>Doctor-first.</strong> Required checks green, then golden path — optional AI extras can wait.</div>
 <h1>Install matrix</h1>
 <p><strong>Published package:</strong> see <a href="https://github.com/KyaniteLabs/kinocut/blob/master/docs/public_claims.json"><code>public_claims.json</code></a> (<code>published_version</code>).</p>
 <p><strong>Prerequisite:</strong> <a href="https://ffmpeg.org/">FFmpeg</a> on <code>PATH</code>.</p>
 <h2>OS package managers</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>OS</th><th>FFmpeg</th></tr></thead><tbody>
-<tr><td>macOS</td><td>`brew install ffmpeg`</td></tr>
-<tr><td>Ubuntu/Debian</td><td>`sudo apt install ffmpeg`</td></tr>
-<tr><td>Windows</td><td>Install a build with `ffmpeg` on PATH (e.g. winget/chocolatey/scoop or official builds)</td></tr>
+<tr><td>macOS</td><td><code>brew install ffmpeg</code></td></tr>
+<tr><td>Ubuntu/Debian</td><td><code>sudo apt install ffmpeg</code></td></tr>
+<tr><td>Windows</td><td>Install a build with <code>ffmpeg</code> on PATH (e.g. winget/chocolatey/scoop or official builds)</td></tr>
 </tbody></table></div>
 <h2>Kinocut package</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>Goal</th><th>Command</th></tr></thead><tbody>
-<tr><td>Stable publish</td><td>`pip install kinocut`</td></tr>
-<tr><td>Upgrade</td><td>`pip install -U kinocut`</td></tr>
-<tr><td>From former name</td><td>`pip install -U mcp-video` (shim → current Kinocut)</td></tr>
-<tr><td>Editable clone</td><td>`pip install -e .` from repo root</td></tr>
-<tr><td>No global install</td><td>`uvx --from kinocut kino doctor`</td></tr>
+<tr><td>Stable publish</td><td><code>pip install kinocut</code></td></tr>
+<tr><td>Upgrade</td><td><code>pip install -U kinocut</code></td></tr>
+<tr><td>From former name</td><td><code>pip install -U mcp-video</code> (shim → current Kinocut)</td></tr>
+<tr><td>Editable clone</td><td><code>pip install -e .</code> from repo root</td></tr>
+<tr><td>No global install</td><td><code>uvx --from kinocut kino doctor</code></td></tr>
 </tbody></table></div>
 <h2>Verify (doctor-first)</h2>
 <pre><code>
@@ -104,12 +127,12 @@ claude mcp add kinocut -- uvx --from kinocut kino
 <h2>Optional extras</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>You want</th><th>Install</th><th>Notes</th></tr></thead><tbody>
-<tr><td>Whisper transcription</td><td>`pip install &quot;kinocut[transcribe]&quot;`</td><td>Large (torch)</td></tr>
-<tr><td>Image analysis</td><td>`pip install &quot;kinocut[image]&quot;`</td><td>~50 MB</td></tr>
-<tr><td>Stem separation</td><td>`pip install &quot;kinocut[stems]&quot;`</td><td>Large</td></tr>
-<tr><td>AI upscale</td><td>`pip install &quot;kinocut[upscale]&quot;`</td><td>Large; Python ≤3.12 often</td></tr>
-<tr><td>Procedural audio</td><td>`pip install &quot;kinocut[audio]&quot;`</td><td>numpy</td></tr>
-<tr><td>Everything AI</td><td>`pip install &quot;kinocut[ai]&quot;`</td><td>Several GB</td></tr>
+<tr><td>Whisper transcription</td><td><code>pip install &quot;kinocut[transcribe]&quot;</code></td><td>Large (torch)</td></tr>
+<tr><td>Image analysis</td><td><code>pip install &quot;kinocut[image]&quot;</code></td><td>~50 MB</td></tr>
+<tr><td>Stem separation</td><td><code>pip install &quot;kinocut[stems]&quot;</code></td><td>Large</td></tr>
+<tr><td>AI upscale</td><td><code>pip install &quot;kinocut[upscale]&quot;</code></td><td>Large; Python ≤3.12 often</td></tr>
+<tr><td>Procedural audio</td><td><code>pip install &quot;kinocut[audio]&quot;</code></td><td>numpy</td></tr>
+<tr><td>Everything AI</td><td><code>pip install &quot;kinocut[ai]&quot;</code></td><td>Several GB</td></tr>
 </tbody></table></div>
 <p>Core golden path <strong>does not</strong> require extras.</p>
 <h2>Hyperframes (optional)</h2>
@@ -124,8 +147,8 @@ Client().info(&quot;clip.mp4&quot;)
 <h2>Failure recovery</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>Symptom</th><th>Fix</th></tr></thead><tbody>
-<tr><td>`ffmpeg: command not found`</td><td>Install FFmpeg; restart shell</td></tr>
-<tr><td>`kino: command not found`</td><td>`pip install kinocut` or use `python -m kinocut`</td></tr>
+<tr><td><code>ffmpeg: command not found</code></td><td>Install FFmpeg; restart shell</td></tr>
+<tr><td><code>kino: command not found</code></td><td><code>pip install kinocut</code> or use <code>python -m kinocut</code></td></tr>
 <tr><td>Import errors / old Python</td><td>Use Python 3.11+</td></tr>
 <tr><td>Doctor missing optional AI</td><td>Expected unless you installed extras</td></tr>
 <tr><td>Hyperframes hang/init</td><td>See Hyperframes doctor; skip for core path</td></tr>
@@ -139,7 +162,8 @@ Client().info(&quot;clip.mp4&quot;)
 </ul>
   </main>
   <footer class="wrap doc-foot">
-    <p><a href="/">kinocut.dev</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · <a href="/llms.txt">llms.txt</a> · Apache-2.0 · formerly mcp-video</p>
+    <p><a href="/">kinocut.dev</a> · <a href="/install.html">Install</a> · <a href="/receipt.html">Receipt</a> · <a href="/security.txt">security.txt</a> · <a href="https://github.com/KyaniteLabs/kinocut">GitHub</a> · Apache-2.0 · formerly mcp-video</p>
   </footer>
+
 </body>
 </html>

@@ -1,0 +1,16 @@
+{
+  "serverInfo": {
+    "name": "Kinocut Public Guide",
+    "version": "1.0.0"
+  },
+  "transport": {
+    "type": "streamable-http",
+    "endpoint": "https://kinocut.dev/mcp"
+  },
+  "capabilities": {
+    "tools": {"listChanged": false},
+    "resources": {},
+    "prompts": {}
+  },
+  "authentication": {"required": false}
+}

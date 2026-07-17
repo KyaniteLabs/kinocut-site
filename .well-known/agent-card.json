@@ -1,0 +1,36 @@
+{
+  "name": "Kinocut Public Guide",
+  "version": "1.0.0",
+  "description": "A public, read-only guide to Kinocut installation, video-editing workflows, safeguards, and documentation. It cannot edit media, access local files, upload, publish, purchase, or run commands.",
+  "supportedInterfaces": [
+    {
+      "url": "https://kinocut.dev/a2a/v1",
+      "protocolBinding": "JSONRPC",
+      "protocolVersion": "1.0"
+    }
+  ],
+  "provider": {
+    "organization": "KyaniteLabs",
+    "url": "https://kyanitelabs.tech/"
+  },
+  "documentationUrl": "https://kinocut.dev/llms.txt",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "extendedAgentCard": false
+  },
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "kinocut-workflow-guide",
+      "name": "Kinocut Workflow Guide",
+      "description": "Routes a public video-editing goal to relevant Kinocut installation, workflow, receipt, and safety documentation without touching media or running tools."
+    },
+    {
+      "id": "kinocut-safety-boundaries",
+      "name": "Kinocut Safety Boundaries",
+      "description": "Explains preflight, Video Receipt, quality, and human-review boundaries for local Kinocut workflows."
+    }
+  ]
+}

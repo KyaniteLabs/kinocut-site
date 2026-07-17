@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "kinocut-workflow-guide",
+      "type": "skill-md",
+      "description": "Find the right public Kinocut installation, workflow, receipt, or safety documentation without touching media or running commands.",
+      "url": "https://kinocut.dev/.well-known/agent-skills/kinocut-workflow-guide/SKILL.md",
+      "digest": "sha256:5911b58706a54dc3913124151ef617c46fd20557a49b894ca1d139488dbc74da"
+    }
+  ]
+}

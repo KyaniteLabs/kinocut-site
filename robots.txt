@@ -1,6 +1,7 @@
 # kinocut.dev — crawl policy for search engines and AI answer engines
 User-agent: *
 Allow: /
+Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 # Common AI / answer-engine crawlers (explicit allow)
 User-agent: GPTBot

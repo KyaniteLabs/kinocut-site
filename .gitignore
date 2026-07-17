@@ -1,1 +1,4 @@
 .playwright-cli/
+
+# Local Netlify folder
+.netlify

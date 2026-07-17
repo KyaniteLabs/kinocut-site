@@ -1,0 +1,20 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Kinocut Public Guide API",
+    "version": "1.0.0",
+    "description": "Read-only public documentation routing. This API does not edit media or run Kinocut."
+  },
+  "servers": [{"url": "https://kinocut.dev"}],
+  "paths": {
+    "/api/health": {
+      "get": {"summary": "Check public guide health", "responses": {"200": {"description": "Healthy"}}}
+    },
+    "/mcp": {
+      "post": {"summary": "Use read-only MCP documentation tools", "responses": {"200": {"description": "MCP JSON-RPC response"}}}
+    },
+    "/a2a/v1": {
+      "post": {"summary": "Route a Kinocut documentation question", "responses": {"200": {"description": "A2A JSON-RPC response"}}}
+    }
+  }
+}

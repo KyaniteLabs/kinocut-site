@@ -1,0 +1,16 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://kinocut.dev/a2a/v1",
+      "service-desc": [
+        {"href": "https://kinocut.dev/openapi.json", "type": "application/openapi+json"}
+      ],
+      "service-doc": [
+        {"href": "https://kinocut.dev/docs/agent-api.md", "type": "text/markdown"}
+      ],
+      "status": [
+        {"href": "https://kinocut.dev/api/health", "type": "application/json"}
+      ]
+    }
+  ]
+}

@@ -242,6 +242,41 @@ code, pre, .mono {
   text-transform: uppercase;
 }
 
+/* Showcase player — Kinocut-edited demo */
+.showcase {
+  padding-block: var(--space-7);
+}
+.showcase__lede {
+  max-width: 62ch;
+  color: var(--text-2);
+  margin: 0 0 var(--space-4);
+}
+.showcase__player {
+  margin: 0;
+  border: var(--rule);
+  border-radius: var(--radius-2);
+  overflow: hidden;
+  background: #05070a;
+  box-shadow: 0 0 0 1px rgba(0, 255, 230, 0.08);
+}
+.showcase__player video {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+  background: #05070a;
+}
+.showcase__player figcaption {
+  font-family: var(--font-mono);
+  font-size: var(--size-micro);
+  letter-spacing: var(--tracking-instrument);
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: var(--space-2) var(--space-3);
+  border-top: var(--rule);
+  background: rgba(7, 11, 16, 0.94);
+}
+
 .bay-status {
   display: flex;
   flex-wrap: wrap;

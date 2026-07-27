@@ -41,12 +41,24 @@
 }
 
 .doc-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
   font-family: var(--font-display);
   font-weight: 700;
   text-decoration: none;
   color: var(--text);
   font-size: 1.15rem;
   letter-spacing: 0.02em;
+}
+
+.doc-brand .brand-mark {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+  opacity: 0.92;
 }
 
 .doc-brand .cut {

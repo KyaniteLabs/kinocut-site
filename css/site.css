@@ -208,14 +208,29 @@ code, pre, .mono {
 
 .bay-brand {
   display: inline-flex;
-  align-items: baseline;
-  gap: 0.45rem;
+  align-items: center;
+  gap: 0.55rem;
   text-decoration: none;
   color: var(--text);
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: 0.04em;
+}
+.bay-brand .brand-mark {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  display: block;
+  object-fit: contain;
+  /* glass crystal mark already has real alpha — keep unobtrusive */
+  opacity: 0.92;
+}
+.bay-brand__text {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
 }
 .bay-brand .cut { color: var(--cyan); }
 .bay-brand__sub {

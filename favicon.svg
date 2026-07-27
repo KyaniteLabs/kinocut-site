@@ -1,4 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#050b0b"/>
-  <path d="M7 8h18v4H7zm0 6h12v4H7zm0 6h16v4H7z" fill="#00e5c0"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="KyaniteLabs">
+  <!-- Fallback vector favicon: void + Hybrid A triad. Prefer PNG mark assets for full glass fidelity. -->
+  <rect width="32" height="32" rx="6" fill="#05070a"/>
+  <!-- simplified multi-shard K silhouette -->
+  <g transform="translate(7.5 4) scale(0.053)">
+    <path d="M40 20 L90 20 L90 120 L200 20 L270 20 L140 160 L280 300 L210 300 L90 180 L90 300 L40 300 Z"
+          fill="none" stroke="#00FFE6" stroke-width="28" stroke-linejoin="round" opacity="0.95"/>
+    <path d="M40 20 L70 20 L70 300 L40 300 Z" fill="#FF1A6E" opacity="0.55"/>
+    <path d="M40 220 L70 300 L40 300 Z" fill="#FFD11A" opacity="0.65"/>
+  </g>
 </svg>

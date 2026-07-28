@@ -24,11 +24,16 @@ fi
 if [[ -n "$NEW_MCP" ]]; then
   echo "Bumping MCP tool display count $OLD_MCP → $NEW_MCP (careful: may hit historical copy)"
   # Prefer structured spots first
-  perl -pi -e "s/(<strong>)\Q$OLD_MCP\E(<\/strong>)/\$1$NEW_MCP\$2/g" index.html 2>/dev/null || true
-  perl -pi -e "s/\Q$OLD_MCP\E MCP tools/$NEW_MCP MCP tools/g" index.html llms.txt 2>/dev/null || true
-  perl -pi -e "s/\Q$OLD_MCP\E structured MCP tools/$NEW_MCP structured MCP tools/g" index.html 2>/dev/null || true
-  perl -pi -e "s/\Q$OLD_MCP\E herramientas/$NEW_MCP herramientas/g" index.html 2>/dev/null || true
-  perl -pi -e "s/\+ \Q$OLD_MCP\E tools/+ $NEW_MCP tools/g" index.html 2>/dev/null || true
+  OLD_MCP="$OLD_MCP" NEW_MCP="$NEW_MCP" perl -pi -e \
+    's/(<strong>)\Q$ENV{OLD_MCP}\E(<\/strong>)/$1$ENV{NEW_MCP}$2/g' index.html 2>/dev/null || true
+  OLD_MCP="$OLD_MCP" NEW_MCP="$NEW_MCP" perl -pi -e \
+    's/\Q$ENV{OLD_MCP}\E MCP tools/$ENV{NEW_MCP} MCP tools/g' index.html llms.txt 2>/dev/null || true
+  OLD_MCP="$OLD_MCP" NEW_MCP="$NEW_MCP" perl -pi -e \
+    's/\Q$ENV{OLD_MCP}\E structured MCP tools/$ENV{NEW_MCP} structured MCP tools/g' index.html 2>/dev/null || true
+  OLD_MCP="$OLD_MCP" NEW_MCP="$NEW_MCP" perl -pi -e \
+    's/\Q$ENV{OLD_MCP}\E herramientas/$ENV{NEW_MCP} herramientas/g' index.html 2>/dev/null || true
+  OLD_MCP="$OLD_MCP" NEW_MCP="$NEW_MCP" perl -pi -e \
+    's/\+ \Q$ENV{OLD_MCP}\E tools/+ $ENV{NEW_MCP} tools/g' index.html 2>/dev/null || true
 fi
 
 echo

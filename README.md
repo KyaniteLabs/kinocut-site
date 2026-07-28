@@ -15,11 +15,13 @@ Product site for **Kinocut** (formerly mcp-video). Static, self-contained, bilin
 
 ## Deploy
 
-GitHub Pages serves `master` from `/` with custom domain `kinocut.dev`.
+GitHub Pages serves the GitHub mirror's `master` branch from `/` with custom domain
+`kinocut.dev`. Forgejo `origin` is canonical; pushing `master` to the `github`
+remote is a public deployment and requires explicit human approval.
 
 ```bash
-# after merge to master, Pages rebuilds automatically (legacy branch source)
-git push origin master
+# after the source change is merged to canonical Forgejo and deployment is approved
+git push github master
 ```
 
 ## Local check

@@ -30,11 +30,17 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Kinocut — trusted execution layer for agentic video">
+  <meta property="og:video" content="https://kinocut.dev/img/showcase/kinocut-dev-showcase.mp4">
+  <meta property="og:video:secure_url" content="https://kinocut.dev/img/showcase/kinocut-dev-showcase.mp4">
+  <meta property="og:video:type" content="video/mp4">
+  <meta property="og:video:width" content="1280">
+  <meta property="og:video:height" content="720">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kinocut — guardrailed video editing for AI agents">
   <meta name="twitter:description" content="Local-first MCP video tools with preflight guardrails, receipts, and quality gates. Apache-2.0.">
   <meta name="twitter:image" content="https://kinocut.dev/img/og.jpg">
   <meta name="twitter:image:alt" content="Kinocut product preview">
+  <link rel="preload" as="image" href="/img/showcase/poster.jpg" type="image/jpeg" fetchpriority="high">
   <link rel="icon" href="/img/brand/favicon-32.png" type="image/png" sizes="32x32">
   <link rel="icon" href="/img/brand/favicon-64.png" type="image/png" sizes="64x64">
   <link rel="apple-touch-icon" href="/img/brand/apple-touch-180.png" sizes="180x180">
@@ -123,6 +129,30 @@
           "https://registry.modelcontextprotocol.io/servers/io.github.KyaniteLabs/kinocut",
           "https://pypi.org/project/mcp-video/"
         ]
+      },
+      {
+        "@type": "VideoObject",
+        "@id": "https://kinocut.dev/#showcase-video",
+        "name": "Kinocut product showcase — inspectable edit bay",
+        "description": "Product film for Kinocut: typed tools, FFmpeg under the hood, preflight stop on bad paths, and Video Receipts you can check. Assembled with Kinocut and Hyperframes.",
+        "thumbnailUrl": "https://kinocut.dev/img/showcase/poster.jpg",
+        "contentUrl": "https://kinocut.dev/img/showcase/kinocut-dev-showcase.mp4",
+        "embedUrl": "https://kinocut.dev/#showcase",
+        "uploadDate": "2026-07-28",
+        "duration": "PT21S",
+        "encodingFormat": "video/mp4",
+        "width": 1280,
+        "height": 720,
+        "isFamilyFriendly": true,
+        "inLanguage": "en",
+        "publisher": { "@id": "https://kinocut.dev/#org" },
+        "creator": {
+          "@type": "Person",
+          "name": "Simon Gonzalez De Cruz",
+          "url": "https://github.com/simongonzalezdc"
+        },
+        "isPartOf": { "@id": "https://kinocut.dev/#website" },
+        "mainEntityOfPage": "https://kinocut.dev/#showcase"
       },
       {
         "@type": "FAQPage",
@@ -373,35 +403,39 @@
       </ul>
     </section>
 
-    <!-- SHOWCASE: Kinocut-edited cut (dogfood) -->
-    <section class="wrap showcase" aria-label="Kinocut showcase video">
+    <!-- SHOWCASE: Kinocut product film v16 (dogfood) — docs: SHOWCASE.md -->
+    <section id="showcase" class="wrap showcase" aria-labelledby="showcase-heading">
       <span class="eyebrow">
         <span lang="en">edited with kinocut</span>
         <span lang="es">editado con kinocut</span>
       </span>
-      <h2>
+      <h2 id="showcase-heading">
         <span lang="en">Proof on the site — this cut was assembled with Kinocut</span>
         <span lang="es">Prueba en el sitio — este corte se armó con Kinocut</span>
       </h2>
       <p class="showcase__lede">
-        <span lang="en">Hybrid A brand stills, golden-path product media, glass watermark, and end credit — merged, voiced, watermarked, and faded through <code>kino</code>.</span>
-        <span lang="es">Stills Hybrid A, media del golden path, marca de agua de vidrio y crédito final — unidos, con VO, watermark y fade vía <code>kino</code>.</span>
+        <span lang="en">Product film: process-bay world, real image-to-video motion, terminal B-roll, Hyperframes chrome, and an <strong>EDITED WITH KINOCUT</strong> end card. Preflight, receipt, and inspectable cut — not a slideshow.</span>
+        <span lang="es">Película de producto: bahía de proceso, motion real image-to-video, B-roll de terminal, chrome Hyperframes y tarjeta final <strong>EDITED WITH KINOCUT</strong>. Preflight, receipt y corte inspeccionable — no un slideshow.</span>
       </p>
       <figure class="showcase__player">
         <video
+          id="kinocut-showcase"
+          class="showcase__video"
           controls
           playsinline
           preload="metadata"
           poster="/img/showcase/poster.jpg"
           width="1280"
-          height="720">
+          height="720"
+          title="Kinocut product showcase — inspectable edit bay"
+          aria-label="Kinocut product showcase video, about 21 seconds, 16 by 9">
           <source src="/img/showcase/kinocut-dev-showcase.mp4" type="video/mp4">
-          <span lang="en">Your browser does not support the video tag.</span>
-          <span lang="es">Tu navegador no soporta video HTML.</span>
+          <span lang="en">Your browser does not support the video tag. <a href="/img/showcase/kinocut-dev-showcase.mp4">Download the showcase MP4</a>.</span>
+          <span lang="es">Tu navegador no soporta video HTML. <a href="/img/showcase/kinocut-dev-showcase.mp4">Descarga el MP4</a>.</span>
         </video>
         <figcaption>
-          <span lang="en">23s · 16:9 · assembled with Kinocut · glass Hybrid A watermark</span>
-          <span lang="es">23s · 16:9 · armado con Kinocut · watermark Hybrid A de vidrio</span>
+          <span lang="en">~21s · 1280×720 · H.264/AAC · assembled with Kinocut + Hyperframes · v16</span>
+          <span lang="es">~21s · 1280×720 · H.264/AAC · armado con Kinocut + Hyperframes · v16</span>
         </figcaption>
       </figure>
     </section>

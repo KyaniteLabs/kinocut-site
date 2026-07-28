@@ -13,6 +13,13 @@ Product site for **Kinocut** (formerly mcp-video). Static, self-contained, bilin
 | `es.html` | Spanish landing that sets lang and redirects to `/?lang=es` |
 | `CNAME` | `kinocut.dev` on GitHub Pages |
 
+## Homepage showcase film
+
+- Live player: https://kinocut.dev/#showcase  
+- Assets: `img/showcase/kinocut-dev-showcase.mp4` + `img/showcase/poster.jpg`  
+- Operator notes: [`SHOWCASE.md`](SHOWCASE.md)  
+- Current ship: **v16** product film (approved 2026-07-28)
+
 ## Deploy
 
 Netlify site `kinocut-dev` serves `kinocut.dev` from the repository root using

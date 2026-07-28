@@ -242,9 +242,10 @@ code, pre, .mono {
   text-transform: uppercase;
 }
 
-/* Showcase player — Kinocut-edited demo */
+/* Showcase player — homepage product film (v16) */
 .showcase {
   padding-block: var(--space-7);
+  scroll-margin-top: 4.5rem;
 }
 .showcase__lede {
   max-width: 62ch;
@@ -258,13 +259,19 @@ code, pre, .mono {
   overflow: hidden;
   background: #05070a;
   box-shadow: 0 0 0 1px rgba(0, 255, 230, 0.08);
+  /* Reserve 16:9 before poster/mp4 paint — stops layout shift */
+  contain: layout style;
 }
+.showcase__video,
 .showcase__player video {
   display: block;
   width: 100%;
   height: auto;
-  vertical-align: middle;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
   background: #05070a;
+  vertical-align: middle;
 }
 .showcase__player figcaption {
   font-family: var(--font-mono);
@@ -275,6 +282,15 @@ code, pre, .mono {
   padding: var(--space-2) var(--space-3);
   border-top: var(--rule);
   background: rgba(7, 11, 16, 0.94);
+}
+.showcase__player figcaption a {
+  color: var(--signal, #00f5ff);
+}
+/* Prefer reduced motion: no autoplay ever; controls remain for intentional play */
+@media (prefers-reduced-motion: reduce) {
+  .showcase__video {
+    scroll-behavior: auto;
+  }
 }
 
 .bay-status {

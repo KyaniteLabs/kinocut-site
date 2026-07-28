@@ -5,3 +5,24 @@
 [[edge_functions]]
   function = "agent-discovery"
   path = "/*"
+
+# Showcase product film + poster: long cache, immutable filenames when versioned later
+[[headers]]
+  for = "/img/showcase/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+    Accept-Ranges = "bytes"
+
+[[headers]]
+  for = "/img/showcase/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"
+    Accept-Ranges = "bytes"
+    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/img/showcase/*.jpg"
+  [headers.values]
+    Content-Type = "image/jpeg"
+    Cache-Control = "public, max-age=604800, stale-while-revalidate=86400"

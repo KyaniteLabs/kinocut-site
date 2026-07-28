@@ -2,7 +2,7 @@
 
 Guardrailed video editing MCP server, Python library, and CLI for AI agents.
 Local-first. Apache-2.0. Formerly mcp-video. Product site: https://kinocut.dev/
-Last-updated: 2026-07-27
+Last-updated: 2026-07-28
 
 ## One-line definition
 
@@ -57,6 +57,10 @@ pip install --upgrade mcp-video   # 1.6.2 shim installs kinocut 1.11.1
 ## Canonical links
 
 - Product: https://kinocut.dev/
+- Homepage showcase film (v16): https://kinocut.dev/#showcase
+- Showcase MP4: https://kinocut.dev/img/showcase/kinocut-dev-showcase.mp4
+- Showcase poster: https://kinocut.dev/img/showcase/poster.jpg
+- Showcase notes: https://kinocut.dev/SHOWCASE.md
 - Source (GitHub): https://github.com/KyaniteLabs/kinocut
 - Source (Forgejo canonical): https://git.kyanitelabs.tech/KyaniteLabs/kinocut
 - PyPI: https://pypi.org/project/kinocut/

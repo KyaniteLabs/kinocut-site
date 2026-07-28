@@ -2,7 +2,7 @@
 
 Guardrailed video editing MCP server, Python library, and CLI for AI agents.
 Local-first. Apache-2.0. Formerly mcp-video. Product site: https://kinocut.dev/
-Last-updated: 2026-07-14
+Last-updated: 2026-07-27
 
 ## One-line definition
 
@@ -14,9 +14,9 @@ Kinocut is a free, open-source Model Context Protocol (MCP) server that gives AI
 - **What it is:** MCP server + Python client + CLI for agentic video editing
 - **Who makes it:** KyaniteLabs (https://kyanitelabs.tech/)
 - **License:** Apache-2.0
-- **Latest published release:** 1.8.0 (2026-07-14)
-- **Published surface:** 142 MCP tools / 121 CLI commands at 1.8.0 cutover
-- **Development tip:** matches published 1.8.0 (governed AI-video, sound program) — matches published 1.8.0 at cutover
+- **Latest published release:** 1.11.1 (2026-07-24)
+- **Published surface:** 161 MCP tools / 140 CLI commands
+- **Development tip:** 164 MCP tools / 140 CLI commands; adds durable intent/recipe operations and compositor hardening, without claiming a new package release
 - **Runtime:** local Python 3.11+, FFmpeg on PATH; optional Whisper/AI extras
 - **Transport:** MCP stdio (Claude Code, Cursor, and other MCP clients)
 - **Registry id:** `io.github.KyaniteLabs/kinocut`
@@ -51,7 +51,7 @@ Shareable pack: python scripts/generate_golden_pack.py
 Compatibility upgrade from the former name:
 
 ```bash
-pip install --upgrade mcp-video   # installs kinocut via 1.6.1 shim
+pip install --upgrade mcp-video   # 1.6.2 shim installs kinocut 1.11.1
 ```
 
 ## Canonical links
@@ -73,6 +73,7 @@ pip install --upgrade mcp-video   # installs kinocut via 1.6.1 shim
 - Trim, merge, resize, caption, and export video via structured tools
 - Repurpose one master into vertical Shorts / Reels / TikTok packages with manifests
 - Plan multi-step jobs with the workflow engine (validate → plan → render → inspect + resume)
+- Keep durable edit projects, resumable render jobs, content-addressed assets, lineage receipts, reviewed semantic selections, and reusable recipes on development tip
 - Rescue damaged clips with a review-first plan/render/inspect pipeline
 - Scaffold Hyperframes compositions and post-process with FFmpeg tools
 - Run quality checks and release checkpoints before human publish review

@@ -15,14 +15,19 @@ Product site for **Kinocut** (formerly mcp-video). Static, self-contained, bilin
 
 ## Deploy
 
-GitHub Pages serves the GitHub mirror's `master` branch from `/` with custom domain
-`kinocut.dev`. Forgejo `origin` is canonical; pushing `master` to the `github`
-remote is a public deployment and requires explicit human approval.
+Netlify site `kinocut-dev` serves `kinocut.dev` from the repository root using
+`netlify.toml`, including the public agent-discovery edge function. Forgejo
+`origin` is canonical; GitHub is the public collaboration mirror.
 
 ```bash
 # after the source change is merged to canonical Forgejo and deployment is approved
 git push github master
+npx netlify deploy --prod --dir .
+./scripts/verify-primary-surface.sh https://kinocut.dev/
 ```
+
+A successful GitHub Pages build is not proof that `kinocut.dev` changed. Verify
+the Netlify production deploy and then inspect the live version/count claims.
 
 ## Local check
 

@@ -64,3 +64,14 @@ test("version bump helper preserves structured count markup", () => {
     rmSync(sandbox, { recursive: true, force: true });
   }
 });
+
+test("deployment documentation names the actual production host", () => {
+  const readme = readFileSync(join(root, "README.md"), "utf8");
+  const agentRules = readFileSync(join(root, "AGENTS.md"), "utf8");
+
+  for (const body of [readme, agentRules]) {
+    assert.match(body, /Netlify/);
+    assert.match(body, /npx netlify deploy --prod --dir \./);
+    assert.doesNotMatch(body, /GitHub Pages serves|GitHub Pages → \*\*kinocut\.dev/);
+  }
+});

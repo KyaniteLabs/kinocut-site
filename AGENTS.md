@@ -34,10 +34,14 @@ If markers are missing, the redesign is **not done** — keep working the homepa
 
 ### Dual remotes
 
-- **GitHub** `KyaniteLabs/kinocut-site` → GitHub Pages → **kinocut.dev** (what users see)
-- **Forgejo** `KyaniteLabs/kinocut-site` → canonical product mirror; keep in sync
+- **Forgejo** `KyaniteLabs/kinocut-site` → canonical source of truth.
+- **GitHub** `KyaniteLabs/kinocut-site` → public collaboration mirror.
+- **Netlify** linked site `kinocut-dev` → **kinocut.dev** production hosting.
 
-Ship homepage visual changes to GitHub master for live deploy; mirror to Forgejo.
+Merge source changes to Forgejo first. Keep GitHub synchronized, but do not treat a
+GitHub push or successful GitHub Pages build as production deployment evidence.
+After explicit deployment approval, run `npx netlify deploy --prod --dir .`, then
+verify the live primary surface and the changed claims on `https://kinocut.dev/`.
 
 ### Product design authority
 
@@ -57,4 +61,3 @@ exists (or the release PR is the same human go-ahead). Use:
 
 Do not leave `chip--trust` on an old published version while the homepage hero claims
 the new one. Product checklist: kinocut repo `docs/RELEASE_1.8_CHECKLIST.md`.
-

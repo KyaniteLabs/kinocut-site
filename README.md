@@ -1,16 +1,25 @@
 # kinocut.dev
 
-Product site for Kinocut (formerly mcp-video). Static, self-contained, bilingual EN/ES.
+Product site for [Kinocut](https://github.com/KyaniteLabs/kinocut) (formerly mcp-video). Static, self-contained, bilingual EN/ES.
+
+**Who it is for:** humans evaluating Kinocut and operators deploying the marketing/docs surface.
+
+**What you get:** static site sources for kinocut.dev.
 
 ## Try it
 
 ```bash
-# after the source change is merged to canonical Forgejo and deployment is approved
-git push github master
-npx netlify deploy --prod --dir .
-./scripts/verify-primary-surface.sh https://kinocut.dev/
+git clone https://github.com/KyaniteLabs/kinocut-site.git
+cd kinocut-site
+# open index / local static server; production deploy is Netlify when approved
+npx --yes serve .
 ```
 
 ## Docs
 
-- [`SHOWCASE.md`](SHOWCASE.md)
+- [SHOWCASE.md](SHOWCASE.md)
+- Product repo: [KyaniteLabs/kinocut](https://github.com/KyaniteLabs/kinocut)
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE).

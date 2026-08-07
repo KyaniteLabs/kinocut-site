@@ -7,9 +7,9 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const publishedVersion = "1.11.1";
-const publishedMcp = "161";
-const publishedCli = "140";
+const publishedVersion = "1.13.0";
+const publishedMcp = "194";
+const publishedCli = "165";
 
 test("current public surfaces agree on published and development claims", () => {
   const index = readFileSync(join(root, "index.html"), "utf8");
@@ -20,11 +20,11 @@ test("current public surfaces agree on published and development claims", () => 
   assert.match(index, new RegExp(`softwareVersion": "${publishedVersion.replaceAll(".", "\\.")}"`));
   assert.match(index, new RegExp(`<strong>${publishedMcp}</strong>.*MCP tools published`, "s"));
   assert.match(index, new RegExp(`${publishedMcp} MCP tools / ${publishedCli} CLI`));
-  assert.match(index, /Development tip has 164 MCP tools \/ 140 CLI/);
+  assert.match(index, /Development tip matches published 1\.13\.0: 194 MCP tools \/ 165 CLI/);
 
   assert.match(llms, new RegExp(`Latest published release:\\*\\* ${publishedVersion.replaceAll(".", "\\.")}`));
   assert.match(llms, new RegExp(`Published surface:\\*\\* ${publishedMcp} MCP tools / ${publishedCli} CLI commands`));
-  assert.match(llms, /Development tip:\*\* 164 MCP tools \/ 140 CLI commands/);
+  assert.match(llms, /Development tip:\*\* 194 MCP tools \/ 165 CLI commands/);
   assert.match(changelog, new RegExp(`${publishedMcp} MCP / ${publishedCli} CLI`));
   assert.match(spanish, new RegExp(`${publishedMcp} herramientas MCP y ${publishedCli} comandos CLI`));
 
@@ -35,7 +35,7 @@ test("current public surfaces agree on published and development claims", () => 
   for (const name of readdirSync(root).filter((candidate) => candidate.endsWith(".html"))) {
     const body = readFileSync(join(root, name), "utf8");
     if (body.includes("chip--trust")) {
-      assert.match(body, /chip--trust">1\.11\.1 published/, `${name} has a stale release chip`);
+      assert.match(body, /chip--trust">1\.13\.0 published/, `${name} has a stale release chip`);
     }
     assert.doesNotMatch(body, /1\.8\.0|142 MCP|142 herramientas|121 CLI/, `${name} contains a stale release claim`);
   }

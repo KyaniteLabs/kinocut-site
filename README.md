@@ -23,3 +23,9 @@ npx --yes serve .
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
+
+## Production deploy
+
+```bash
+npx netlify deploy --prod --dir .
+```

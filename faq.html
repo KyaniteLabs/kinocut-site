@@ -29,7 +29,7 @@
   <header class="doc-top wrap">
     <a class="doc-brand" href="/"><img class="brand-mark" src="/img/brand/mark-64-transparent.png" width="28" height="28" alt="" aria-hidden="true">KINO<span class="cut">CUT</span></a>
     <div class="doc-meta" aria-label="Status">
-      <span class="chip chip--trust">1.14.0 published</span>
+      <span class="chip chip--trust">1.14.1 published</span>
       <span class="chip">local-first</span>
       <a class="chip chip--pending" href="/receipt.html">human review</a>
     </div>
@@ -69,7 +69,7 @@
 <h2>What is MCP?</h2>
 <p>MCP (Model Context Protocol) is a standard protocol that lets AI agents like Claude Code and Cursor call external tools through a structured interface. Think of it as &quot;USB-C for AI tools&quot; — a universal connector between agents and capabilities.</p>
 <h2>Is Kinocut on the MCP Registry?</h2>
-<p>Yes. <a href="https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest">Kinocut 1.14.0 is active on the official MCP Registry</a> under the immutable identifier <code>io.github.KyaniteLabs/kinocut</code>. Release metadata is published from <code>server.json</code> after package publication.</p>
+<p>Yes. <a href="https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest">Kinocut 1.14.1 is active on the official MCP Registry</a> under the immutable identifier <code>io.github.KyaniteLabs/kinocut</code>. Release metadata is published from <code>server.json</code> after package publication.</p>
 <h2>Which AI agents work with Kinocut?</h2>
 <p>Any MCP-compatible agent: Claude Code, Cursor, Windsurf, Cline, and any client that supports the MCP protocol. The server runs as a stdio transport, which is the standard MCP transport mode.</p>
 <h2>Do I need FFmpeg installed?</h2>
@@ -97,7 +97,7 @@ pip install &quot;kinocut[ai]&quot;
 <h2>What are the cinematic creation tools?</h2>
 <p>The cinematic creation tools add a PUSHING CREATION-compatible pre-production workflow: <code>video_project_create</code> scaffolds a project with <code>style.md</code>, <code>storyboard.md</code>, and <code>refs/</code>; <code>style_pack_read</code> parses STYLE_ and NEG_ blocks; <code>storyboard_read</code> parses shot rows; and <code>shot_prompt_render</code> expands a storyboard shot into generation-ready positive and negative prompts.</p>
 <h2>What do the Hyperframes and repurposing tools add?</h2>
-<p>Hyperframes tools cover project scaffolds, renders, snapshots, layout inspection, catalog blocks, website capture, local TTS, transcription import, background removal, diagnostics, and benchmarking. Published repurposing tools review saved plans, render approved Shorts/Reels/TikTok variants, and build integrity-checked packages. Published 1.14.0 includes 360 dual-cam assembly from a stitched equirect MP4, durable project/job lineage, reviewed semantic selections, recipe export/replay, intent verbs, watching QC, and TE helpers.</p>
+<p>Hyperframes tools cover project scaffolds, renders, snapshots, layout inspection, catalog blocks, website capture, local TTS, transcription import, background removal, diagnostics, and benchmarking. Published repurposing tools review saved plans, render approved Shorts/Reels/TikTok variants, and build integrity-checked packages. Published 1.14.1 includes 360 dual-cam assembly from a stitched equirect MP4, durable project/job lineage, reviewed semantic selections, recipe export/replay, intent verbs, watching QC, and TE helpers.</p>
 <h2>Can it edit Insta360 or other 360 video?</h2>
 <p>Yes — from a <strong>stitched equirectangular 360 MP4</strong>, not a raw <code>.insv</code> or GoPro <code>.360</code>. Call <code>video_intent</code> with a 360/desk/table goal (or <code>Client.propose_360_assembly</code>), approve the <code>360_assembly_plan</code>, then render split / switch / PiP / single. Camera-agnostic: Insta360, Ricoh Theta, GoPro MAX, DJI Osmo 360, or any 2:1 / spherical-tagged export. There is no extra MCP tool name.</p>
 <h2>Is it free?</h2>

@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const publishedVersion = "1.14.0";
+const publishedVersion = "1.14.1";
 const publishedMcp = "196";
 const publishedCli = "167";
 
@@ -20,7 +20,7 @@ test("current public surfaces agree on published and development claims", () => 
   assert.match(index, new RegExp(`softwareVersion": "${publishedVersion.replaceAll(".", "\\.")}"`));
   assert.match(index, new RegExp(`<strong>${publishedMcp}</strong>.*MCP tools published`, "s"));
   assert.match(index, new RegExp(`${publishedMcp} MCP tools / ${publishedCli} CLI`));
-  assert.match(index, /Development tip matches published 1\.14\.0: 196 MCP tools \/ 167 CLI/);
+  assert.match(index, /Development tip matches published 1\.14\.1: 196 MCP tools \/ 167 CLI/);
 
   assert.match(llms, new RegExp(`Latest published release:\\*\\* ${publishedVersion.replaceAll(".", "\\.")}`));
   assert.match(llms, new RegExp(`Published surface:\\*\\* ${publishedMcp} MCP tools / ${publishedCli} CLI commands`));

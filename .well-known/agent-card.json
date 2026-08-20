@@ -29,44 +29,71 @@
   ],
   "skills": [
     {
-      "id": "kinocut-workflow-guide",
-      "name": "Kinocut Workflow Guide",
-      "description": "Routes a public video-editing goal to relevant Kinocut installation, workflow, receipt, and safety documentation without touching media or running tools.",
+      "id": "kinocut-capabilities",
+      "name": "Kinocut Capabilities Overview",
+      "description": "Answers what Kinocut can do: trim, merge, resize, caption, and export video; repurpose one master into vertical Shorts/Reels/TikTok packages; 360 dual-cam assembly from stitched equirect; video rescue for damaged clips; Hyperframes compositions; workflow engine with resume; quality checkpoints and Video Receipt provenance. 196 MCP tools, 167 CLI commands.",
       "tags": [
         "video-editing",
         "ffmpeg",
         "mcp",
-        "installation",
         "repurposing",
+        "shorts",
+        "reels",
+        "tiktok",
         "subtitles",
         "silence-removal",
         "360-video",
-        "shorts",
-        "reels"
+        "video-rescue",
+        "hyperframes",
+        "workflow-engine",
+        "quality-checks"
       ],
       "examples": [
-        "How do I install Kinocut?",
-        "What workflow turns a long video into Shorts?",
-        "How do I add styled subtitles?",
-        "How does 360 dual-cam assembly work?"
+        "What can Kinocut do?",
+        "Can Kinocut turn a long video into Shorts?",
+        "How does 360 dual-cam assembly work?",
+        "Can it fix a corrupted video file?"
       ]
     },
     {
-      "id": "kinocut-safety-boundaries",
-      "name": "Kinocut Safety Boundaries",
-      "description": "Explains preflight, Video Receipt, quality, and human-review boundaries for local Kinocut workflows.",
+      "id": "kinocut-install-guide",
+      "name": "Installation and Integration Guide",
+      "description": "Routes installation and agent-integration questions to Kinocut install docs, integration guides for Claude Code/Cursor/any MCP host, and the getting-started tutorial.",
+      "tags": [
+        "installation",
+        "setup",
+        "claude",
+        "cursor",
+        "mcp",
+        "integration",
+        "getting-started",
+        "pip",
+        "uvx"
+      ],
+      "examples": [
+        "How do I install Kinocut?",
+        "How do I connect Kinocut to Claude Code?",
+        "What are the prerequisites?"
+      ]
+    },
+    {
+      "id": "kinocut-safety-provenance",
+      "name": "Safety, Provenance, and Video Receipts",
+      "description": "Explains Kinocut safety model: preflight guardrails, quality checkpoints before publish, Video Receipt provenance for every render, human-review requirements, and why the guide itself is read-only.",
       "tags": [
         "safety",
         "read-only",
         "human-approval",
         "guardrails",
         "preflight",
-        "video-receipt"
+        "video-receipt",
+        "provenance",
+        "quality"
       ],
       "examples": [
         "Can this agent edit my videos?",
-        "What safety checks run before rendering?",
-        "What is a Video Receipt?"
+        "What is a Video Receipt?",
+        "What safety checks run before rendering?"
       ]
     }
   ]

@@ -2,11 +2,25 @@
   "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "skills": [
     {
-      "name": "kinocut-workflow-guide",
+      "name": "kinocut-capabilities",
       "type": "skill-md",
-      "description": "Find the right public Kinocut installation, workflow, receipt, or safety documentation without touching media or running commands.",
-      "url": "https://kinocut.dev/.well-known/agent-skills/kinocut-workflow-guide/SKILL.md",
-      "digest": "sha256:5911b58706a54dc3913124151ef617c46fd20557a49b894ca1d139488dbc74da"
+      "description": "Answers what Kinocut can do: trim, merge, resize, caption, and export video; repurpose one master into vertical Shorts/Reels/TikTok packages; 360 dual-cam assembly from stitched equirect; video rescue for damaged clips; Hyperframes compositions; workflow engine with resume; quality checkpoints and Video Receipt provenance. 196 MCP tools, 167 CLI commands.",
+      "url": "https://kinocut.dev/.well-known/agent-skills/kinocut-capabilities/SKILL.md",
+      "digest": "sha256:862ff02ee5880babe09bf0fd6a2bede0aa9df470b2bc1539a58e7114ca8dd02a"
+    },
+    {
+      "name": "kinocut-install-guide",
+      "type": "skill-md",
+      "description": "Routes installation and agent-integration questions to Kinocut install docs, integration guides for Claude Code/Cursor/any MCP host, and the getting-started tutorial.",
+      "url": "https://kinocut.dev/.well-known/agent-skills/kinocut-install-guide/SKILL.md",
+      "digest": "sha256:88924473286cb2d9dac762239b118a4cedfd6e312e78d33a8067897ac9001252"
+    },
+    {
+      "name": "kinocut-safety-provenance",
+      "type": "skill-md",
+      "description": "Explains Kinocut safety model: preflight guardrails, quality checkpoints before publish, Video Receipt provenance for every render, human-review requirements, and why the guide itself is read-only.",
+      "url": "https://kinocut.dev/.well-known/agent-skills/kinocut-safety-provenance/SKILL.md",
+      "digest": "sha256:55446ca569e987bbb4e71e5b1639095d6ed1f2a87e24ea515bca37e0d9fc32ce"
     }
   ]
 }

@@ -30,6 +30,7 @@
 
 /* ---- top bar ---- */
 .doc-top {
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-4);
@@ -401,8 +402,8 @@
   }
 
   .doc-nav__panel {
-    right: 0;
-    left: auto;
+    left: 0;
+    right: auto;
     min-width: min(16rem, 80vw);
   }
 }

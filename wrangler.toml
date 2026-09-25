@@ -1,0 +1,8 @@
+name = "kinocut-dev"
+compatibility_date = "2026-09-24"
+pages_build_output_dir = "."
+
+# Cloudflare Pages config for kinocut.dev (migrated off Netlify 2026-09-24).
+# Deploy: npx wrangler pages deploy . --project-name kinocut-dev --branch main
+# Functions: functions/[[path]].js ports netlify/edge-functions/agent-discovery.js.
+# Static headers: _headers ports the netlify.toml [[headers]] showcase rules.

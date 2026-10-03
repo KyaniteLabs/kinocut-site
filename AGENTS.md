@@ -36,12 +36,18 @@ If markers are missing, the redesign is **not done** — keep working the homepa
 
 - **Forgejo** `KyaniteLabs/kinocut-site` → canonical source of truth.
 - **GitHub** `KyaniteLabs/kinocut-site` → public collaboration mirror.
-- **Netlify** linked site `kinocut-dev` → **kinocut.dev** production hosting.
+- **Cloudflare Pages** source configuration names project `kinocut-dev` for
+  **kinocut.dev** (`wrangler.toml`, migration recorded 2026-09-24). Verify the
+  active account, project and domain before deployment. Netlify configuration
+  remains historical rollback/reference material.
 
 Merge source changes to Forgejo first. Keep GitHub synchronized, but do not treat a
 GitHub push or successful GitHub Pages build as production deployment evidence.
-After explicit deployment approval, run `npx netlify deploy --prod --dir .`, then
-verify the live primary surface and the changed claims on `https://kinocut.dev/`.
+After explicit deployment approval and active-project verification, run
+`npx wrangler pages deploy . --project-name kinocut-dev --branch main`, then
+verify the live primary surface, approved assets and changed claims on
+`https://kinocut.dev/`. Record the actual deployment ID and revision separately
+from source merge or GitHub Pages results.
 
 ### Product design authority
 

@@ -9,7 +9,7 @@ FAIL=0
 
 need() {
   local label="$1" haystack="$2" pat="$3"
-  if ! printf '%s' "$haystack" | grep -Eq "$pat"; then
+  if ! printf '%s' "$haystack" | grep -E "$pat" >/dev/null; then
     echo "FAIL: $label missing /$pat/"
     FAIL=1
   else
@@ -38,7 +38,7 @@ need "tokens not org-homepage-only" "$(cat "$TOKENS")" 'Kinocut product|edit bay
 
 # Doc-shell-only trap: pages.css must not be the only design work when claiming redesign.
 # If index still lacks bay markers we already failed; extra note:
-if ! printf '%s' "$INDEX_HTML" | grep -Eq 'bay-top'; then
+if ! printf '%s' "$INDEX_HTML" | grep -E 'bay-top' >/dev/null; then
   echo "HINT: css/pages.css doc-shell work does not count as homepage redesign."
 fi
 

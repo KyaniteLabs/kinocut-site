@@ -2,7 +2,7 @@
 
 Guardrailed video editing MCP server, Python library, and CLI for AI agents.
 Local-first. Apache-2.0. Formerly mcp-video. Product site: https://kinocut.dev/
-Last-updated: 2026-09-25
+Last-updated: 2026-10-02
 
 ## One-line definition
 
@@ -14,9 +14,9 @@ Kinocut is a free, open-source Model Context Protocol (MCP) server that gives AI
 - **What it is:** MCP server + Python client + CLI for agentic video editing
 - **Who makes it:** KyaniteLabs (https://kyanitelabs.tech/)
 - **License:** Apache-2.0
-- **Latest published release:** 1.15.3 (2026-09-25)
-- **Published surface:** 201 MCP tools / 173 CLI commands
-- **Development tip:** equals the published surface at the 1.15.3 cut (201 MCP / 173 CLI)
+- **Latest published release:** 1.16.0 (2026-10-02)
+- **Published surface:** 203 MCP tools / 177 CLI commands
+- **Development tip:** equals the published surface at the 1.16.0 cut (203 MCP / 177 CLI)
 - **Runtime:** local Python 3.11+, FFmpeg on PATH; optional Whisper/AI extras
 - **Transport:** MCP stdio (Claude Code, Cursor, and other MCP clients)
 - **Registry id:** `io.github.KyaniteLabs/kinocut`
@@ -51,7 +51,7 @@ Shareable pack: python scripts/generate_golden_pack.py
 Compatibility upgrade from the former name:
 
 ```bash
-pip install --upgrade mcp-video   # 1.6.14 shim installs kinocut 1.15.3
+pip install --upgrade mcp-video   # 1.6.15 shim installs kinocut 1.16.0
 ```
 
 ## Canonical links
@@ -63,7 +63,7 @@ pip install --upgrade mcp-video   # 1.6.14 shim installs kinocut 1.15.3
 - Showcase notes: https://kinocut.dev/SHOWCASE.md
 - Benchmark (small models + typed surface, measured): https://kinocut.dev/bench.html
 - Source (GitHub): https://github.com/KyaniteLabs/kinocut
-- Source (Forgejo canonical): https://git.kyanitelabs.tech/KyaniteLabs/kinocut
+- Website source (Forgejo canonical): https://git.kyanitelabs.tech/KyaniteLabs/kinocut-site
 - PyPI: https://pypi.org/project/kinocut/
 - MCP Registry: https://registry.modelcontextprotocol.io/v0/servers/io.github.KyaniteLabs%2Fkinocut/versions/latest
 - Tool reference: https://github.com/KyaniteLabs/kinocut/blob/master/docs/TOOLS.md

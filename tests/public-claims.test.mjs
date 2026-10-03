@@ -7,11 +7,12 @@ import { fileURLToPath } from "node:url";
 import test from "node:test";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const publishedVersion = "1.15.2";
+const publishedVersion = "1.15.3";
 const publishedMcp = "201";
 const publishedCli = "173";
-// 1.15.2 shipped the Revideo + stereo trains, so the published and development
-// surfaces are equal at this cut; the split assertions collapsed accordingly.
+// 1.15.3 is a fixes release (integrator-train fixes, normalize_audio true-peak
+// handling, Windows lavfi path quoting, recovery-safe publish rig); surface
+// counts are unchanged from 1.15.2, so published and development remain equal.
 
 test("current public surfaces agree on published and development claims", () => {
   const index = readFileSync(join(root, "index.html"), "utf8");
@@ -21,23 +22,26 @@ test("current public surfaces agree on published and development claims", () => 
   const spanish = readFileSync(join(root, "es-content.html"), "utf8");
 
   assert.match(index, new RegExp(`softwareVersion": "${publishedVersion.replaceAll(".", "\\.")}"`));
-  assert.match(index, /"dateModified": "2026-09-24"/);
+  assert.match(index, /"dateModified": "2026-09-25"/);
   assert.match(index, new RegExp(`<strong>${publishedMcp}</strong>.*MCP tools published`, "s"));
   assert.match(index, new RegExp(`${publishedMcp} MCP tools / ${publishedCli} CLI`));
   assert.match(index, /201 MCP tools \/ 173 CLI commands/);
 
-  assert.match(llms, new RegExp(`Latest published release:\\*\\* ${publishedVersion.replaceAll(".", "\\.")} \\(2026-09-24\\)`));
-  assert.doesNotMatch(llms, /1\.15\.1 \(2026-08-19\)/);
+  assert.match(llms, new RegExp(`Latest published release:\\*\\* ${publishedVersion.replaceAll(".", "\\.")} \\(2026-09-25\\)`));
+  assert.doesNotMatch(llms, /1\.15\.2 \(2026-09-24\)/);
   assert.match(llms, new RegExp(`Published surface:\\*\\* ${publishedMcp} MCP tools / ${publishedCli} CLI commands`));
-  assert.match(llms, /Development tip:\*\* equals the published surface at the 1\.15\.2 cut/);
-  assert.match(llms, /1\.6\.11 shim installs kinocut 1\.15\.0/);
-  assert.doesNotMatch(llms, /1\.6\.11 shim installs kinocut 1\.15\.1/);
+  assert.match(llms, /Development tip:\*\* equals the published surface at the 1\.15\.3 cut/);
+  assert.match(llms, /1\.6\.14 shim installs kinocut 1\.15\.3/);
+  assert.doesNotMatch(llms, /1\.6\.11 shim/);
+  assert.match(llms, /kinocut\.dev\/bench\.html/);
   assert.match(changelog, new RegExp(`${publishedMcp} MCP / ${publishedCli} CLI`));
+  assert.match(changelog, /integrator-train fixes/);
+  assert.match(changelog, /recovery-safe publish rig/);
   assert.match(changelog, /verified stereo mastering, guarded Revideo operations/);
   assert.match(spanish, new RegExp(`${publishedMcp} herramientas MCP y ${publishedCli} comandos CLI`));
   assert.match(spanish, /201 herramientas MCP y 173 comandos CLI/);
   assert.match(index, /201 structured tools in published/);
-  assert.match(faq, /Kinocut 1\.15\.2 is active on the official MCP Registry/);
+  assert.match(faq, /Kinocut 1\.15\.3 is active on the official MCP Registry/);
 
   for (const [name, body] of [["index.html", index], ["llms.txt", llms], ["changelog.html", changelog], ["es-content.html", spanish]]) {
     assert.doesNotMatch(body, /1\.8\.0|142 MCP|142 herramientas|121 CLI/, `${name} contains a stale current claim`);
@@ -84,8 +88,9 @@ test("deployment documentation names the actual production host", () => {
   const agentRules = readFileSync(join(root, "AGENTS.md"), "utf8");
 
   for (const body of [readme, agentRules]) {
-    assert.match(body, /Netlify/);
-    assert.match(body, /npx netlify deploy --prod --dir \./);
+    assert.match(body, /Cloudflare Pages/);
+    assert.match(body, /npx wrangler pages deploy \. --project-name kinocut-dev --branch main/);
+    assert.doesNotMatch(body, /npx netlify deploy --prod/);
     assert.doesNotMatch(body, /GitHub Pages serves|GitHub Pages → \*\*kinocut\.dev/);
   }
 });

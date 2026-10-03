@@ -90,3 +90,18 @@ about him, rather than deferring them back. The reasoning, per question:
 One signature: the receipt manifest gets the boldness budget (panel over art, amber edge + chip, barcode).
 The playhead stays ambient. The tableau backdrop must always fade to `--void` under
 text — measured contrast outranks art visibility.
+
+## Approved identity assets
+
+The product identity uses the approved colored camera mark at
+`img/brand/kinocut-approved-512.png` and **Chakra Petch Bold (700)** lettering.
+`img/brand/kinocut-wordmark.svg` contains outlines extracted from the real font,
+with native kerning; the license notice is `img/brand/CHAKRA-PETCH-OFL.txt`.
+The header brand slots and the homepage product-name heading display these
+outlines. They inherit the surrounding text color and keep accessible names.
+This wordmark is a specific identity treatment; ordinary page and component
+text continues to use the existing typography tokens.
+
+`img/og.jpg` uses the approved logo-and-wordmark lockup. The photographic
+hero tableau remains the page backdrop. This identity update changes source
+assets and their display; a source commit does not establish deployment.

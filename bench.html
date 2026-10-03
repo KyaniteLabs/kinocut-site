@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="/img/brand/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="/img/brand/favicon-64.png" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="/img/brand/apple-touch-180.png" sizes="180x180">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Benchmark — small local models vs raw ffmpeg, with and without Kinocut</title>
+  <meta name="description" content="A raw 3B model writes 0/12 working ffmpeg commands. The same 3B on Kinocut's typed surface: 4/12, faster than a 35B writing raw commands. Tables, method, and evidence.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#05070b">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://kinocut.dev/bench.html">
+  <link rel="alternate" hreflang="en" href="https://kinocut.dev/directories.html">
+  <link rel="alternate" hreflang="es" href="https://kinocut.dev/es-content.html">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <meta property="og:title" content="Benchmark — small local models vs raw ffmpeg, with and without Kinocut">
+  <meta property="og:description" content="A raw 3B model writes 0/12 working ffmpeg commands. The same 3B on Kinocut's typed surface: 4/12, faster than a 35B writing raw commands. Tables, method, and evidence.">
+  <meta property="og:url" content="https://kinocut.dev/bench.html">
+  <meta property="og:image" content="https://kinocut.dev/img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="doc-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="doc-top wrap">
+    <a class="doc-brand" href="/" aria-label="KinoCut home"><img class="brand-mark" src="/img/brand/kinocut-approved-512.png" width="28" height="28" alt="" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4283 800" width="102" height="20" aria-hidden="true" focusable="false" data-brand-typeface="Chakra Petch Bold"><g xmlns="http://www.w3.org/2000/svg" id="font-derived-lettering" fill="currentColor" transform="translate(-15 750) scale(1 -1)"><path id="glyph-0-K" d="M65 700H201V407H307L476 700H629L424 351L646 0H490L306 291H201V0H65Z" transform="translate(0 0)" /><path id="glyph-1-I" d="M70 700H206V0H70Z" transform="translate(651 0)" /><path id="glyph-2-N" d="M65 700H187L499 225H501V700H632V0H510L198 474H196V0H65Z" transform="translate(927 0)" /><path id="glyph-3-O" d="M55 115V585L170 700H530L645 585V115L530 0H170ZM458 116 509 167V533L458 584H242L191 533V167L242 116Z" transform="translate(1624 0)" /><path id="glyph-4-C" d="M55 115V585L170 700H512L625 587V480H489V537L442 584H242L191 533V167L242 116H442L489 163V220H625V113L512 0H170Z" transform="translate(2324 0)" /><path id="glyph-5-U" d="M65 120V700H201V167L252 116H448L499 167V700H635V120L515 0H185Z" transform="translate(2979 0)" /><path id="glyph-6-T" d="M224 585H15V700H569V585H360V0H224Z" transform="translate(3679 0)" /></g></svg></a>
+    <div class="doc-meta" aria-label="Status">
+      <span class="chip chip--trust">1.15.3 published</span>
+      <span class="chip">local-first</span>
+      <a class="chip chip--pending" href="/receipt.html">human review</a>
+    </div>
+    <nav class="doc-nav" aria-label="Primary">
+<a href="/">Home</a>
+<a href="/install.html">Install</a>
+<a href="/receipt.html">Receipt</a>
+<a href="/prompts.html">Prompts</a>
+<a href="/tutorial.html">Tutorial</a>
+<a href="/compare.html">Compare</a>
+<a href="/bench.html">Bench</a>
+<a href="/faq.html">FAQ</a>
+      <details class="doc-nav__more">
+        <summary>More paths</summary>
+        <div class="doc-nav__panel" role="group" aria-label="More paths">
+<a href="/recommend.html">Recommend</a>
+<a href="/directories.html">Directories</a>
+<a href="/integrations.html">Integrations</a>
+<a href="/enterprise.html">Enterprise</a>
+<a href="/failures.html">Failures</a>
+<a href="/changelog.html">Changelog</a>
+<a href="/rename.html">Rename</a>
+<a href="/contribute.html">Contribute</a>
+<a href="/hall.html">Hall of receipts</a>
+<a href="/es-content.html">Español</a>
+<a href="https://github.com/KyaniteLabs/kinocut">GitHub</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main id="main" class="wrap doc-main">
+    <div class="doc-rail" aria-hidden="true"><span class="doc-rail__gate">00:04</span><span></span></div>
+    <article>
+      <h1>Benchmark: the guardrail, measured</h1>
+      <p>Can a small local model actually edit video? Not by writing ffmpeg commands — a raw 3B model produced <strong>zero working commands out of 12 attempts</strong>. Given Kinocut's typed surface instead, the same 3B shipped <strong>4 of 12</strong>, at <em>lower</em> latency than a 35B model writing raw commands. The deterministic layer does the heavy lifting exactly where the model cannot.</p>
+
+      <h2>Results</h2>
+      <p>Twelve representative edit tasks (trim, resize, audio extract, speed, rotate, thumbnail, WebM, crop, frame export, GIF, self-concat) on one deterministic fixture. Two arms per seat: <em>alone</em> (the model writes a raw ffmpeg command — what an unguarded agent does) and <em>+ Kinocut</em> (the model drives the kino CLI; the engine builds and runs the real ffmpeg). One verifier, blind to arm: the artifact must exist and pass every ffprobe check.</p>
+
+      <div class="table-wrap"><table>
+        <thead><tr><th>Model (local)</th><th>Alone (raw ffmpeg)</th><th>+ Kinocut</th><th>Latency, median</th></tr></thead>
+        <tbody>
+          <tr><td>3B VL</td><td>0 / 12</td><td><strong>4 / 12</strong></td><td>540 ms → 337 ms</td></tr>
+          <tr><td>2B</td><td>5 / 12</td><td><strong>9 / 12</strong> (+80% rel.)</td><td>5.6 s → 2.2 s</td></tr>
+          <tr><td>27B</td><td>10 / 12</td><td><strong>11 / 12</strong></td><td>2.2 s → 2.6 s</td></tr>
+          <tr><td>35B MoE</td><td>11 / 12</td><td>11 / 12 (parity)</td><td>18.3 s → 9.6 s</td></tr>
+        </tbody>
+      </table></div>
+
+      <p>The curve is the story: an unbounded lift at the bottom, +80% at 2B, +10% at 27B, parity at 35B. The layer compensates precisely where the model is weakest — and on the tiny seats it is also <em>cheaper</em>, because synthesizing short typed parameters beats synthesizing long shell commands.</p>
+
+      <h2>The trim trap</h2>
+      <p>Every seat's raw-arm "canonical" trim was the same command an experienced human writes:</p>
+      <pre><code>ffmpeg -i input.mp4 -ss 2 -to 5 -c copy out.mp4</code></pre>
+      <p>It exits zero, reports the right duration — and <strong>silently drops the video stream</strong> (the stream-copy and output-seek interaction). A 27B model still writes it. Kinocut's engine path avoids the entire class by construction: parameters are typed, validated, and translated, never shell-echoed.</p>
+
+      <h2>Method</h2>
+      <ul>
+        <li><strong>Fixture:</strong> one deterministic source (testsrc2 + sine, 10 s, 1280×720, H.264 + AAC). No network, no camera.</li>
+        <li><strong>Arms:</strong> identical prompts; the + Kinocut arm sees the real kino CLI help (as an MCP client sees the tool schema). Single-shot by design — no repair rounds in either arm.</li>
+        <li><strong>Verifier:</strong> blind to arm; artifact must exist and pass duration, dimensions, codec, stream, and frame-count checks via ffprobe.</li>
+        <li><strong>Execution:</strong> argv-only (no shell), sandboxed, 240 s cap. Fixed sampling parameters.</li>
+        <li><strong>Honesty notes:</strong> n=12, one run per cell. Frontier hosted models were not run (no credential used; we do not fabricate reference rows). The bench also caught a real Kinocut bug — a trim end-time semantics flaw (K-1) that cost the Kinocut arm the trim task on capable seats; it is <a href="/changelog.html">fixed in 1.15.2</a> (absolute end times now convert explicitly). ASR/transcription and GPU-heavy renders were out of scope for the headless loop.</li>
+      </ul>
+
+      <h2>Run it yourself</h2>
+      <p>The bench uses the same CLI you install anyway:</p>
+      <pre><code>pip install kinocut
+kino doctor</code></pre>
+      <p>Twelve tasks, one fixture, a blind verifier — the reproducible shape is above. <a href="/receipt.html">Every operation carries a receipt</a>; that is the point of the surface.</p>
+    </article>
+  </main>
+
+</body>
+</html>

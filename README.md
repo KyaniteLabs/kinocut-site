@@ -5,7 +5,7 @@ Kinocut site is the open-source static website for [Kinocut](https://github.com/
 **TL;DR:** clone from Forgejo, serve the static files, run the tests, and submit site changes to Forgejo. The Kinocut product repository owns the Python package, CLI, MCP implementation, and releases.
 
 <!-- s-plus-geo:start -->
-Kinocut site is a bilingual static documentation and product website. KyaniteLabs Forgejo is the canonical site source, GitHub is the public site mirror, GitHub hosts the canonical Kinocut product code, and kinocut.dev is the separately deployed Netlify production site.
+Kinocut site is a bilingual static documentation and product website. KyaniteLabs Forgejo is the canonical site source, GitHub is the public site mirror, GitHub hosts the canonical Kinocut product code, and kinocut.dev is the separately deployed production site configured for Cloudflare Pages.
 <!-- s-plus-geo:end -->
 
 ![Kinocut homepage preview](img/og.jpg)
@@ -17,7 +17,7 @@ Kinocut site is a bilingual static documentation and product website. KyaniteLab
 | [Forgejo site](https://git.kyanitelabs.tech/KyaniteLabs/kinocut-site) | Website source | Canonical; site changes land here first |
 | [GitHub site](https://github.com/KyaniteLabs/kinocut-site) | Website source | Public collaboration mirror |
 | [GitHub product](https://github.com/KyaniteLabs/kinocut) | Kinocut implementation | Canonical product code and releases |
-| [kinocut.dev](https://kinocut.dev/) | Published website | Netlify production, deployed and verified separately |
+| [kinocut.dev](https://kinocut.dev/) | Published website | Cloudflare Pages configuration; active deployment verified separately |
 
 A source merge does not prove a production deployment, and a source file does not prove that its production route is live.
 
@@ -82,10 +82,10 @@ Read [`AGENTS.md`](AGENTS.md) for repository rules and [`DESIGN-SYSTEM.md`](DESI
 
 Site changes follow a Forgejo-first workflow: branch from the current Forgejo tip, keep the patch focused, run the local checks, and submit the change there. GitHub mirrors the site repository.
 
-Netlify deployment is owner-controlled and separate from merging source. When a deployment is approved, the repository command is:
+Cloudflare Pages deployment is owner-controlled and separate from merging source. Verify the active account, project `kinocut-dev` and domain before running the approved deployment command:
 
 ```bash
-npx netlify deploy --prod --dir .
+npx wrangler pages deploy . --project-name kinocut-dev --branch main
 ```
 
 Verify the live homepage and changed claims after deployment.
@@ -102,7 +102,7 @@ The [Forgejo site repository](https://git.kyanitelabs.tech/KyaniteLabs/kinocut-s
 
 ### Does a site merge deploy kinocut.dev?
 
-No. A merge establishes site source history. Netlify deployment and live verification are separate.
+No. A merge establishes site source history. Cloudflare Pages deployment and live verification are separate.
 
 ### How should release claims be verified?
 

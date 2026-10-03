@@ -92,3 +92,17 @@ test("deployment documentation names the actual production host", () => {
     assert.doesNotMatch(body, /GitHub Pages serves|GitHub Pages → \*\*kinocut\.dev/);
   }
 });
+
+test("published project links use accessible public GitHub destinations", () => {
+  const files = readdirSync(root).filter((name) => /\.(html|txt)$/.test(name));
+  files.push("README.md", "SHOWCASE.md");
+  for (const name of files) {
+    const body = readFileSync(join(root, name), "utf8");
+    for (const match of body.matchAll(/https?:\/\/[^\s"'<>),]+/g)) {
+      const url = new URL(match[0]);
+      if (/^\/KyaniteLabs(?:\/(?:kinocut|kinocut-site)(?:[/.]|$)|\/?$)/i.test(url.pathname) && url.hostname !== "ko-fi.com") {
+        assert.equal(url.hostname, "github.com", `${name} exposes an inaccessible project destination`);
+      }
+    }
+  }
+});

@@ -2,7 +2,7 @@
 
 Kinocut site is the open-source static website for [Kinocut](https://github.com/KyaniteLabs/kinocut), a video editing toolkit. It contains the pages, styles, scripts, tests, and machine-readable files published at [kinocut.dev](https://kinocut.dev/).
 
-**TL;DR:** clone from Forgejo, serve the static files, run the tests, and submit site changes to Forgejo. The Kinocut product repository owns the Python package, CLI, MCP implementation, and releases.
+**TL;DR:** clone the public GitHub mirror, serve the static files, and run the tests. Site operators land changes in the private canonical Forgejo repository before synchronizing this mirror. The Kinocut product repository owns the Python package, CLI, MCP implementation, and releases.
 
 <!-- s-plus-geo:start -->
 Kinocut site is a bilingual static documentation and product website. KyaniteLabs Forgejo is the canonical site source, GitHub is the public site mirror, GitHub hosts the canonical Kinocut product code, and kinocut.dev is the separately deployed production site configured for Cloudflare Pages.
@@ -14,7 +14,7 @@ Kinocut site is a bilingual static documentation and product website. KyaniteLab
 
 | Surface | Role | Authority |
 | --- | --- | --- |
-| [Forgejo site](https://git.kyanitelabs.tech/KyaniteLabs/kinocut-site) | Website source | Canonical; site changes land here first |
+| Private Forgejo site | Website source | Operator-only canonical source; site changes land here first |
 | [GitHub site](https://github.com/KyaniteLabs/kinocut-site) | Website source | Public collaboration mirror |
 | [GitHub product](https://github.com/KyaniteLabs/kinocut) | Kinocut implementation | Canonical product code and releases |
 | [kinocut.dev](https://kinocut.dev/) | Published website | Cloudflare Pages configuration; active deployment verified separately |
@@ -52,7 +52,7 @@ Unlike this static site, product implementation and releases live in the [Kinocu
 ## Run locally
 
 ```bash
-git clone https://git.kyanitelabs.tech/KyaniteLabs/kinocut-site.git
+git clone https://github.com/KyaniteLabs/kinocut-site.git
 cd kinocut-site
 python3 -m http.server 8000
 ```
@@ -98,7 +98,7 @@ No. This is the static website repository. The [product repository](https://gith
 
 ### Which repository is authoritative for the site?
 
-The [Forgejo site repository](https://git.kyanitelabs.tech/KyaniteLabs/kinocut-site) is canonical. The GitHub site repository is its public collaboration mirror.
+The private Forgejo site repository is canonical and accessible to the operator. The [GitHub site repository](https://github.com/KyaniteLabs/kinocut-site) is its public collaboration mirror.
 
 ### Does a site merge deploy kinocut.dev?
 

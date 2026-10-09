@@ -26,7 +26,7 @@ A source merge does not prove a production deployment, and a source file does no
 - People evaluating Kinocut can start with the [homepage](index.html), [installation guide](install.html), [tutorial](tutorial.html), and [FAQ](faq.html).
 - Developers and creators can read the [integration guide](integrations.html), [prompt guide](prompts.html), and [receipt guide](receipt.html).
 - Site contributors can use the source map, local server, tests, and design contract below.
-- Deployment operators can validate source before an owner-approved Netlify deployment and live check.
+- Deployment operators can validate source before an owner-approved Cloudflare Pages deployment and live check.
 
 ## Source map and what you can inspect
 
@@ -44,8 +44,10 @@ The site has no application build step. Its pages and assets are committed direc
 | [`llms.txt`](llms.txt) | Plain-text guide to public resources |
 | [`openapi.json`](openapi.json) | Machine-readable agent-surface description |
 | [`docs/agent-api.md`](docs/agent-api.md) | Human-readable agent-surface documentation |
-| [`netlify.toml`](netlify.toml) | Netlify routing and edge-function configuration |
-| [`netlify/edge-functions/agent-discovery.js`](netlify/edge-functions/agent-discovery.js) | Agent-discovery edge-function source |
+| [`wrangler.toml`](wrangler.toml) | Cloudflare Pages project configuration (`kinocut-dev`) |
+| [`functions/[[path]].js`](functions/%5B%5Bpath%5D%5D.js) | Cloudflare Pages Function serving agent discovery (port of the Netlify edge function) |
+| [`_headers`](_headers) | Cloudflare Pages static header rules |
+| [`netlify.toml`](netlify.toml), [`netlify/edge-functions/agent-discovery.js`](netlify/edge-functions/agent-discovery.js) | Legacy Netlify configuration kept from before the 2026-09-24 migration to Cloudflare Pages |
 
 Unlike this static site, product implementation and releases live in the [Kinocut product repository](https://github.com/KyaniteLabs/kinocut).
 
@@ -57,7 +59,7 @@ cd kinocut-site
 python3 -m http.server 8000
 ```
 
-Open <http://localhost:8000/>. The local server previews static assets; it does not reproduce Netlify edge behavior or prove a production deployment.
+Open <http://localhost:8000/>. The local server previews static assets; it does not run the Cloudflare Pages Function or `_headers` rules, or prove a production deployment.
 
 ## Validate a change
 
@@ -74,7 +76,7 @@ After a README change, confirm that the canonical Forgejo README and GitHub mirr
 
 ## Machine-readable surfaces
 
-[`llms.txt`](llms.txt), [`openapi.json`](openapi.json), [`docs/agent-api.md`](docs/agent-api.md), and the [edge-function source](netlify/edge-functions/agent-discovery.js) document the intended discovery surfaces. Confirm production URLs directly when work depends on deployed routing, headers, or responses.
+[`llms.txt`](llms.txt), [`openapi.json`](openapi.json), [`docs/agent-api.md`](docs/agent-api.md), and the [Pages Function source](functions/%5B%5Bpath%5D%5D.js) document the intended discovery surfaces. Confirm production URLs directly when work depends on deployed routing, headers, or responses.
 
 ## Community and contributions
 

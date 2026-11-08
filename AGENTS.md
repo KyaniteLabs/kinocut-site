@@ -1,5 +1,8 @@
 # kinocut-site — agent rules
 
+Before any card on this repository, read `PRODUCT.md` and `ARCHITECTURE.md`.
+Preserve the Forgejo-first authority and separate deployment gates below.
+
 ## Primary surface is the homepage
 
 **Canonical product surface:** `index.html` + `css/site.css` + `css/tokens.css` at
